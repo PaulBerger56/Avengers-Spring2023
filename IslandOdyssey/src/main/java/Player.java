@@ -35,6 +35,23 @@ public class Player {
         this.currentHp -= damage;
     }
 
+    public Item doesPlayerHaveItem(String itemName) {
+        for(Item i: this.inventory) {
+            if(i.getName().equals(itemName)) {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public Room getCurrentRoomObject() {
+        return this.map.getRooms().get(this.currentRoom -1);
+    }
+
+    public boolean isDefeated() {
+        return defeated;
+    }
+
     public int getMaxHp() {
         return maxHp;
     }
