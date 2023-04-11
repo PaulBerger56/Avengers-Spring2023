@@ -71,7 +71,13 @@ public class PlayerController {
         }
     }
 
-    //Paul
+    // Paul
+    // sends the current room's inventory to the view to print
+    public void explore() {
+        playerView.printExplore(player.explore());
+    }
+
+    // Paul
     // Drops the specific item and has the view print the message
     public void dropItem(String itemName) {
         playerView.dropItem(this.player.drop(itemName));
@@ -84,7 +90,7 @@ public class PlayerController {
     }
 
     // Paul
-    //gets the player's current Room object and sends it to PlayerView to print the inventory
+    // gets the player's current Room object and sends it to PlayerView to print the inventory
     public void printRoomInventory() {
         playerView.printRoomInventory(this.player.getCurrentRoomObject());
     }
@@ -98,15 +104,13 @@ public class PlayerController {
     // Paul
     // prints the current room's description
     public void printRoomDescription() {
+        // prints the familiar message if room has been visited
+        if(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1).isVisited()) {
+            playerView.printFamiliar();
+            playerView.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
+        }
         playerView.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
     }
-
-    // Paul
-    // made this getter to save the player as a file in the "Game" class.  May move this functionality elsewhere
-    public Player getPlayer() {
-        return this.player;
-    }
-
 
 
 

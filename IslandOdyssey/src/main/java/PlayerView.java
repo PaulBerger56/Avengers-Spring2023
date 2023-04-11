@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 // Paul
 public class PlayerView {
@@ -37,9 +38,22 @@ public class PlayerView {
                 "Please leave off the .bin or other file type");
     }
 
-    //Paul
+    // Paul
     public void dropItem(String dropMessage) {
         System.out.println(dropMessage);
+    }
+
+    // Paul
+    // prints the current room's inventory
+    public void printExplore(ArrayList<Item> items) {
+        for(Item i: items) {
+            System.out.println(i.getName());
+        }
+    }
+
+    // Paul
+    public void printFamiliar() {
+        System.out.println("This looks familiar...");
     }
 
 }

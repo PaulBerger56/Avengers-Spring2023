@@ -18,6 +18,7 @@ public class Game {
     }
 
     // Paul
+    // loads the game from a saved .bin file of a player object
     public static void loadGame(String playerFile) {
         PlayerView pv = new PlayerView();
         PlayerController pc = new PlayerController(playerFile, pv);

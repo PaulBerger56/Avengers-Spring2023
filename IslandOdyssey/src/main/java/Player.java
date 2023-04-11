@@ -29,7 +29,17 @@ public class Player implements Serializable {
 
     }
 
+    //Paul
+    // adds to the current hp as long as it is under or equal to the max hp
+    public void addHp(int hp) {
+        if((this.currentHp + hp) >= this.maxHp) {
+            this.currentHp = maxHp;
+        }
+        this.currentHp += hp;
+    }
+
     // Paul
+    // reduces the player's hp until 0
     public void takeHit(int damage) {
         if((this.currentHp - damage) <= 0) {
             this.defeated = true;
@@ -37,12 +47,20 @@ public class Player implements Serializable {
         this.currentHp -= damage;
     }
 
-    // Paul
+    //Paul
     public void pickup(Item item) {
         this.inventory.add(item);
     }
 
-    // Paul
+    //Paul
+    // not sure if this will be needed, or just handled in the controller
+    public void use(Item item) {
+        if(doesPlayerHaveItem(item.getName()) !=null) {
+            item.use();
+        }
+    }
+
+    //Paul
     public String drop(String itemName) {
         for(int i = 0; i < this.inventory.size(); i++) {
             if(this.inventory.get(i).getName().equals(itemName)) {
@@ -63,6 +81,12 @@ public class Player implements Serializable {
             }
         }
         return null;
+    }
+
+    //Paul
+    // returns the current room's arraylist
+    public ArrayList<Item> explore() {
+        return this.map.getRooms().get(currentRoom - 1).getItems();
     }
 
     // Paul
@@ -95,9 +119,19 @@ public class Player implements Serializable {
         return currentRoom;
     }
 
+    //Paul
+    public void setCurrentRoom(int roomNumber) {
+        this.currentRoom = roomNumber;
+    }
+
     // Paul
     public int getPreviousRoom() {
         return previousRoom;
+    }
+
+    //Paul
+    public void setPreviousRoom(int roomNumber) {
+        this.previousRoom = roomNumber;
     }
 
     // Paul
