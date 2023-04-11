@@ -14,7 +14,7 @@ public class Player implements Serializable {
     private Map map;
 
 
-
+    // Paul
     // needs to take the names of the files since the map class is accessed through player and fills the map through a
     // call in the player constructor
     public Player(int maxHp, int attackPower, String roomFile, String itemFile, String monsterFile, String puzzleFile) {
@@ -29,6 +29,7 @@ public class Player implements Serializable {
 
     }
 
+    // Paul
     public void takeHit(int damage) {
         if((this.currentHp - damage) <= 0) {
             this.defeated = true;
@@ -36,6 +37,25 @@ public class Player implements Serializable {
         this.currentHp -= damage;
     }
 
+    // Paul
+    public void pickup(Item item) {
+        this.inventory.add(item);
+    }
+
+    // Paul
+    public String drop(String itemName) {
+        for(int i = 0; i < this.inventory.size(); i++) {
+            if(this.inventory.get(i).getName().equals(itemName)) {
+                Item tempItem = this.inventory.get(i);
+                this.map.getRooms().get(currentRoom - 1).addItem(tempItem);
+                this.inventory.remove(i);
+                return tempItem.getName();
+            }
+        }
+        return "Player doesn't have that item";
+    }
+
+    // Paul
     public Item doesPlayerHaveItem(String itemName) {
         for(Item i: this.inventory) {
             if(i.getName().equals(itemName)) {
@@ -45,38 +65,47 @@ public class Player implements Serializable {
         return null;
     }
 
+    // Paul
     public Room getCurrentRoomObject() {
         return this.map.getRooms().get(this.currentRoom -1);
     }
 
+    // Paul
     public boolean isDefeated() {
         return defeated;
     }
 
+    // Paul
     public int getMaxHp() {
         return maxHp;
     }
 
+    // Paul
     public int getCurrentHp() {
         return currentHp;
     }
 
+    // Paul
     public int getAttackPower() {
         return attackPower;
     }
 
+    // Paul
     public int getCurrentRoom() {
         return currentRoom;
     }
 
+    // Paul
     public int getPreviousRoom() {
         return previousRoom;
     }
 
+    // Paul
     public ArrayList<Item> getInventory() {
         return inventory;
     }
 
+    // Paul
     public Map getMap() {
         return map;
     }

@@ -9,6 +9,10 @@ public class Room {
         this.items = new ArrayList<>();
     }
 
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
     public ArrayList<Item> getItems() {
         return items;
     }
