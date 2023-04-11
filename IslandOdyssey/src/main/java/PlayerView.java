@@ -24,4 +24,8 @@ public class PlayerView {
 
     }
 
+    public void printRoomDescription(Room room) {
+        System.out.println(room.getDescription());
+    }
+
 }

@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 // Paul
-public class Player {
+public class Player implements Serializable {
 
     private int maxHp;
     private int currentHp;
