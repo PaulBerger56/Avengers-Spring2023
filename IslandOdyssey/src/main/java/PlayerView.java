@@ -56,4 +56,9 @@ public class PlayerView {
         System.out.println("This looks familiar...");
     }
 
+    // Paul
+    public void printPickup(String itemName) {
+        System.out.println("The player picked up a(n) " + itemName);
+    }
+
 }

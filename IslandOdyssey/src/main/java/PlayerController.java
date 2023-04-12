@@ -112,6 +112,11 @@ public class PlayerController {
         playerView.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
     }
 
+    //Paul
+    public void printPickup(Item item) {
+        playerView.printPickup(this.player.pickup(item));
+    }
+
 
 
 }

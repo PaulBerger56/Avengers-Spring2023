@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 // Paul
 public class Player implements Serializable {
 
@@ -48,8 +49,19 @@ public class Player implements Serializable {
     }
 
     //Paul
-    public void pickup(Item item) {
-        this.inventory.add(item);
+    // checks if the item to pick up already exists in the inventory, and if so increments its count by 1;
+    public String pickup(Item item) {
+        if(doesPlayerHaveItem(item.getName()) != null) {
+            for(int i = 0; i < this.inventory.size(); i++) {
+                if(this.inventory.get(i).getName().equals(item.getName())) {
+                    this.inventory.get(i).incrementCount();
+                    return item.getName();
+                }
+            }
+        } else {
+            this.inventory.add(item);
+        }
+        return item.getName();
     }
 
     //Paul
@@ -57,10 +69,12 @@ public class Player implements Serializable {
     public void use(Item item) {
         if(doesPlayerHaveItem(item.getName()) !=null) {
             item.use();
+            removeItem(item.getName());
         }
     }
 
     //Paul
+    // removes the specific item from the player's inventory and adds it to the current room's inventory
     public String drop(String itemName) {
         for(int i = 0; i < this.inventory.size(); i++) {
             if(this.inventory.get(i).getName().equals(itemName)) {
@@ -74,6 +88,7 @@ public class Player implements Serializable {
     }
 
     // Paul
+    // checks if the player has a specific item, and returns an item object if so.
     public Item doesPlayerHaveItem(String itemName) {
         for(Item i: this.inventory) {
             if(i.getName().equals(itemName)) {
@@ -81,6 +96,20 @@ public class Player implements Serializable {
             }
         }
         return null;
+    }
+
+    //Paul
+    //Removes the item from the player's inventory, but doesn't drop it into a room.
+    public void removeItem(String itemName) {
+        for(int i = 0; i < this.inventory.size(); i++) {
+            if(this.inventory.get(i).getName().equals(itemName)){
+                if((this.inventory.get(i).getCount() - 1) <= 0) {
+                    this.inventory.remove(i);
+                } else {
+                    this.inventory.get(i).decrementCount();
+                }
+            }
+        }
     }
 
     //Paul
