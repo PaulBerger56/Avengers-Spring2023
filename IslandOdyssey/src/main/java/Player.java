@@ -5,23 +5,23 @@ import java.util.ArrayList;
 // Paul
 public class Player implements Serializable {
 
-    private int maxHp;
+    private final int maxHp;
     private int currentHp;
-    private int attackPower;
+    private final int attackPower;
     private int currentRoom;
     private int previousRoom;
     private boolean defeated;
-    private ArrayList<Item> inventory;
-    private Map map;
+    private final ArrayList<Item> inventory;
+    private final Map map;
 
 
     // Paul
     // needs to take the names of the files since the map class is accessed through player and fills the map through a
     // call in the player constructor
-    public Player(int maxHp, int attackPower, String roomFile, String itemFile, String monsterFile, String puzzleFile) {
-        this.maxHp = maxHp;
-        this.currentHp = maxHp;
-        this.attackPower = attackPower;
+    public Player(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
+        this.maxHp = 200;
+        this.currentHp = 200;
+        this.attackPower = 20;
         this.currentRoom = 1;
         this.previousRoom = 0;
         this.defeated = false;
