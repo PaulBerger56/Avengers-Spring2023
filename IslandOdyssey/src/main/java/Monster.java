@@ -90,5 +90,14 @@ public class Monster {
         return strength;
     }
 
+    //Edwin
+    public String getWeakness(){
+        return weakness;
+    }
+
+    public void setDefeated(boolean isDefeated){
+        this.isDefeated = isDefeated;
+    }
+
 
 }
