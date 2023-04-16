@@ -54,7 +54,7 @@ public class Player implements Serializable {
         if(doesPlayerHaveItem(item.getName()) != null) {
             for(int i = 0; i < this.inventory.size(); i++) {
                 if(this.inventory.get(i).getName().equals(item.getName())) {
-                    this.inventory.get(i).incrementCount();
+                    this.inventory.get(i).incrementQuantity();
                     return item.getName();
                 }
             }
@@ -103,10 +103,10 @@ public class Player implements Serializable {
     public void removeItem(String itemName) {
         for(int i = 0; i < this.inventory.size(); i++) {
             if(this.inventory.get(i).getName().equals(itemName)){
-                if((this.inventory.get(i).getCount() - 1) <= 0) {
+                if((this.inventory.get(i).getQuantity() - 1) <= 0) {
                     this.inventory.remove(i);
                 } else {
-                    this.inventory.get(i).decrementCount();
+                    this.inventory.get(i).decrementQuantity();
                 }
             }
         }
