@@ -94,7 +94,7 @@ public class Monster {
     public String getWeakness(){
         return weakness;
     }
-
+    //Joseph
     public void setDefeated(boolean isDefeated){
         this.isDefeated = isDefeated;
     }
