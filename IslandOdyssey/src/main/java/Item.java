@@ -78,5 +78,8 @@ public abstract class Item {
         sc.close();
         return items;
     }
+
+    //Joseph
+    public abstract void use();
 }
 

@@ -1,65 +1,60 @@
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Monster {
     //Created by Joseph
     String name;
-    String description;
+    String monsterDescription;
     int hitPoints;
     int strength;
     int attackChance;
     String weakness;
     Item item;
-    boolean isDefeated;
+    boolean isDefeated = false;
 
     //From Joseph
-    public Monster(String name, String description, int hitPoints, int strength, int attackChance, String weakness, Item item, boolean isDefeated){
+    public Monster(String name, String monsterDescription, int hitPoints, int strength, int attackChance, String weakness, Item item){
         this.name = name;
-        this.description = description;
+        this.monsterDescription = monsterDescription;
         this.hitPoints = hitPoints;
         this.strength = strength;
         this.attackChance = attackChance;
         this.weakness = weakness;
-        this.isDefeated = isDefeated;
+        this.item = item;
     }
+
     //Joseph
     public Item giveItemToPlayer(){
-        if(isDefeated == true){
-            System.out.println("Here's " + item + "will you pick it up?");
-            Scanner input = new Scanner(System.in);
-            String answer = input.nextLine();
-
-            if(answer.equalsIgnoreCase("yes")){
-                System.out.println(item + " is a part of your inventory.");
-            }
-            else if(answer.equalsIgnoreCase("no")){
-                System.out.println("Okay hope I don't regret this later.");
-            }
-        }
+        item = null;
         return item;
     }
     //Joseph
-    public void addItemToMonster(){
-        Monster roomMonster = new Monster("Khabib","BBBB",90,2,32,"Darkness",item,false);
-        roomMonster.addItemToMonster();
-    }
+//    public void addItemToMonster(){
+//
+//    }
 
     //Joseph
     public void takeHit(int hit){
-        hitPoints = hitPoints - hit;
+        hitPoints -= hit;
 
-        if(weakness.equals(Item.getItem())){
+        if(isWeakTo(weakness)){
             hitPoints = 0;
-            isDefeated = true;
+            whenDefeated();
+        }
+        if(hitPoints == 0 ){
+            whenDefeated();
         }
         isDefeated = false;
 
-        if(hitPoints == 0 ){
-            isDefeated = true;
-        }
-
     }
-
+    //Joseph
+//    public void battle(){
+//
+//    }
     //Joseph
     public boolean isWeakTo(String itemName){
-        if (itemName.equals(items.getItem())){
+        if (itemName.equals(weakness)){
             isDefeated = true;
             return true;
         }
@@ -68,18 +63,15 @@ public class Monster {
     }
     //
     public void whenDefeated(){
-        Monster monster = new Monster();
-        if(isDefeated == true){
-            System.out.println(monster + " has been defeated great job.\n Now continue your journey!");
-        }
+        isDefeated = true;
     }
     //Joseph
     public String getName() {
         return name;
     }
     //Joseph
-    public String getDescription() {
-        return description;
+    public String getMonsterDescription() {
+        return monsterDescription;
     }
     //Joseph
     public int getHitPoints() {
@@ -99,5 +91,7 @@ public class Monster {
         this.isDefeated = isDefeated;
     }
 
-
+    public void setItem(Item item) {
+        this.item = item;
+    }
 }
