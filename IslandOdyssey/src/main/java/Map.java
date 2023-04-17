@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Map {
-
+    private FileReader fr;
+    private Scanner sc;
     private Scanner read;
     private FileReader Monster;
 
@@ -40,10 +41,8 @@ public class Map {
                 int strength = Integer.parseInt(data[3]);
                 int attackChance = Integer.parseInt(data[4]);
                 String weakness = data[5];
-                //Don't know how to parse item yet
-                Item item = null;
 
-                Monster monster = new Monster(name,monsterDescription,hitPoints,strength,attackChance,weakness,item);
+                Monster monster = new Monster(name,monsterDescription,hitPoints,strength,attackChance,weakness);
                 monsters.add(monster);
 
             }catch(NumberFormatException ex){
@@ -54,6 +53,54 @@ public class Map {
         read.close();
         return monsters;
     }
+
+    //Edwin moved to map class by Joseph
+    public ArrayList<Item> readItems(){
+        ArrayList<Item> items = new ArrayList<>();
+        try {
+            fr = new FileReader("items.txt");
+            sc = new Scanner(fr);
+        } catch (FileNotFoundException fnfe){}
+
+        while (sc.hasNext()){
+            String data = sc.nextLine();
+            String[] tokens = data.split("~");
+
+            try {
+                switch (tokens[0].toLowerCase()) {
+                    case "consumable":
+                        String itemName = tokens[1];
+                        String itemDesc = tokens[2];
+                        int healthPoints = Integer.parseInt(tokens[3]);
+                        int roomNumber = Integer.parseInt(tokens[4]);
+                        items.add(new Consumable(itemName, itemDesc, healthPoints, roomNumber));
+                        break;
+                    case "combat":
+                        itemName = tokens[1];
+                        itemDesc = tokens[2];
+                        roomNumber = Integer.parseInt(tokens[3]);
+                        items.add(new CombatItem(itemName, itemDesc, roomNumber));
+                        break;
+                    case "collectible":
+                        itemName = tokens[1];
+                        itemDesc = tokens[2];
+                        roomNumber = Integer.parseInt(tokens[3]);
+                        items.add(new Collectible(itemName, itemDesc, roomNumber));
+                        break;
+                    case "interactable":
+                        itemName = tokens[1];
+                        itemDesc = tokens[2];
+                        roomNumber = Integer.parseInt(tokens[3]);
+                        items.add(new Interactable(itemName, itemDesc, roomNumber));
+                        break;
+                }
+            } catch (NumberFormatException nfe){}
+        }
+
+        sc.close();
+        return items;
+    }
+
     public ArrayList<Room> fillMap(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
 
     }
