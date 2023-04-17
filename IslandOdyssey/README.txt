@@ -1,3 +1,4 @@
+//Written by Joseph Grados
 MonsterFile.txt
 This text file is the basis of important variables that is parse into the map for the monster class.
 In total there are six variables that the monster class will contain, these are name, monsterDescription, hitPoints, strength, attackChance, and weakness.
