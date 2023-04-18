@@ -1,4 +1,5 @@
 import java.awt.event.ItemEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -9,12 +10,17 @@ public class Map {
     private FileReader fr;
     private Scanner sc;
     private Scanner read;
-    private FileReader Monster;
+    private FileReader monster;
+    private FileReader puzzleScan;
+    private Scanner puzzleReader;
 
     private ArrayList<Room> rooms;
-
+    //Joseph and Bao
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
-        this.rooms = new ArrayList<>(fillMap(roomFile, itemFile, monsterFile, puzzleFile));
+        readRoom(roomFile);
+        readItems(itemFile);
+        readMonster(monsterFile);
+        readPuzzles(puzzleFile);
     }
 
     public ArrayList<Room> getRooms() {
@@ -23,11 +29,12 @@ public class Map {
 
     //Joseph
     //Method to read the monster text file
-    public ArrayList<Monster> readMonster(){
-        ArrayList<Monster> monsters = new ArrayList<>();
+    public void readMonster(String monsterFile){
+
+
         try{
-            Monster = new FileReader("MonsterFile.txt");
-            read = new Scanner(Monster);
+            monster = new FileReader(monsterFile);
+            read = new Scanner(monster);
         }catch (FileNotFoundException ex){
             System.out.println(ex.getMessage());
         }
@@ -41,9 +48,10 @@ public class Map {
                 int strength = Integer.parseInt(data[3]);
                 int attackChance = Integer.parseInt(data[4]);
                 String weakness = data[5];
+                int roomID = Integer.parseInt(data[6]);
 
-                Monster monster = new Monster(name,monsterDescription,hitPoints,strength,attackChance,weakness);
-                monsters.add(monster);
+                Monster monster = new Monster(name,monsterDescription,hitPoints,strength,attackChance,weakness, roomID);
+
 
             }catch(NumberFormatException ex){
                 System.out.println(ex.getMessage());
@@ -51,18 +59,46 @@ public class Map {
 
         }
         read.close();
-        return monsters;
     }
+    //Bao and Joseph
+    public void readRoom(String roomFile){
+        try{
+            fr = new FileReader(roomFile);
+            sc = new Scanner(fr);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while(sc.hasNext()){
+            String data = sc.nextLine();
+            String[] reading = data.split("~");
 
-    //Edwin moved to map class by Joseph
-    public ArrayList<Item> readItems(){
+            try{
+                int roomNumber = Integer.parseInt(reading[0]);
+                String name = reading[1];
+                String description = reading[2];
+                int northExit = Integer.parseInt(reading[3]);
+                int eastExit = Integer.parseInt(reading[4]);
+                int southExit = Integer.parseInt(reading[5]);
+                int westExit = Integer.parseInt(reading[6]);
+                Room roomies = new Room(roomNumber,name, description,northExit,eastExit,southExit,westExit);
+                rooms.add(roomies);
+            }catch (NumberFormatException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        sc.close();
+    }
+    //Edwin
+    // moved to map class by Joseph
+    public void readItems(String itemFile) {
         ArrayList<Item> items = new ArrayList<>();
         try {
-            fr = new FileReader("items.txt");
+            fr = new FileReader(itemFile);
             sc = new Scanner(fr);
-        } catch (FileNotFoundException fnfe){}
+        } catch (FileNotFoundException fnfe) {
+        }
 
-        while (sc.hasNext()){
+        while (sc.hasNext()) {
             String data = sc.nextLine();
             String[] tokens = data.split("~");
 
@@ -94,14 +130,49 @@ public class Map {
                         items.add(new Interactable(itemName, itemDesc, roomNumber));
                         break;
                 }
-            } catch (NumberFormatException nfe){}
+            } catch (NumberFormatException nfe) {
+            }
         }
 
         sc.close();
-        return items;
+    }
+    //Joseph
+    public void readPuzzles(String puzzleFile){
+        ArrayList<Puzzle> puzzles = new ArrayList<>();
+        try{
+            puzzleScan = new FileReader(puzzleFile);
+            puzzleReader = new Scanner(puzzleScan);
+        }catch(FileNotFoundException ex){
+            ex.printStackTrace();
+        }
+        while(puzzleReader.hasNext()){
+            String puzzleData = puzzleReader.nextLine();
+            String[] data = puzzleData.split("~");
+            try{
+                switch (data[0].toLowerCase()){
+                    case "0":
+                        String name = data[1];
+                        String description = data[2];
+                        String solution = data[3];
+                        int maxAttempts = Integer.parseInt(data[4]);
+                        int roomID = Integer.parseInt(data[5]);
+                        puzzles.add(new Switches(name,description,solution,maxAttempts));
+                        break;
+                    case "1":
+                        name = data[1];
+                        description = data[2];
+                        solution = data[3];
+                        maxAttempts = Integer.parseInt(data[4]);
+                        roomID = Integer.parseInt(data[5]);
+                        puzzles.add(new Keypad(name, description, solution, maxAttempts));
+                        break;
+
+                }
+            }catch (NumberFormatException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        puzzleReader.close();
     }
 
-    public ArrayList<Room> fillMap(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
-
-    }
 }

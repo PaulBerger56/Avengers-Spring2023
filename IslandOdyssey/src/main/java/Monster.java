@@ -11,6 +11,7 @@ public class Monster {
     int strength;
     int attackChance;
     String weakness;
+    int roomID;
     Item item;
     boolean isDefeated = false;
 
@@ -18,13 +19,14 @@ public class Monster {
 
     }
     //From Joseph
-    public Monster(String name, String monsterDescription, int hitPoints, int strength, int attackChance, String weakness){
+    public Monster(String name, String monsterDescription, int hitPoints, int strength, int attackChance, String weakness, int roomID){
         this.name = name;
         this.monsterDescription = monsterDescription;
         this.hitPoints = hitPoints;
         this.strength = strength;
         this.attackChance = attackChance;
         this.weakness = weakness;
+        this.roomID = roomID;
     }
 
     //Joseph
@@ -67,25 +69,32 @@ public class Monster {
             if(action.equalsIgnoreCase("Attack") || action.equalsIgnoreCase("A")){
                 battleMonster.takeHit(player.getAttackPower());
                 player.takeHit(battleMonster.getStrength());
-
-                if(action.equalsIgnoreCase("Use")){
-                    player.use(item);
-                    if (item.equals(weakness)){
-                        String endItem = weakness;
-                        battleMonster.isWeakTo(endItem);
-                        break;
-                    }
-                    else if(item.equals("Maracas")){
-                        player.getPreviousRoom();
-                        break;
-                    }
+                if(battleMonster.getStrength() == 0){
+                    battleMonster.whenDefeated();
+                    break;
                 }
-                battleMonster.whenDefeated();
-                break;
+                if(player.getCurrentHp() == 0){
+                    player.setDefeated(true);
+                    player.getPreviousRoom();
+                    break;
+                }
+
 
             }
+            if(action.equalsIgnoreCase("Use")){
+                player.use(item);
+                if (item.equals(weakness)){
+                    String endItem = weakness;
+                    battleMonster.isWeakTo(endItem);
+                    break;
+                }
+                else if(item.equals("Maracas")){
+                    player.getPreviousRoom();
+                    break;
+                }
+            }
         }
-        player.getPreviousRoom();
+
 
     }
     //Joseph
@@ -123,6 +132,11 @@ public class Monster {
         return weakness;
     }
     //Joseph
+    public int getRoomID() {
+        return roomID;
+    }
+
+    //Joseph
     public void setDefeated(boolean isDefeated){
         this.isDefeated = isDefeated;
     }
@@ -130,4 +144,5 @@ public class Monster {
     public void setItem(Item item) {
         this.item = item;
     }
+
 }

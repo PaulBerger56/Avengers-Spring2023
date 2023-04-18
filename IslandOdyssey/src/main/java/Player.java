@@ -172,4 +172,9 @@ public class Player implements Serializable {
     public Map getMap() {
         return map;
     }
+    //Joseph
+
+    public void setDefeated(boolean defeated) {
+        this.defeated = defeated;
+    }
 }

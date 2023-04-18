@@ -101,7 +101,6 @@ public class Room {
         return westExit;
     }
 
-
     //Paul
     public Puzzle getPuzzle() {
         return puzzle;
