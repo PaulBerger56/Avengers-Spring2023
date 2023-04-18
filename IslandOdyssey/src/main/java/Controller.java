@@ -69,8 +69,8 @@ public class Controller {
         while(true) {
 
             // If the current room contains a monster, combat is initiated.
-            if(player.getMap().getRooms().get(player.getCurrentRoom()-1).doesRoomHaveMonster()) {
-                combat(player.getMap().getRooms().get(player.getCurrentRoom()-1).getMonster());
+            if(player.getMap().getRooms().get(player.getCurrentRoom()).doesRoomHaveMonster()) {
+                combat(player.getMap().getRooms().get(player.getCurrentRoom()).getMonster());
             }
 
             printRoomDescription();
@@ -84,42 +84,42 @@ public class Controller {
 
                 switch(splitCommand[0]) {
                     case "w" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getWestExit() == 0) {
+                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getWestExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getWestExit());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getWestExit());
                         }
                         break;
 
                     case "n" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getNorthExit() == 0) {
+                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getNorthExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getNorthExit());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getNorthExit());
                         }
                         break;
 
                     case "e" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getEastExit() == 0) {
+                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getEastExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getEastExit());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getEastExit());
                         }
                         break;
 
                     case "s" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getSouthExit() == 0) {
+                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getSouthExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getSouthExit());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getSouthExit());
                         }
                         break;
 

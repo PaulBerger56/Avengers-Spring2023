@@ -79,7 +79,7 @@ public class Player implements Serializable {
         for(int i = 0; i < this.inventory.size(); i++) {
             if(this.inventory.get(i).getName().equals(itemName)) {
                 Item tempItem = this.inventory.get(i);
-                this.map.getRooms().get(currentRoom - 1).addItem(tempItem);
+                this.map.getRooms().get(currentRoom).addItem(tempItem);
                 this.inventory.remove(i);
                 return tempItem.getName();
             }
@@ -115,12 +115,12 @@ public class Player implements Serializable {
     //Paul
     // returns the current room's arraylist
     public ArrayList<Item> explore() {
-        return this.map.getRooms().get(currentRoom - 1).getItems();
+        return this.map.getRooms().get(currentRoom).getItems();
     }
 
     // Paul
     public Room getCurrentRoomObject() {
-        return this.map.getRooms().get(this.currentRoom -1);
+        return this.map.getRooms().get(this.currentRoom);
     }
 
     // Paul
