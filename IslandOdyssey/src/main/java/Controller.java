@@ -2,26 +2,26 @@ import java.io.*;
 import java.util.Scanner;
 
 // Paul
-public class PlayerController {
+public class Controller {
 
     Scanner scanner;
     Player player;
-    PlayerView playerView;
+    View view;
 
     // Paul
     // constructor for a new game
-    public PlayerController(Player player, PlayerView view) {
+    public Controller(Player player, View view) {
         this.scanner = new Scanner(System.in);
         this.player = player;
-        this.playerView = view;
+        this.view = view;
     }
 
     // Paul
     // constructor for loaded game
-    public PlayerController(String playerFileName, PlayerView view) {
+    public Controller(String playerFileName, View view) {
         this.scanner = new Scanner(System.in);
         this.player = readInPlayer(playerFileName);
-        this.playerView = view;
+        this.view = view;
     }
 
     // Paul
@@ -74,31 +74,31 @@ public class PlayerController {
     // Paul
     // sends the current room's inventory to the view to print
     public void explore() {
-        playerView.printExplore(player.explore());
+        view.printExplore(player.explore());
     }
 
     // Paul
     // Drops the specific item and has the view print the message
     public void dropItem(String itemName) {
-        playerView.dropItem(this.player.drop(itemName));
+        view.dropItem(this.player.drop(itemName));
     }
 
     // Paul
     // Sends the player inventory to the view to print
     public void printPlayerInventory() {
-        playerView.printPlayerInventory(this.player);
+        view.printPlayerInventory(this.player);
     }
 
     // Paul
     // gets the player's current Room object and sends it to PlayerView to print the inventory
     public void printRoomInventory() {
-        playerView.printRoomInventory(this.player.getCurrentRoomObject());
+        view.printRoomInventory(this.player.getCurrentRoomObject());
     }
 
     // Paul
     // prints the Item's description if it is in the player's inventory
     public void printItemDescription(String itemName) {
-        playerView.printItemDescription(this.player, itemName);
+        view.printItemDescription(this.player, itemName);
     }
 
     // Paul
@@ -106,15 +106,15 @@ public class PlayerController {
     public void printRoomDescription() {
         // prints the familiar message if room has been visited
         if(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1).isVisited()) {
-            playerView.printFamiliar();
-            playerView.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
+            view.printFamiliar();
+            view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
         }
-        playerView.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
+        view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
     }
 
     //Paul
     public void printPickup(Item item) {
-        playerView.printPickup(this.player.pickup(item));
+        view.printPickup(this.player.pickup(item));
     }
 
 

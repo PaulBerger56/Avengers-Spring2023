@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 // Paul
-public class PlayerView {
+public class View {
 
     // Paul
     public void printPlayerInventory(Player player) {
@@ -59,6 +59,11 @@ public class PlayerView {
     // Paul
     public void printPickup(String itemName) {
         System.out.println("The player picked up a(n) " + itemName);
+    }
+
+    //Paul
+    public void printMenu() {
+        System.out.println("Which direction would you like to go? (N,E,S,W");
     }
 
 }
