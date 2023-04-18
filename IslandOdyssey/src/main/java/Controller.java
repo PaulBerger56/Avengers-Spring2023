@@ -67,7 +67,9 @@ public class Controller {
     // Holds the actual game loop
     public void play() {
         while(true) {
-
+            if(player.getMap().getRooms().get(player.getCurrentRoom()-1).isVisited()) {
+                view.printFamiliar();
+            }
         }
     }
 
