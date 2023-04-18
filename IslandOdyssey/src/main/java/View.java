@@ -29,6 +29,7 @@ public class View {
     }
     // Paul
     public void printRoomDescription(Room room) {
+        System.out.println("You are currently in " + room.getRoomNumber() + ", The " + room.getName());
         System.out.println(room.getDescription());
     }
 
@@ -66,4 +67,13 @@ public class View {
         System.out.println("Which direction would you like to go? (N,E,S,W");
     }
 
+    //Paul
+    public void printInvalidInput() {
+        System.out.println("Sorry, that was an invalid input");
+    }
+
+    //Paul
+    public void printNoRoom() {
+        System.out.println("Sorry, there is no room in that direction");
+    }
 }

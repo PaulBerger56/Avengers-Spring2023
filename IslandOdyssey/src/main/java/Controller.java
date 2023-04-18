@@ -67,10 +67,31 @@ public class Controller {
     // Holds the actual game loop
     public void play() {
         while(true) {
-            if(player.getMap().getRooms().get(player.getCurrentRoom()-1).isVisited()) {
-                view.printFamiliar();
+
+            // If the current room contains a monster, combat is initiated.
+            if(player.getMap().getRooms().get(player.getCurrentRoom()-1).doesRoomHaveMonster()) {
+                combat(player.getMap().getRooms().get(player.getCurrentRoom()-1).getMonster());
+            }
+
+            printRoomDescription();
+            printMenu();
+
+            String command = scanner.nextLine();
+            String[] splitCommand = command.split(" ");
+
+            switch(splitCommand[0]) {
+                case "w" :
+                    if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getWestExit() == 0) {
+                        view.printNoRoom();
+                    }
+
             }
         }
+    }
+
+    //Paul
+    public void combat(Monster monster) {
+
     }
 
     // Paul
@@ -117,6 +138,11 @@ public class Controller {
     //Paul
     public void printPickup(Item item) {
         view.printPickup(this.player.pickup(item));
+    }
+
+    //Paul
+    public void printMenu() {
+        view.printMenu();
     }
 
 
