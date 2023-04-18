@@ -10,7 +10,6 @@ public class Room {
     private final int eastExit;
     private final int southExit;
     private final int westExit;
-    private boolean hasDevice;
     private Puzzle puzzle;
     private Monster monster;
     private final ArrayList<Item> items;
@@ -102,10 +101,6 @@ public class Room {
         return westExit;
     }
 
-    //Paul
-    public boolean isHasDevice() {
-        return hasDevice;
-    }
 
     //Paul
     public Puzzle getPuzzle() {

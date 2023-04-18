@@ -65,6 +65,7 @@ public class View {
     //Paul
     public void printMenu() {
         System.out.println("Which direction would you like to go? (N,E,S,W");
+        System.out.println("type help for extra commands");
     }
 
     //Paul
