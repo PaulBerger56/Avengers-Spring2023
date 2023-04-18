@@ -74,19 +74,70 @@ public class Controller {
             }
 
             printRoomDescription();
-            printMenu();
 
-            String command = scanner.nextLine();
-            String[] splitCommand = command.split(" ");
+            while(true) {
+                printMenu();
 
-            switch(splitCommand[0]) {
-                case "w" :
-                    if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getWestExit() == 0) {
-                        view.printNoRoom();
-                    }
+                // takes the user's input and splits it to allow either case to be entered.
+                String command = scanner.nextLine().toLowerCase();
+                String[] splitCommand = command.split(" ");
 
+                switch(splitCommand[0]) {
+                    case "w" :
+                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getWestExit() == 0) {
+                            view.printNoRoom();
+                        } else {
+                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.setPreviousRoom(player.getCurrentRoom());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getWestExit());
+                        }
+                        break;
+
+                    case "n" :
+                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getNorthExit() == 0) {
+                            view.printNoRoom();
+                        } else {
+                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.setPreviousRoom(player.getCurrentRoom());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getNorthExit());
+                        }
+                        break;
+
+                    case "e" :
+                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getEastExit() == 0) {
+                            view.printNoRoom();
+                        } else {
+                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.setPreviousRoom(player.getCurrentRoom());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getEastExit());
+                        }
+                        break;
+
+                    case "s" :
+                        if(player.getMap().getRooms().get(player.getCurrentRoom() -1).getSouthExit() == 0) {
+                            view.printNoRoom();
+                        } else {
+                            player.getMap().getRooms().get(player.getCurrentRoom()-1).setVisited();
+                            player.setPreviousRoom(player.getCurrentRoom());
+                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom() -1).getSouthExit());
+                        }
+                        break;
+
+                    default:
+                        view.printInvalidInput();
+                        break;
+                }
+                break;
             }
+
+
+
         }
+    }
+
+    //Paul
+    public void playPuzzle(Puzzle puzzle) {
+
     }
 
     //Paul
