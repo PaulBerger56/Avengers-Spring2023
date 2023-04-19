@@ -10,8 +10,8 @@ public class Interactable extends Item{
 
     private String type;
 
-    private String pin  = "6057";
-    private int attempts = 5;
+    private String pin;
+    private int attempts;
     private boolean hasUsedMaxAttempts = false;
 
     public Interactable(String name, String description, int roomNumber){
@@ -20,6 +20,8 @@ public class Interactable extends Item{
         this.quantity = 1;
         this.roomNumber = roomNumber;
         this.type = "Interactable";
+        this.pin = "6057";
+        this.attempts = 5;
     }
 
 
@@ -69,7 +71,7 @@ public class Interactable extends Item{
                         "\n" +
                         "‘Alright, thank you so much. I don’t know what I would’ve done without you.’\n" +
                         "\n" +
-                        "What feels like a couple of hours has passed. You’ve made yourself as comfortable as possible on the ship while keeping tabs on the outside to check if any helicopters have flown by. You’ve also carved a large “SOS” in the sand just outside of the ship to hopefully indicate to anyone flying by of your location.\n" +
+                        "What feels like a couple of hours has passed. You’ve made yourself as comfortable as possible on the ship while keeping tabs on the outside to check if any helicopters have flown by. You’ve also carved a large SOS in the sand just outside of the ship to hopefully indicate to anyone flying by of your location.\n" +
                         "\n" +
                         "A slight buzzing of helicopter rotors fills your ear. You rush out of the sickbay and out of the ship and scream at the top of your lungs. The helicopter pauses for a second in the air, then heads right for your location.\n" +
                         "\n" +

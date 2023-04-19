@@ -73,7 +73,7 @@ public class Room {
 
     //Paul
     public void addItem(Item item) {
-        this.items.add(item);
+        this.inventory.add(item);
     }
 
     //Paul
@@ -143,6 +143,6 @@ public class Room {
 
     //Paul
     public ArrayList<Item> getItems() {
-        return items;
+        return this.inventory;
     }
 }

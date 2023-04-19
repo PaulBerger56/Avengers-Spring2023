@@ -139,4 +139,8 @@ public class View {
     public void printRoomNoItem() {
         System.out.println("The room does not contain that item");
     }
+
+    public void useItem(String itemName) {
+        System.out.println("The player used the " + itemName);
+    }
 }

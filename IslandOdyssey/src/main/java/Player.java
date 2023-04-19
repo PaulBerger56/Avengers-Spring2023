@@ -64,14 +64,6 @@ public class Player implements Serializable {
         return item.getName();
     }
 
-    //Paul
-    // not sure if this will be needed, or just handled in the controller
-    public void use(Item item) {
-        if(doesPlayerHaveItem(item.getName()) != null) {
-            if(item)
-            removeItem(item.getName());
-        }
-    }
 
     //Paul
     // removes the specific item from the player's inventory and adds it to the current room's inventory
@@ -100,7 +92,7 @@ public class Player implements Serializable {
 
     //Paul
     //Removes the item from the player's inventory, but doesn't drop it into a room.
-    public void removeItem(String itemName) {
+    public String removeItem(String itemName) {
         for(int i = 0; i < this.inventory.size(); i++) {
             if(this.inventory.get(i).getName().equals(itemName)){
                 if((this.inventory.get(i).getQuantity() - 1) <= 0) {
@@ -110,6 +102,7 @@ public class Player implements Serializable {
                 }
             }
         }
+        return itemName;
     }
 
     //Paul

@@ -69,8 +69,8 @@ public class Controller {
         while(true) {
 
             // If the current room contains a monster, combat is initiated.
-            if(player.getMap().getRooms().get(player.getCurrentRoom()).doesRoomHaveMonster()) {
-                combat(player.getMap().getRooms().get(player.getCurrentRoom()));
+            if(player.getCurrentRoomObject().doesRoomHaveMonster()) {
+                combat(player.getCurrentRoomObject());
             }
 
             printRoomDescription();
@@ -84,42 +84,42 @@ public class Controller {
 
                 switch(splitCommand[0]) {
                     case "w" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getWestExit() == 0) {
+                        if(player.getCurrentRoomObject().getWestExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
+                            player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getWestExit());
+                            player.setCurrentRoom(player.getCurrentRoomObject().getWestExit());
                         }
                         break;
 
                     case "n" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getNorthExit() == 0) {
+                        if(player.getCurrentRoomObject().getNorthExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
+                            player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getNorthExit());
+                            player.setCurrentRoom(player.getCurrentRoomObject().getNorthExit());
                         }
                         break;
 
                     case "e" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getEastExit() == 0) {
+                        if(player.getCurrentRoomObject().getEastExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
+                            player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getEastExit());
+                            player.setCurrentRoom(player.getCurrentRoomObject().getEastExit());
                         }
                         break;
 
                     case "s" :
-                        if(player.getMap().getRooms().get(player.getCurrentRoom()).getSouthExit() == 0) {
+                        if(player.getCurrentRoomObject().getSouthExit() == 0) {
                             view.printNoRoom();
                         } else {
-                            player.getMap().getRooms().get(player.getCurrentRoom()).setVisited();
+                            player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
-                            player.setCurrentRoom(player.getMap().getRooms().get(player.getCurrentRoom()).getSouthExit());
+                            player.setCurrentRoom(player.getCurrentRoomObject().getSouthExit());
                         }
                         break;
 
@@ -133,7 +133,9 @@ public class Controller {
                             view.printPlayerDoesntHaveItem();
                             break;
                         } else if(tempItem.getType().equals("Consumable")){
-                            player.use(tempItem);
+                            Consumable tempConsumable = (Consumable) tempItem;
+                            player.addHp(tempConsumable.getHealthPoints());
+                            view.useItem(player.removeItem(tempConsumable.getName()));
                             break;
                         } else if(tempItem.getType().equals("Collectible")) {
                             view.printCollectible(tempItem);
@@ -160,6 +162,9 @@ public class Controller {
                             printPickup(player.getMap().getRooms().get(player.getCurrentRoom()).removeItem(tempRoomItemName));
                             break;
                         }
+
+                    case "explore" :
+                        printRoomInventory();
 
 
                     default:

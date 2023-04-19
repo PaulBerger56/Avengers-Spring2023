@@ -19,13 +19,6 @@ public class Consumable extends Item{
         return healthPoints;
     }
 
-    //Using a consumable heals the player by the amount of health points, up to the player's max HP
-    //When used, the item quantity is decreased by 1
-    public void use(Consumable consumable, Player player){
-        player.addHp(consumable.getHealthPoints());
-        consumable.decrementQuantity();
-    }
-
     @Override
     public String getName() {
         return name;
@@ -44,4 +37,5 @@ public class Consumable extends Item{
     public String getType() {
         return type;
     }
+
 }
