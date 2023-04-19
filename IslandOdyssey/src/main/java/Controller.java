@@ -153,7 +153,7 @@ public class Controller {
                         for(int i = 1; i < splitCommand.length;i++){
                             tempRoomItemName += (splitCommand[i] + " ");
                         }
-                        Item tempRoomItem = player.getMap().getRooms().get(player.getCurrentRoom()).doesRoomHaveItem(tempRoomItemName);
+                        Item tempRoomItem = player.getCurrentRoomObject().doesRoomHaveItem(tempRoomItemName);
                         if(tempRoomItem == null) {
                             view.printRoomNoItem();
                             break;
@@ -174,6 +174,10 @@ public class Controller {
                         } else {
                             view.printNoStrangeDevice();
                         }
+
+                    case "inventory":
+                        printPlayerInventory();
+                        break;
 
                     default:
                         view.printInvalidInput();
@@ -317,7 +321,11 @@ public class Controller {
     // Paul
     // Sends the player inventory to the view to print
     public void printPlayerInventory() {
-        view.printPlayerInventory(this.player);
+        if (this.player.getInventory().isEmpty()) {
+            view.printInventoryIsEmpty();
+        } else {
+            view.printPlayerInventory(this.player);
+        }
     }
 
     // Paul

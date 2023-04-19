@@ -157,4 +157,8 @@ public class View {
     public void printNoStrangeDevice() {
         System.out.println("Sorry, there is no strange device in this room");
     }
+
+    public void printInventoryIsEmpty() {
+        System.out.println("The player's inventory is empty");
+    }
 }
