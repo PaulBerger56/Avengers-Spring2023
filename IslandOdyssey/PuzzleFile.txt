@@ -1,2 +1,4 @@
-0~Switches~You will be presented with five switches that may be in either an up or down state. All switches will start in the down state. You will be given a number to input using the switches. To do so, convert the number from decimal into a five-bit binary number. Flip the five switches in such a way that the switch in the same position as each digit in the binary number is up if the digit is a 1 or down if the digit is a 0. Submitting the correct configuration of switches will solve the puzzle. If an incorrect configuration of switches is submitted, or if 30 seconds pass since the beginning of the puzzle, you will fail the puzzle.~1001~5~2
-1~Keypad~You will be presented with a string of digits. When these digits are entered into a phone keypad, a word will be formed. Enter this word into the panel to complete the puzzle. If an incorrect word is entered, you lose your turn until all of them of deleted.~58867~3~3
+0~8~01000~5~2~roomNumber
+1~7771666155512177~solar~3~3~roomNumber
+0~13~01101~5~roomNumber
+1~55518816612177~lunar~5~roomNumber

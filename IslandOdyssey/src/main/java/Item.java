@@ -30,9 +30,5 @@ public abstract class Item {
         return quantity;
     }
 
-
-
-    //Joseph
-    public abstract void use();
 }
 

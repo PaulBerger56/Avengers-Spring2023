@@ -84,8 +84,47 @@ public class View {
         System.out.println("Sorry, there is no room in that direction");
     }
     
+    //Puzzle Prints
     //Bao
     public void printSwitchPuzzleMenu() {
     	System.out.println("Would you like to (F)lip or (S)ubmit?");
     }
+    
+    //Bao
+    public void printSwitchState(int[] switchState){
+    	String temp1 = "", temp2 = "", temp3 = "", temp4 = "", temp5 = "", temp6 = "";
+    	for(int s: switchState) {
+    		if(s == 0){
+    			temp1 += "1    ";
+    			temp2 += "|    ";
+    			temp3 += "|    ";
+    			temp4 += "|\\   ";
+    			temp5 += "| \\  ";
+    			temp6 += "0    ";
+    		}
+    		else {
+        		temp1 += "1    ";
+        		temp2 += "| /  ";
+        		temp3 += "|/   ";
+        		temp4 += "|    ";
+        		temp5 += "|    ";
+        		temp6 += "0    ";
+    		}
+    	}
+		System.out.println(temp1);
+		System.out.println(temp2);
+		System.out.println(temp3);
+		System.out.println(temp4);
+		System.out.println(temp5);
+		System.out.println(temp6);
+    }
+    
+    //Bao
+    public void printCombatMenu(){
+    	System.out.println("Would you like to (A)ttack, (U)se an item or (E)xamine the monster?");
+    }
+    
+    
+    
+    
 }

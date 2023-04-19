@@ -1,9 +1,9 @@
-Consumable~Coconut~It is a coconut. You can extract the refreshing coconut milk from it, which will restore 100 HP.~100~1
+Consumable~Coconut~It is a coconut. You can extract the refreshing coconut milk from it, which will restore 100 HP.~1~100
 Combat~Maracas~This item may be used in combat to pacify a monster. Once a monster has been pacified, you may enter the room that the monster is in without having to defeat it. The monster becomes unpacified when you leave the room, so be cautious when navigating from a room with a pacified monster!~11
-Consumable~Alligator Meat~You become very infuriated with the alligator that you killed that you cook and eat its remains. Delicious. Eating this restores 100 HP.~7
+Consumable~Alligator Meat~You become very infuriated with the alligator that you killed that you cook and eat its remains. Delicious. Eating this restores 100 HP.~7~100
 Combat~Flame Thrower~A Molotov cocktail with a description tag on it. The description reads: ‘Very useful weapon against large numbers of targets. Do not ask how we know. Not approved by the FDA.~5
 Combat~Machete~Very sharp, very effective. You notice the handle has ancient runes that you don’t recognize. Perhaps this machete came from an ancient civilization and was used to protect the citizens against mystical creatures?~8
-Consumable~First Aid Kit~The first aid kit will fully restore HP.~9
+Consumable~First Aid Kit~The first aid kit will fully restore HP.~9~200
 Combat~Beach Ball~Use this to attack any monster. When it is thrown, a pound of sand will come out making the monster disappear.~10
 Combat~Giant Fish Net~This will be used to catch the giant sea lions and keep them away.~0
 Collectible~Phone Number Digit 1~A piece of scrap paper with the Number 6 in large print. In fine print towards the bottom, there is a 1. This might be useful for something.~11
