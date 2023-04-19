@@ -143,4 +143,12 @@ public class View {
     public void useItem(String itemName) {
         System.out.println("The player used the " + itemName);
     }
+
+    public void printHasStrangeDevice() {
+        System.out.println("The room contains a strange device. Perhaps you should examine it");
+    }
+
+    public void printNoStrangeDevice() {
+        System.out.println("Sorry, there is no strange device in this room");
+    }
 }

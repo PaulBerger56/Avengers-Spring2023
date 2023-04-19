@@ -108,7 +108,7 @@ public class Player implements Serializable {
     //Paul
     // returns the current room's arraylist
     public ArrayList<Item> explore() {
-        return this.map.getRooms().get(currentRoom).getItems();
+        return getCurrentRoomObject().getItems();
     }
 
     // Paul

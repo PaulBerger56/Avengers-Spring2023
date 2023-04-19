@@ -164,14 +164,23 @@ public class Controller {
                         }
 
                     case "explore" :
-                        printRoomInventory();
+                        explore();
+                        break;
 
+                    case "examine" :
+                        if(player.getCurrentRoomObject().doesRoomHavePuzzle()) {
+                            playPuzzle(player.getCurrentRoomObject());
+                            break;
+                        } else {
+                            view.printNoStrangeDevice();
+                        }
 
                     default:
                         view.printInvalidInput();
                         break;
 
                 }
+                break;
             }
 
 
@@ -294,6 +303,9 @@ public class Controller {
     // sends the current room's inventory to the view to print
     public void explore() {
         view.printExplore(player.explore());
+        if(player.getCurrentRoomObject().doesRoomHavePuzzle()) {
+            view.printHasStrangeDevice();
+        }
     }
 
     // Paul
