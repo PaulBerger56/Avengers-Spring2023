@@ -128,27 +128,32 @@ public class View {
         System.out.println("Sorry, the player does not have that item");
     }
 
-
+    //Paul
     public void printCantUseHere() {
         System.out.println("Sorry, you can't use that Item here");
     }
 
+    //Paul
     public void printCollectible(Item tempItem) {
         System.out.println(tempItem.getDescription());
     }
 
+    //Paul
     public void printRoomNoItem() {
         System.out.println("The room does not contain that item");
     }
 
+    //Paul
     public void useItem(String itemName) {
         System.out.println("The player used the " + itemName);
     }
 
+    //Paul
     public void printHasStrangeDevice() {
         System.out.println("The room contains a strange device. Perhaps you should examine it");
     }
 
+    //Paul
     public void printNoStrangeDevice() {
         System.out.println("Sorry, there is no strange device in this room");
     }
