@@ -1,9 +1,9 @@
 
 public class Keypad extends Puzzle{
 
-	Keypad(String type, String name, String description, String solution, int maxAttempts, int roomID){
-		super(name, description, solution, maxAttempts, roomID);
-		this.type = "Keypad";
+	Keypad(String description, String solution, int maxAttempts){
+		super(description, solution, maxAttempts);
+		type = "Keypad";
 	}
 	
 	public boolean check(String input){

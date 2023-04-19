@@ -5,14 +5,12 @@ public class Consumable extends Item{
     private String description;
     private int quantity;
     private int healthPoints;
-    private int roomNumber;
 
-    public Consumable(String name, String description, int healthPoints, int roomNumber){
+    public Consumable(String name, String description, int healthPoints){
         this.name = name;
         this.description = description;
         this.quantity = 1;
         this.healthPoints = healthPoints;
-        this.roomNumber = roomNumber;
     }
 
     public int getHealthPoints() {

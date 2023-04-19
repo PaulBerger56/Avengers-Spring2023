@@ -70,7 +70,7 @@ public class Controller {
 
             // If the current room contains a monster, combat is initiated.
             if(player.getMap().getRooms().get(player.getCurrentRoom()).doesRoomHaveMonster()) {
-                combat(player.getMap().getRooms().get(player.getCurrentRoom()).getMonster());
+                combat(player.getMap().getRooms().get(player.getCurrentRoom()));
             }
 
             printRoomDescription();
@@ -127,7 +127,6 @@ public class Controller {
                         view.printInvalidInput();
                         break;
                 }
-                break;
             }
 
 
@@ -136,7 +135,6 @@ public class Controller {
     }
 
     //Bao
-    // Sysout not final, should be replaced with view commands
     public void playPuzzle(Room room) {
     	switch(room.getPuzzle().getType()) {
     	case "Keypad":
@@ -146,7 +144,7 @@ public class Controller {
     		boolean hasSolved = false;
     		while(!hasSolved) {
 	    		if(commands.length == 1){
-	    			if(room.getPuzzle().check(commands[1])) {
+	    			if(((Keypad)room.getPuzzle()).check(commands[1])) {
 	    				hasSolved = true;
 	    				solvedPuzzle(room);
 	    			}
@@ -166,7 +164,7 @@ public class Controller {
     		}
     		break;
     	case "Switches":
-    		view.print("You are presented with a row of 5 switches.");
+    		view.print("You are presented with a row of 5 switches with a 1 inscribed on top and a 0 inscribed on the bottom of each switch.");
     		view.print("The switches are all switched down.");
     		view.print("Please input the decimal number" + room.getPuzzle().getDescription() + " in binary.");
     		view.printSwitchPuzzleMenu();
@@ -176,7 +174,7 @@ public class Controller {
     			switch(commands1[0]) {
     			case "s":
     			case "submit":
-    				if(room.getPuzzle().check(null)){
+    				if(((Switches)room.getPuzzle()).check()){
     					hasSolved1 = true;
     					solvedPuzzle(room);
     				}
@@ -185,17 +183,22 @@ public class Controller {
     			case "f":
     			case "flip":
     				if(commands1.length != 2) {
-    					view.print("Please enter flip and the number you would like to flip.");
+    					view.print("Please enter flip followed by switch number you would like to flip.");
     				}
     				else if(commands1[1] != "1" && commands1[1] != "2" && commands1[1] != "3" && commands1[1] != "4" && commands1[1] != "5") {
     					view.print("Please enter flip and a valid number of the switch you would like to flip.");
     				}
     				else {
     					((Switches) room.getPuzzle()).flip(commands1[1]);
-    				}
-    					
+    					view.print("You have flipped switch #" + commands1[1]);
+    					view.printSwitchState(((Switches)room.getPuzzle()).printSwitches());
+    				}	
     				break;
-    			
+    			case "h":
+    			case "help":
+    			default:
+    				view.printSwitchPuzzleMenu();
+    				break;
     		}
     		break;
     		}
@@ -203,9 +206,46 @@ public class Controller {
 
     }
 
-    //Bao and Joseph
-    public void combat(Monster monster) {
-
+    //Bao and Joseph (*incomplete*)
+    public void combat(Room room) {
+    	view.print("This is " + room.getMonster().getName());
+    	view.printCombatMenu();
+    	while(room.getMonster() != null) {
+	    	String[] commands = scanner.nextLine().toLowerCase().split(" ");
+	    	switch(commands[0]){
+	    	case "a":
+	    	case "attack":
+	    		room.getMonster().takeHit(player.getAttackPower());
+	    		if(room.getMonster().isDefeated){
+	    			view.print("Victory!");
+	    			//*do things that happen when monster is defeated*
+	    			break;
+	    		}
+	    		break;
+	    	case "e":
+	    	case "examine":
+	    		view.print(room.getMonster().getMonsterDescription());
+	    		break;
+	    	case "u":
+	    	case "use":
+	    		String tempItem = "";
+	    		for(int i = 1; i < commands.length;i++){
+	    			tempItem += (commands[i] + " ");
+	    		}
+	    		if(player.doesPlayerHaveItem(tempItem) != null) {
+	    			//*use item*
+	    		}
+	    		else {
+	    			view.print("You do not have " + tempItem);
+	    		}
+	    		break;
+	    	}
+    		player.takeHit(room.getMonster().getStrength());
+    		if(player.isDefeated()){
+    			//*do things when player is defeated*
+    			//*delete save file and restart from beginning?*
+    		}
+    	}
     }
 
     // Paul
@@ -265,7 +305,5 @@ public class Controller {
 		player.getInventory().add(room.getPuzzle().getItem());
 		room.removePuzzle();
     }
-
-
 
 }
