@@ -8,6 +8,8 @@ public class Interactable extends Item{
     private int quantity;
     private int roomNumber;
 
+    private String type;
+
     private String pin  = "6057";
     private int attempts = 5;
     private boolean hasUsedMaxAttempts = false;
@@ -17,6 +19,7 @@ public class Interactable extends Item{
         this.description = description;
         this.quantity = 1;
         this.roomNumber = roomNumber;
+        this.type = "Interactable";
     }
 
 

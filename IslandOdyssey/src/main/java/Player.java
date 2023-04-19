@@ -68,7 +68,7 @@ public class Player implements Serializable {
     // not sure if this will be needed, or just handled in the controller
     public void use(Item item) {
         if(doesPlayerHaveItem(item.getName()) != null) {
-            item.use();
+            if(item)
             removeItem(item.getName());
         }
     }

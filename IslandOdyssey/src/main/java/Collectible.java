@@ -5,12 +5,14 @@ public class Collectible extends Item{
     private String description;
     private int quantity;
     private int roomNumber;
+    private String type;
 
     public Collectible(String name, String description, int roomNumber){
         this.name = name;
         this.description = description;
         this.quantity = 1;
         this.roomNumber = roomNumber;
+        this.type = "Collectible";
     }
 
 

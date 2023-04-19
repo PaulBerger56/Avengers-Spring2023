@@ -9,6 +9,8 @@ public abstract class Item {
     private String description;
     private int quantity;
 
+    private String type;
+
 
     public void incrementQuantity() {
         quantity++;
@@ -25,6 +27,7 @@ public abstract class Item {
     public String getDescription() {
         return this.description;
     }
+
 
     public int getQuantity() {
         return quantity;
