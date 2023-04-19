@@ -135,12 +135,75 @@ public class Controller {
         }
     }
 
-    //Paul
-    public void playPuzzle(Puzzle puzzle) {
+    //Bao
+    // Sysout not final, should be replaced with view commands
+    public void playPuzzle(Room room) {
+    	switch(room.getPuzzle().getType()) {
+    	case "Keypad":
+    		view.print("You are presented with a string of digits: " + room.getPuzzle().getDescription());
+    		view.print("Please enter the word you would get if you entered this number into a keypad.");
+    		String[] commands = scanner.nextLine().toLowerCase().split(" ");
+    		boolean hasSolved = false;
+    		while(!hasSolved) {
+	    		if(commands.length == 1){
+	    			if(room.getPuzzle().check(commands[1])) {
+	    				hasSolved = true;
+	    				solvedPuzzle(room);
+	    			}
+	    			else if(room.getPuzzle().getAttempts() == 0) {
+	    				view.print("You have run out of attempts. Please try again later.");
+	    				room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
+	    			}
+	    			else {
+	    				room.getPuzzle().setAttempts(room.getPuzzle().getAttempts() - 1);
+	    				view.print("Your answer was wrong. Try again.");
+	    				view.print("You have " + room.getPuzzle().getAttempts() + "attempts left.");
+	    			}
+	    		}
+	    		else{
+	    			view.print("Please enter a one word answer.");
+	    		}
+    		}
+    		break;
+    	case "Switches":
+    		view.print("You are presented with a row of 5 switches.");
+    		view.print("The switches are all switched down.");
+    		view.print("Please input the decimal number" + room.getPuzzle().getDescription() + " in binary.");
+    		view.printSwitchPuzzleMenu();
+    		boolean hasSolved1 = false;
+    		while(!hasSolved1){
+    			String[] commands1 = scanner.nextLine().toLowerCase().split(" ");
+    			switch(commands1[0]) {
+    			case "s":
+    			case "submit":
+    				if(room.getPuzzle().check(null)){
+    					hasSolved1 = true;
+    					solvedPuzzle(room);
+    				}
+    					;
+    				break;
+    			case "f":
+    			case "flip":
+    				if(commands1.length != 2) {
+    					view.print("Please enter flip and the number you would like to flip.");
+    				}
+    				else if(commands1[1] != "1" && commands1[1] != "2" && commands1[1] != "3" && commands1[1] != "4" && commands1[1] != "5") {
+    					view.print("Please enter flip and a valid number of the switch you would like to flip.");
+    				}
+    				else {
+    					((Switches) room.getPuzzle()).flip(commands1[1]);
+    				}
+    					
+    				break;
+    			
+    		}
+    		break;
+    		}
+    	}
 
     }
 
-    //Paul
+    //Bao and Joseph
     public void combat(Monster monster) {
 
     }
@@ -194,6 +257,13 @@ public class Controller {
     //Paul
     public void printMenu() {
         view.printMenu();
+    }
+    
+    //Bao
+    public void solvedPuzzle(Room room) {
+    	view.print(room.getPuzzle().puzzleSolvedMessage());
+		player.getInventory().add(room.getPuzzle().getItem());
+		room.removePuzzle();
     }
 
 

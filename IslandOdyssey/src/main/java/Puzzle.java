@@ -2,18 +2,22 @@
 public abstract class Puzzle{
 	
 	protected String name, description, solution, type;
-	protected int attempts, maxAttempts;
+	protected int attempts, maxAttempts, roomID;
+	protected Item item;
 	
-	Puzzle(String name, String description, String solution, int maxAttempts){
+	//Bao
+	Puzzle(String name, String description, String solution, int maxAttempts,int roomID){
 		this.name = name;
 		this.description = description;
 		this.solution = solution;
 		this.maxAttempts = maxAttempts;
 		this.attempts = maxAttempts;
+		this.roomID = roomID;
 	}
 	
-	public String puzzleSolvedMessage()
-	{
+	public abstract boolean check(String input);
+	
+	public String puzzleSolvedMessage(){
 		return "You solved the puzzle!";
 	}
 
@@ -39,6 +43,14 @@ public abstract class Puzzle{
 
 	public int getMaxAttempts(){
 		return maxAttempts;
+	}
+	
+	public Item getItem(){
+		return item;
+	}
+	
+	public void setAttempts(int attempts){
+		this.attempts = attempts;
 	}
 	
 	

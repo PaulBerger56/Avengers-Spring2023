@@ -2,6 +2,12 @@ import java.util.ArrayList;
 
 // Paul
 public class View {
+	
+	//Bao
+	public void print(String msg)
+	{
+		System.out.println(msg);
+	}
 
     // Paul
     public void printPlayerInventory(Player player) {
@@ -75,5 +81,10 @@ public class View {
     //Paul
     public void printNoRoom() {
         System.out.println("Sorry, there is no room in that direction");
+    }
+    
+    //Bao
+    public void printSwitchPuzzleMenu() {
+    	System.out.println("Would you like to (F)lip or (S)ubmit?");
     }
 }
