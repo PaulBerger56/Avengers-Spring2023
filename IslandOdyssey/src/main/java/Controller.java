@@ -124,7 +124,11 @@ public class Controller {
                         break;
 
                     case "use" :
-                        Item tempItem = player.doesPlayerHaveItem(splitCommand[1]);
+                        String tempItemName = "";
+                        for(int i = 1; i < splitCommand.length;i++){
+                            tempItemName += (splitCommand[i] + " ");
+                        }
+                        Item tempItem = player.doesPlayerHaveItem(tempItemName);
                         if(tempItem == null) {
                             view.printPlayerDoesntHaveItem();
                             break;
@@ -139,11 +143,29 @@ public class Controller {
                             break;
                         } else {
                             view.printCantUseHere();
+                            break;
                         }
+
+                    case "pickup" :
+                        String tempRoomItemName = "";
+                        for(int i = 1; i < splitCommand.length;i++){
+                            tempRoomItemName += (splitCommand[i] + " ");
+                        }
+                        Item tempRoomItem = player.getMap().getRooms().get(player.getCurrentRoom()).doesRoomHaveItem(tempRoomItemName);
+                        if(tempRoomItem == null) {
+                            view.printRoomNoItem();
+                            break;
+                        } else {
+                            // adds item to player inventory and removes it from the room's inventory
+                            printPickup(player.getMap().getRooms().get(player.getCurrentRoom()).removeItem(tempRoomItemName));
+                            break;
+                        }
+
 
                     default:
                         view.printInvalidInput();
                         break;
+
                 }
             }
 
@@ -297,11 +319,11 @@ public class Controller {
     // prints the current room's description
     public void printRoomDescription() {
         // prints the familiar message if room has been visited
-        if(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1).isVisited()) {
+        if(this.player.getMap().getRooms().get(this.player.getCurrentRoom()).isVisited()) {
             view.printFamiliar();
-            view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
+            view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom()));
         }
-        view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom() -1));
+        view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom()));
     }
 
     //Paul

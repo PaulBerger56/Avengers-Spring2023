@@ -12,7 +12,7 @@ public class Room {
     private final int westExit;
     private Puzzle puzzle;
     private Monster monster;
-    private final ArrayList<Item> items;
+    private final ArrayList<Item> inventory;
 
 
     //Paul
@@ -24,18 +24,28 @@ public class Room {
         this.eastExit = eastExit;
         this.southExit = southExit;
         this.westExit = westExit;
-        this.items = new ArrayList<>();
+        this.inventory = new ArrayList<>();
         this.visited = false;
     }
 
     //Paul
     // if the item is in the inventory, returns it and removes it from the arraylist, otherwise returns null
     public Item removeItem(String itemName) {
-        for(int i = 0; i < this.items.size(); i++) {
-            if(this.items.get(i).getName().equals(itemName)) {
-                Item tempItem = this.items.get(i);
-                this.items.remove(i);
+        for(int i = 0; i < this.inventory.size(); i++) {
+            if(this.inventory.get(i).getName().equals(itemName)) {
+                Item tempItem = this.inventory.get(i);
+                this.inventory.remove(i);
                 return tempItem;
+            }
+        }
+        return null;
+    }
+
+    //Paul
+    public Item doesRoomHaveItem(String itemName) {
+        for(Item i: this.inventory) {
+            if(i.getName().equalsIgnoreCase(itemName)) {
+                return i;
             }
         }
         return null;

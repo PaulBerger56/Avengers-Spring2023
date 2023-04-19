@@ -135,4 +135,8 @@ public class View {
     public void printCollectible(Item tempItem) {
         System.out.println(tempItem.getDescription());
     }
+
+    public void printRoomNoItem() {
+        System.out.println("The room does not contain that item");
+    }
 }
