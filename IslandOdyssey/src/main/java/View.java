@@ -2,12 +2,11 @@ import java.util.ArrayList;
 
 // Paul
 public class View {
-	
-	//Bao
-	public void print(String msg)
-	{
-		System.out.println(msg);
-	}
+
+    //Bao
+    public void print(String msg) {
+        System.out.println(msg);
+    }
 
     // Paul
     public void printPlayerInventory(Player player) {
@@ -87,44 +86,53 @@ public class View {
     //Puzzle Prints
     //Bao
     public void printSwitchPuzzleMenu() {
-    	System.out.println("Would you like to (F)lip or (S)ubmit?");
+        System.out.println("Would you like to (F)lip or (S)ubmit?");
     }
     
     //Bao
     public void printSwitchState(int[] switchState){
-    	String temp1 = "", temp2 = "", temp3 = "", temp4 = "", temp5 = "", temp6 = "";
-    	for(int s: switchState) {
-    		if(s == 0){
-    			temp1 += "1    ";
-    			temp2 += "|    ";
-    			temp3 += "|    ";
-    			temp4 += "|\\   ";
-    			temp5 += "| \\  ";
-    			temp6 += "0    ";
-    		}
-    		else {
-        		temp1 += "1    ";
-        		temp2 += "| /  ";
-        		temp3 += "|/   ";
-        		temp4 += "|    ";
-        		temp5 += "|    ";
-        		temp6 += "0    ";
-    		}
-    	}
-		System.out.println(temp1);
-		System.out.println(temp2);
-		System.out.println(temp3);
-		System.out.println(temp4);
-		System.out.println(temp5);
-		System.out.println(temp6);
+        String temp1 = "", temp2 = "", temp3 = "", temp4 = "", temp5 = "", temp6 = "";
+        for(int s: switchState) {
+            if(s == 0){
+                temp1 += "1    ";
+                temp2 += "|    ";
+                temp3 += "|    ";
+                temp4 += "|\\   ";
+                temp5 += "| \\  ";
+                temp6 += "0    ";
+            } else {
+                temp1 += "1    ";
+                temp2 += "| /  ";
+                temp3 += "|/   ";
+                temp4 += "|    ";
+                temp5 += "|    ";
+                temp6 += "0    ";
+            }
+        }
+        System.out.println(temp1);
+        System.out.println(temp2);
+        System.out.println(temp3);
+        System.out.println(temp4);
+        System.out.println(temp5);
+        System.out.println(temp6);
     }
     
     //Bao
     public void printCombatMenu(){
-    	System.out.println("Would you like to (A)ttack, (U)se an item or (E)xamine the monster?");
+        System.out.println("Would you like to (A)ttack, (U)se an item or (E)xamine the monster?");
     }
-    
-    
-    
-    
+
+    //Paul
+    public void printPlayerDoesntHaveItem() {
+        System.out.println("Sorry, the player does not have that item");
+    }
+
+
+    public void printCantUseHere() {
+        System.out.println("Sorry, you can't use that Item here");
+    }
+
+    public void printCollectible(Item tempItem) {
+        System.out.println(tempItem.getDescription());
+    }
 }

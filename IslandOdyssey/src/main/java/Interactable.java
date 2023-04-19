@@ -89,4 +89,38 @@ public class Interactable extends Item{
         }
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public boolean isHasUsedMaxAttempts() {
+        return hasUsedMaxAttempts;
+    }
 }

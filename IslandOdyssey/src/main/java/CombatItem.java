@@ -22,4 +22,26 @@ public class CombatItem extends Item{
         }
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public String getType() {
+        return type;
+    }
 }

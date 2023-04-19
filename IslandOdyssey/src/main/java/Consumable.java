@@ -26,4 +26,22 @@ public class Consumable extends Item{
         consumable.decrementQuantity();
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getType() {
+        return type;
+    }
 }

@@ -91,7 +91,7 @@ public class Player implements Serializable {
     // checks if the player has a specific item, and returns an item object if so.
     public Item doesPlayerHaveItem(String itemName) {
         for(Item i: this.inventory) {
-            if(i.getName().equals(itemName)) {
+            if(i.getName().toLowerCase().contains(itemName)) {
                 return i;
             }
         }

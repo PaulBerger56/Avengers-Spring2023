@@ -21,4 +21,28 @@ public class Collectible extends Item{
         return item.getDescription();
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public String getType() {
+        return type;
+    }
 }
+
+

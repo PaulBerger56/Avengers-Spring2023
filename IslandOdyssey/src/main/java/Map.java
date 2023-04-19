@@ -18,10 +18,12 @@ public class Map {
     
     //Joseph and Bao
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
+        this.rooms = new ArrayList<>();
         readRoom(roomFile);
         readItems(itemFile);
         readMonster(monsterFile);
         readPuzzles(puzzleFile);
+
     }
     
     //Bao and Joseph

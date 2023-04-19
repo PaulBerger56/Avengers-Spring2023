@@ -4,7 +4,7 @@ public class Game {
 
     // Paul
     public static void main(String[] args) {
-
+    newGame();
 
     }
 

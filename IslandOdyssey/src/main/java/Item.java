@@ -28,6 +28,10 @@ public abstract class Item {
         return this.description;
     }
 
+    public String getType() {
+        return this.type;
+    }
+
 
     public int getQuantity() {
         return quantity;
