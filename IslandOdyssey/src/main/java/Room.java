@@ -30,9 +30,9 @@ public class Room {
 
     //Paul
     // if the item is in the inventory, returns it and removes it from the arraylist, otherwise returns null
-    public Item removeItem(String itemName) {
+    public Item removeItem(Item item) {
         for(int i = 0; i < this.inventory.size(); i++) {
-            if(this.inventory.get(i).getName().equals(itemName)) {
+            if(this.inventory.get(i).getName().equals(item.getName())) {
                 Item tempItem = this.inventory.get(i);
                 this.inventory.remove(i);
                 return tempItem;
@@ -43,6 +43,9 @@ public class Room {
 
     //Paul
     public Item doesRoomHaveItem(String itemName) {
+        if(this.inventory.isEmpty()) {
+            return null;
+        }
         for(Item i: this.inventory) {
             if(i.getName().equalsIgnoreCase(itemName)) {
                 return i;

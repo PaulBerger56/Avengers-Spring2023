@@ -153,13 +153,13 @@ public class Controller {
                         for(int i = 1; i < splitCommand.length;i++){
                             tempRoomItemName += (splitCommand[i] + " ");
                         }
-                        Item tempRoomItem = player.getCurrentRoomObject().doesRoomHaveItem(tempRoomItemName);
+                        Item tempRoomItem = player.getCurrentRoomObject().doesRoomHaveItem(splitCommand[1]);
                         if(tempRoomItem == null) {
                             view.printRoomNoItem();
                             break;
                         } else {
                             // adds item to player inventory and removes it from the room's inventory
-                            printPickup(player.getMap().getRooms().get(player.getCurrentRoom()).removeItem(tempRoomItemName));
+                            printPickup(player.getCurrentRoomObject().removeItem(tempRoomItem));
                             break;
                         }
 
@@ -182,7 +182,6 @@ public class Controller {
                     default:
                         view.printInvalidInput();
                         break;
-
                 }
                 break;
             }
@@ -326,12 +325,6 @@ public class Controller {
         } else {
             view.printPlayerInventory(this.player);
         }
-    }
-
-    // Paul
-    // gets the player's current Room object and sends it to PlayerView to print the inventory
-    public void printRoomInventory() {
-        view.printRoomInventory(this.player.getCurrentRoomObject());
     }
 
     // Paul

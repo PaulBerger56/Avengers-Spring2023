@@ -10,17 +10,12 @@ public class View {
 
     // Paul
     public void printPlayerInventory(Player player) {
+        System.out.println("The player's inventory contains: ");
         for(Item i: player.getInventory()) {
-            System.out.println(i.getName());
+            System.out.println(i.getName() + " Quantity: " + i.getQuantity());
         }
     }
 
-    // Paul
-    public void printRoomInventory(Room room) {
-        for(Item i: room.getItems()) {
-            System.out.println(i.getName());
-        }
-    }
 
     // Paul
     public void printItemDescription(Player player, String itemName) {
@@ -52,9 +47,13 @@ public class View {
     // Paul
     // prints the current room's inventory
     public void printExplore(ArrayList<Item> items) {
-        System.out.println("This room contains");
-        for(Item i: items) {
-            System.out.println(i.getName() + ": qauntity:" + i.getQuantity());
+        if(items.isEmpty()) {
+            System.out.println("The room is empty!");
+        }else {
+            System.out.println("This room contains: ");
+            for (Item i : items) {
+                System.out.println(i.getName() + ": qauntity: " + i.getQuantity());
+            }
         }
     }
 
