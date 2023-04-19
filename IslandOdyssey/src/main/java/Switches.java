@@ -3,12 +3,13 @@ public class Switches extends Puzzle{
 	
 	int[] switches = {0, 0, 0, 0, 0};
 
-	Switches(String name, String description, String solution, int maxAttempts){
-		super(name, description, solution, maxAttempts);
+	//Bao
+	Switches(String type, String name, String description, String solution, int maxAttempts, int roomID){
+		super(name, description, solution, maxAttempts, roomID);
+		this.type = "Switches";
 	}
 	
-	public void flip(String flipNum)
-	{
+	public void flip(String flipNum){
 			if(switches[Integer.parseInt(flipNum) - 1] == 0)
 			{
 				switches[Integer.parseInt(flipNum)] = 1;
@@ -19,8 +20,7 @@ public class Switches extends Puzzle{
 			}
 	}
 	
-	public String printSwitches()
-	{
+	public String printSwitches(){
 		String temp = "";
 		
 		for(int i: switches)
@@ -31,8 +31,7 @@ public class Switches extends Puzzle{
 		return temp;
 	}
 	
-	public boolean check() 
-	{
+	public boolean check(String input){
 		String temp = "";
 		
 		for(int i: switches)
