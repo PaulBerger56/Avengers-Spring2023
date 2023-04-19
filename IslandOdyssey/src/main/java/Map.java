@@ -64,6 +64,8 @@ public class Map {
             read = new Scanner(monster);
         }catch (FileNotFoundException ex){
             System.out.println(ex.getMessage());
+            System.out.println("\u001B[31m" + "monster file problem" + "\u001B[0m");
+
         }
         while(read.hasNext()){
             String memory = read.nextLine();
@@ -71,7 +73,7 @@ public class Map {
             try{
                 rooms.get(Integer.parseInt(data[6])).addMonster(new Monster(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),Integer.parseInt(data[4]),data[5]));
             }catch(NumberFormatException ex){
-                System.out.println(ex.getMessage());
+                System.out.println(ex.getMessage() + "\u001B[31m" + "monster file problem" + "\u001B[0m");
             }
 
         }
@@ -84,6 +86,7 @@ public class Map {
             fr = new FileReader(itemFile);
             sc = new Scanner(fr);
         } catch (FileNotFoundException fnfe) {
+            System.out.println("\u001B[31m" + "Item file problem" + "\u001B[0m");
         }
 
         while (sc.hasNext()) {
@@ -110,7 +113,8 @@ public class Map {
                         break;
                 }
             } catch (NumberFormatException nfe) {
-            	nfe.printStackTrace();
+                nfe.printStackTrace();
+                System.out.println("\u001B[31m" + "Item file problem" + "\u001B[0m");
             }
         }
 
@@ -123,6 +127,7 @@ public class Map {
             puzzleReader = new Scanner(puzzleScan);
         }catch(FileNotFoundException ex){
             ex.printStackTrace();
+            System.out.println("\u001B[31m" +"Puzzle file problem" + "\u001B[0m");
         }
         while(puzzleReader.hasNext()){
             String puzzleData = puzzleReader.nextLine();
@@ -133,12 +138,13 @@ public class Map {
                         rooms.get(Integer.parseInt(data[4])).addPuzzle(new Switches(data[1],data[2],Integer.parseInt(data[3])));
                         break;
                     case "1":
-                    	rooms.get(Integer.parseInt(data[4])).addPuzzle(new Keypad(data[1],data[2],Integer.parseInt(data[3])));
+                        rooms.get(Integer.parseInt(data[4])).addPuzzle(new Keypad(data[1],data[2],Integer.parseInt(data[3])));
                         break;
 
                 }
             }catch (NumberFormatException ex){
                 System.out.println(ex.getMessage());
+                System.out.println("\u001B[31m" + "Puzzle file problem" + "\u001B[0m");
             }
         }
         puzzleReader.close();

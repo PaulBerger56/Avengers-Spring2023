@@ -34,7 +34,7 @@ public class View {
     }
     // Paul
     public void printRoomDescription(Room room) {
-        System.out.println("You are currently in " + room.getRoomNumber() + ", The " + room.getName());
+        System.out.println("You are currently in room " + room.getRoomNumber() + ", The " + room.getName());
         System.out.println(room.getDescription());
     }
 
@@ -52,8 +52,9 @@ public class View {
     // Paul
     // prints the current room's inventory
     public void printExplore(ArrayList<Item> items) {
+        System.out.println("This room contains");
         for(Item i: items) {
-            System.out.println(i.getName());
+            System.out.println(i.getName() + ": qauntity:" + i.getQuantity());
         }
     }
 
@@ -69,7 +70,7 @@ public class View {
 
     //Paul
     public void printMenu() {
-        System.out.println("Which direction would you like to go? (N,E,S,W");
+        System.out.println("Which direction would you like to go? (N,E,S,W)");
         System.out.println("type help for extra commands");
     }
 

@@ -11,7 +11,7 @@ public class Game {
     // Paul
     // uses the default files to start a new game
     public static void newGame() {
-        Player player = new Player("RoomFile.txt", "ItemFile.txt", "MonserFile.txt", "PuzzleFile.txt");
+        Player player = new Player("RoomFile.txt", "ItemFile.txt", "MonsterFile.txt", "PuzzleFile.txt");
         View pv = new View();
         Controller pc = new Controller(player, pv);
         pc.play();

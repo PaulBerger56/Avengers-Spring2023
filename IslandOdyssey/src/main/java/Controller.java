@@ -84,7 +84,7 @@ public class Controller {
 
                 switch(splitCommand[0]) {
                     case "w" :
-                        if(player.getCurrentRoomObject().getWestExit() == 0) {
+                        if(player.getCurrentRoomObject().getWestExit() == 99) {
                             view.printNoRoom();
                         } else {
                             player.getCurrentRoomObject().setVisited();
@@ -94,7 +94,7 @@ public class Controller {
                         break;
 
                     case "n" :
-                        if(player.getCurrentRoomObject().getNorthExit() == 0) {
+                        if(player.getCurrentRoomObject().getNorthExit() == 99) {
                             view.printNoRoom();
                         } else {
                             player.getCurrentRoomObject().setVisited();
@@ -104,7 +104,7 @@ public class Controller {
                         break;
 
                     case "e" :
-                        if(player.getCurrentRoomObject().getEastExit() == 0) {
+                        if(player.getCurrentRoomObject().getEastExit() == 99) {
                             view.printNoRoom();
                         } else {
                             player.getCurrentRoomObject().setVisited();
@@ -114,7 +114,7 @@ public class Controller {
                         break;
 
                     case "s" :
-                        if(player.getCurrentRoomObject().getSouthExit() == 0) {
+                        if(player.getCurrentRoomObject().getSouthExit() == 99) {
                             view.printNoRoom();
                         } else {
                             player.getCurrentRoomObject().setVisited();
@@ -336,11 +336,11 @@ public class Controller {
     // prints the current room's description
     public void printRoomDescription() {
         // prints the familiar message if room has been visited
-        if(this.player.getMap().getRooms().get(this.player.getCurrentRoom()).isVisited()) {
+        if(this.player.getCurrentRoomObject().isVisited()) {
             view.printFamiliar();
-            view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom()));
+            view.printRoomDescription(this.player.getCurrentRoomObject());
         }
-        view.printRoomDescription(this.player.getMap().getRooms().get(this.player.getCurrentRoom()));
+        view.printRoomDescription(this.player.getCurrentRoomObject());
     }
 
     //Paul
