@@ -10,6 +10,7 @@ public class Player implements Serializable {
     private final int attackPower;
     private int currentRoom;
     private int previousRoom;
+    private int attackChance;
     private boolean defeated;
     private final ArrayList<Item> inventory;
     private final Map map;
@@ -24,6 +25,7 @@ public class Player implements Serializable {
         this.attackPower = 20;
         this.currentRoom = 1;
         this.previousRoom = 0;
+        this.attackChance = 70;
         this.defeated = false;
         this.inventory = new ArrayList<>();
         this.map = new Map(roomFile, itemFile, monsterFile, puzzleFile);
@@ -77,6 +79,23 @@ public class Player implements Serializable {
             }
         }
         return "Player doesn't have that item";
+    }
+    
+    //Bao
+    public void addItem(Item item) {
+        if(doesPlayerHaveItem(item.getName()) != null) 
+        {
+            for(int i = 0; i < this.inventory.size(); i++) 
+            {
+                if(this.inventory.get(i).getName().equals(item.getName())) 
+                {
+                    this.inventory.get(i).incrementQuantity();
+                }
+            }
+        } else 
+        {
+            this.inventory.add(item);
+        }
     }
 
     // Paul
@@ -134,6 +153,14 @@ public class Player implements Serializable {
     // Paul
     public int getAttackPower() {
         return attackPower;
+    }
+    
+    //Bao
+    public boolean checkHit() {
+    	if(Math.ceil(Math.random() * 100) <= attackChance) {
+    		return true;
+    	}
+    	return false;
     }
 
     // Paul

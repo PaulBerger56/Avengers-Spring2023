@@ -129,7 +129,9 @@ public class Controller {
                         for(int i = 1; i < splitCommand.length;i++){
                             tempItemName += (splitCommand[i] + " ");
                         }
-                        Item tempItem = player.doesPlayerHaveItem(splitCommand[1]);
+                        tempItemName = tempItemName.substring(0, tempItemName.length() - 1);
+                        
+                        Item tempItem = player.doesPlayerHaveItem(tempItemName);
                         if(tempItem == null) {
                             view.printPlayerDoesntHaveItem();
                             break;
@@ -277,25 +279,36 @@ public class Controller {
 
     }
 
-    //Bao and Joseph (*incomplete*)
+    //Bao
     public void combat(Room room) {
-        view.print("This is " + room.getMonster().getName());
+        view.print("You see " + room.getMonster().getName());
         view.printCombatMenu();
         while(room.getMonster() != null) {
             String[] commands = scanner.nextLine().toLowerCase().split(" ");
             switch(commands[0]){
                 case "a":
                 case "attack":
-                    room.getMonster().takeHit(player.getAttackPower());
-                    if(room.getMonster().isDefeated){
+                	view.print("You attack " + room.getMonster().getName() + ".");
+                    if(player.checkHit()) {
+                    	view.print("You hit " + room.getMonster().getName() + " for " + player.getAttackPower() + " damage!");
+                        room.getMonster().takeHit(player.getAttackPower());
+                    }
+                    else {
+                    	view.print("Your attack missed.");
+                    }
+
+                    if(room.getMonster().isDefeated()){
                         view.print("Victory!");
-                        //*do things that happen when monster is defeated*
-                        break;
+                        view.print("You defeated " + room.getMonster().getName());
+                        view.print("You received " + room.getMonster().getItem());
+                        player.addItem(room.getMonster().getItem());
+                        room.removeMonster();
                     }
                     break;
                 case "e":
                 case "examine":
                     view.print(room.getMonster().getMonsterDescription());
+                    view.print("While you were looking at the monster it attacked.");
                     break;
                 case "u":
                 case "use":
@@ -303,16 +316,42 @@ public class Controller {
                     for(int i = 1; i < commands.length;i++){
                         tempItem += (commands[i] + " ");
                     }
+                    tempItem = tempItem.substring(0, tempItem.length() - 1);
                     if(player.doesPlayerHaveItem(tempItem) != null) {
-                        //*use item*
+                    	switch(player.doesPlayerHaveItem(tempItem).getType()) {
+                    	case "combatItem":
+                    		((CombatItem) player.doesPlayerHaveItem(tempItem)).use(room.getMonster());
+                    		view.printUsedItem(player.doesPlayerHaveItem(tempItem).getName());
+                    		if(!room.getMonster().isDefeated()) {
+                    			view.print("That was not very effective.");
+                    		}
+                    		break;
+                    	case "consumable":
+                    		player.addHp(((Consumable) player.doesPlayerHaveItem(tempItem)).getHealthPoints());
+                    		view.printPlayerHealth(player.getCurrentHp());
+                    		break;
+                    	default:
+                    		view.print("You can't use that right now!");
+                    		view.print("While you were fumbling around, the monster attacks.");
+                    		break;
+                    	}
                     } else {
-                        view.printPlayerDoesntHaveItem();
+                        view.print("You do not have" + tempItem);
                     }
                     break;
             }
-            player.takeHit(room.getMonster().getStrength());
+            if(!room.getMonster().isDefeated()) {
+            view.printMonsterAttack(room.getMonster().getName());
+            if(room.getMonster().checkHit()) {
+            	view.print("You took " + room.getMonster().getStrength() + " damage");
+            	player.takeHit(room.getMonster().getStrength());
+            }
+            else {
+            	view.print("It missed.");
+            }
+            }
             if(player.isDefeated()){
-                //*do things when player is defeated*
+                view.print("You died. Game Over! Please try again.");
                 //*delete save file and restart from beginning?*
             }
         }
