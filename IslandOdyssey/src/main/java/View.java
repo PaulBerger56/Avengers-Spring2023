@@ -185,4 +185,8 @@ public class View {
     public void printPlayerDefeated() {
         System.out.println("You died. Game Over! Please try again.");
     }
+
+    public void printDropItem(String name) {
+        System.out.println("You dropped " + name + ".");
+    }
 }

@@ -201,11 +201,31 @@ public class Controller {
                     case "inventory":
                         printPlayerInventory();
                         break;
-
+                    //Joseph
                     case "inspect":
+                        String inspectItem = "";
+                        for(int i = 1; i < splitCommand.length;i++){
+                            inspectItem += (splitCommand[i] + " ");
+                        }
+                        inspectItem = inspectItem.substring(0, inspectItem.length() - 1);
+                        if(player.doesPlayerHaveItem(inspectItem)!= null){
+                            printItemDescription(player.doesPlayerHaveItem(inspectItem));
+                        }
                         break;
-
+                        //Joseph
                     case "drop":
+                        String tmpDropItem = "";
+                        for(int i = 1; i < splitCommand.length;i++){
+                            tmpDropItem += (splitCommand[i] + " ");
+                        }
+                        tmpDropItem = tmpDropItem.substring(0, tmpDropItem.length() - 1);
+                        Item interimItem = player.doesPlayerHaveItem(tmpDropItem);
+
+                        if(interimItem!= null){
+                            player.getCurrentRoomObject().addItem(interimItem);
+                            player.removeItem(interimItem.getName());
+                            view.printDropItem(interimItem.getName());
+                        }
                         break;
 
                     case "health":
@@ -423,8 +443,8 @@ public class Controller {
 
     // Paul
     // prints the Item's description if it is in the player's inventory
-    public void printItemDescription(String itemName) {
-        view.printItemDescription(this.player, itemName);
+    public void printItemDescription(Item tmpItem) {
+        view.printItemDescription(this.player, tmpItem.getName());
     }
 
     // Paul
