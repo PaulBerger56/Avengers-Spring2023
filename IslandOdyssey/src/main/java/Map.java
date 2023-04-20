@@ -11,16 +11,19 @@ import java.util.Scanner;
 public class Map implements Serializable {
 
     private final ArrayList<Room> rooms;
-    private HashMap<String, Item> monsterDrops;
+    private ArrayList<Consumable> monsterDrops;
+    private ArrayList<Integer> monsterLocations;
 
     //Joseph and Bao
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
         this.rooms = new ArrayList<>();
-        this.monsterDrops = new HashMap<>();
+        this.monsterDrops = new ArrayList<>();
+        this.monsterLocations = new ArrayList<>();
         readRoom(roomFile);
         readPuzzles(puzzleFile);
         readMonster(monsterFile);
         readItems(itemFile);
+        distributeDrops();
     }
     
     //Bao and Joseph
@@ -67,6 +70,7 @@ public class Map implements Serializable {
                 String[] data = memory.split("~");
                 try{
                     rooms.get(Integer.parseInt(data[6])).addMonster(new Monster(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),Integer.parseInt(data[4]),data[5]));
+                    monsterLocations.add(Integer.parseInt(data[6]));
                 }catch(NumberFormatException ex){
                     System.out.println(ex.getMessage() + "\u001B[31m" + "monster file problem" + "\u001B[0m");
                 }
@@ -95,7 +99,7 @@ public class Map implements Serializable {
                 case "consumable":
                     int healthPoints = Integer.parseInt(tokens[4]);
                     rooms.get(roomNumber).addItem(new Consumable(itemName, itemDesc, healthPoints));
-                    monsterDrops.put(itemName, new Consumable(itemName, itemDesc, healthPoints));
+                    monsterDrops.add(new Consumable(itemName, itemDesc, healthPoints));
                     break;
                 case "combat":
                     rooms.get(roomNumber).addItem(new CombatItem(itemName, itemDesc, roomNumber));
@@ -143,6 +147,14 @@ public class Map implements Serializable {
             e.printStackTrace();
         }
     }
+    
+    public void distributeDrops() {
+    	for(int room: this.monsterLocations) {
+    		int temp = (int)Math.random() * 3;
+    		rooms.get(room).getMonster().addItemToMonster(new Consumable(monsterDrops.get(temp).getName(), monsterDrops.get(temp).getDescription(), monsterDrops.get(temp).getHealthPoints()));
+    	}
+    }
+    
 
 
     public ArrayList<Room> getRooms() {
