@@ -36,7 +36,7 @@ public class Controller {
     //Paul
     // Main menu in the controller
     public void mainMenu() {
-        System.out.println("Start a (n)ew game, or (l)oad a save file?");
+        view.printMainMenu();
         String command = scanner.nextLine();
 
         switch(command) {
@@ -47,6 +47,11 @@ public class Controller {
             case "l":
                 this.player = readInPlayer("SaveFile.bin");
                 play(this.player);
+
+            case "q":
+                view.printQuitting();
+                System.exit(0);
+                break;
 
             default:
                 view.printInvalidInput();
@@ -77,8 +82,8 @@ public class Controller {
 
     // Paul
     // Saves player to a binary file to load later
-    public void saveGame(String fileName) {
-        File file = new File(fileName + ".bin");
+    public void saveGame() {
+        File file = new File("SaveFile.bin");
 
         try (FileOutputStream fos = new FileOutputStream(file);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -223,7 +228,7 @@ public class Controller {
 
                     case "save":
                         view.printSaveMessage();
-                        saveGame("SaveFile");
+                        saveGame();
                         break;
 
                     //Paul

@@ -123,7 +123,7 @@ public class View {
     
     //Bao
     public void printMonsterAttack(String monsterName) {
-    	System.out.println(monsterName + " attacks you.");
+        System.out.println(monsterName + " attacks you.");
     }
 
     //Paul
@@ -133,12 +133,12 @@ public class View {
     
     //Bao
     public void printPlayerHealth(int health) {
-    	System.out.println("You have " + health + "HP.");
+        System.out.println("You have " + health + "HP.");
     }
     
     //Bao
     public void printUsedItem(String itemName) {
-    	System.out.println("You used " + itemName + ".");
+        System.out.println("You used " + itemName + ".");
     }
 
     //Paul
@@ -173,5 +173,13 @@ public class View {
 
     public void printInventoryIsEmpty() {
         System.out.println("The player's inventory is empty");
+    }
+
+    public void printMainMenu() {
+        System.out.println("Start a (n)ew game, or (l)oad a save file, or (q)?");
+    }
+
+    public void printQuitting() {
+        System.out.println("Now quitting.  Thank you for playing!");
     }
 }
