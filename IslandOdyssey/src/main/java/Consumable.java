@@ -17,6 +17,14 @@ public class Consumable extends Item implements Serializable {
         this.type = "Consumable";
     }
 
+    public void incrementQuantity() {
+        quantity++;
+    }
+
+    public void decrementQuantity() {
+        quantity--;
+    }
+
     public int getHealthPoints() {
         return healthPoints;
     }

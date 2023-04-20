@@ -32,22 +32,26 @@ public class Player implements Serializable {
 
     }
 
-    //Paul
+    //Paul && Bao
     // adds to the current hp as long as it is under or equal to the max hp
     public void addHp(int hp) {
         if((this.currentHp + hp) >= this.maxHp) {
             this.currentHp = maxHp;
+        } else {
+            this.currentHp += hp;
         }
-        this.currentHp += hp;
+
     }
 
-    // Paul
+    // Paul && Bao
     // reduces the player's hp until 0
     public void takeHit(int damage) {
         if((this.currentHp - damage) <= 0) {
+            this.currentHp = 0;
             this.defeated = true;
+        } else {
+            this.currentHp -= damage;
         }
-        this.currentHp -= damage;
     }
 
     //Paul
@@ -55,7 +59,7 @@ public class Player implements Serializable {
     public String pickup(Item item) {
         if(doesPlayerHaveItem(item.getName()) != null) {
             for(int i = 0; i < this.inventory.size(); i++) {
-                if(this.inventory.get(i).getName().equals(item.getName())) {
+                if(this.inventory.get(i).getName().equalsIgnoreCase(item.getName())) {
                     this.inventory.get(i).incrementQuantity();
                     return item.getName();
                 }

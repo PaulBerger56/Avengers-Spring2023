@@ -16,7 +16,6 @@ public class View {
         }
     }
 
-
     // Paul
     public void printItemDescription(Player player, String itemName) {
         Item tempItem = player.doesPlayerHaveItem(itemName);
@@ -181,5 +180,9 @@ public class View {
 
     public void printQuitting() {
         System.out.println("Now quitting.  Thank you for playing!");
+    }
+
+    public void printPlayerDefeated() {
+        System.out.println("You died. Game Over! Please try again.");
     }
 }

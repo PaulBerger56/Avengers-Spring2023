@@ -17,22 +17,6 @@ public class Controller {
         mainMenu();
     }
 
-    // Paul
-    // constructor for a new game
-    public Controller(Player player, View view) {
-        this.scanner = new Scanner(System.in);
-        this.player = player;
-        this.view = view;
-    }
-
-    // Paul
-    // constructor for loaded game
-    public Controller(String playerFileName, View view) {
-        this.scanner = new Scanner(System.in);
-        this.player = readInPlayer(playerFileName);
-        this.view = view;
-    }
-
     //Paul
     // Main menu in the controller
     public void mainMenu() {
@@ -160,13 +144,13 @@ public class Controller {
                         break;
                     // Paul
                     case "use" :
-                        String tempItemName = "";
+                        String tempUseItem = "";
                         for(int i = 1; i < splitCommand.length;i++){
-                            tempItemName += (splitCommand[i] + " ");
+                            tempUseItem += (splitCommand[i] + " ");
                         }
-                        tempItemName = tempItemName.substring(0, tempItemName.length() - 1);
+                        tempUseItem = tempUseItem.substring(0, tempUseItem.length() - 1);
                         
-                        Item tempItem = player.doesPlayerHaveItem(tempItemName);
+                        Item tempItem = player.doesPlayerHaveItem(tempUseItem);
                         if(tempItem == null) {
                             view.printPlayerDoesntHaveItem();
                             break;
@@ -187,11 +171,12 @@ public class Controller {
                         }
                     // Paul
                     case "pickup" :
-                        String tempRoomItemName = "";
+                        String tempPickupItem = "";
                         for(int i = 1; i < splitCommand.length;i++){
-                            tempRoomItemName += (splitCommand[i] + " ");
+                            tempPickupItem += (splitCommand[i] + " ");
                         }
-                        Item tempRoomItem = player.getCurrentRoomObject().doesRoomHaveItem(splitCommand[1]);
+                        tempPickupItem = tempPickupItem.substring(0, tempPickupItem.length() - 1);
+                        Item tempRoomItem = player.getCurrentRoomObject().doesRoomHaveItem(tempPickupItem);
                         if(tempRoomItem == null) {
                             view.printRoomNoItem();
                             break;
@@ -353,8 +338,8 @@ public class Controller {
                     }
                     tempItem = tempItem.substring(0, tempItem.length() - 1);
                     if(player.doesPlayerHaveItem(tempItem) != null) {
-                        switch(player.doesPlayerHaveItem(tempItem).getType()) {
-                            case "combatItem":
+                        switch(player.doesPlayerHaveItem(tempItem).getType().toLowerCase()) {
+                            case "combatitem":
                                 ((CombatItem) player.doesPlayerHaveItem(tempItem)).use(room.getMonster());
                                 view.printUsedItem(player.doesPlayerHaveItem(tempItem).getName());
                                 if(!room.getMonster().isDefeated()) {
@@ -386,7 +371,7 @@ public class Controller {
             }
             }
             if(player.isDefeated()){
-                view.print("You died. Game Over! Please try again.");
+                view.printPlayerDefeated();
                 //*delete save file and restart from beginning?*
             }
         }

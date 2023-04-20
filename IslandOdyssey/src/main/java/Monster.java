@@ -34,25 +34,20 @@ public class Monster implements Serializable {
     public void takeHit(int hit){
         if(hitPoints - hit  <= 0) {
             this.hitPoints = 0;
-            setDefeated();
+            setDefeated(true);
+        } else {
+            hitPoints -= hit;
         }
-        hitPoints -= hit;
-
     }
     
     //Joseph
+    // checks if the monster is weak to a certain item, sets to defeated if true, and returns the boolean
     public boolean isWeakTo(String itemName){
-        if (itemName.equals(weakness)){
-            isDefeated = true;
+        if (itemName.equalsIgnoreCase(this.weakness)){
+            setDefeated(true);
             return true;
         }
-
         return false;
-    }
-    
-    //Joseph
-    public void setDefeated(){
-        isDefeated = true;
     }
     
     //Joseph

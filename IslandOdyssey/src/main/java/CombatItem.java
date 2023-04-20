@@ -19,7 +19,7 @@ public class CombatItem extends Item implements Serializable {
 
     //When using a combat item, if the monster is weak to that item the monster will be defeated
     public void use(Monster monster){
-        if (monster.getWeakness().equalsIgnoreCase(name)){
+        if (monster.isWeakTo(name)){
             monster.setDefeated(true);
         }
     }

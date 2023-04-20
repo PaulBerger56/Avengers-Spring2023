@@ -78,6 +78,7 @@ public class Room implements Serializable {
     //Paul
     public void addItem(Item item) {
         this.inventory.add(item);
+
     }
 
     //Paul
