@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Map implements Serializable {
 
-    private ArrayList<Room> rooms;
+    private final ArrayList<Room> rooms;
 
     //Joseph and Bao
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
@@ -55,11 +55,14 @@ public class Map implements Serializable {
     public void readMonster(String monsterFile){
 
         try {
-            File readMonsterFile = new File(monsterFile);
-            Scanner read = new Scanner(readMonsterFile);
 
-            while(read.hasNext()){
-                String memory = read.nextLine();
+            File readMonsterFile = new File(monsterFile);
+            Scanner monsterScanner = new Scanner(readMonsterFile);
+
+
+            while (monsterScanner.hasNext()) {
+
+                String memory = monsterScanner.nextLine();
                 String[] data = memory.split("~");
                 try{
                     rooms.get(Integer.parseInt(data[6])).addMonster(new Monster(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),Integer.parseInt(data[4]),data[5]));
@@ -67,7 +70,7 @@ public class Map implements Serializable {
                     System.out.println(ex.getMessage() + "\u001B[31m" + "monster file problem" + "\u001B[0m");
                 }
             }
-            read.close();
+
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -136,8 +139,6 @@ public class Map implements Serializable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
-        } catch(Exception e) {
             e.printStackTrace();
         }
     }
