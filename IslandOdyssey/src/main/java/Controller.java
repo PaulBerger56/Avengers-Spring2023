@@ -8,6 +8,15 @@ public class Controller {
     Player player;
     View view;
 
+    //Paul
+    //experimenting with start loop in controller
+    public Controller(View view) {
+        this.scanner = new Scanner(System.in);
+        this.view = view;
+        this.player = null;
+        mainMenu();
+    }
+
     // Paul
     // constructor for a new game
     public Controller(Player player, View view) {
@@ -22,6 +31,27 @@ public class Controller {
         this.scanner = new Scanner(System.in);
         this.player = readInPlayer(playerFileName);
         this.view = view;
+    }
+
+    //Paul
+    // Main menu in the controller
+    public void mainMenu() {
+        System.out.println("Start a (n)ew game, or (l)oad a save file?");
+        String command = scanner.nextLine();
+
+        switch(command) {
+            case "n":
+                this.player = new Player("RoomFile.txt", "ItemFile.txt", "MonsterFile.txt", "PuzzleFile.txt");
+                play(this.player);
+
+            case "l":
+                this.player = readInPlayer("SaveFile.bin");
+                play(this.player);
+
+            default:
+                view.printInvalidInput();
+                break;
+        }
     }
 
     // Paul
@@ -65,7 +95,7 @@ public class Controller {
 
     // Paul
     // Holds the actual game loop
-    public void play() {
+    public void play(Player player) {
         while(true) {
 
             // If the current room contains a monster, combat is initiated.
@@ -285,13 +315,13 @@ public class Controller {
             switch(commands[0]){
                 case "a":
                 case "attack":
-                	view.print("You attack " + room.getMonster().getName() + ".");
+                    view.print("You attack " + room.getMonster().getName() + ".");
                     if(player.checkHit()) {
-                    	view.print("You hit " + room.getMonster().getName() + " for " + player.getAttackPower() + " damage!");
+                        view.print("You hit " + room.getMonster().getName() + " for " + player.getAttackPower() + " damage!");
                         room.getMonster().takeHit(player.getAttackPower());
                     }
                     else {
-                    	view.print("Your attack missed.");
+                        view.print("Your attack missed.");
                     }
 
                     if(room.getMonster().isDefeated()){
@@ -315,23 +345,23 @@ public class Controller {
                     }
                     tempItem = tempItem.substring(0, tempItem.length() - 1);
                     if(player.doesPlayerHaveItem(tempItem) != null) {
-                    	switch(player.doesPlayerHaveItem(tempItem).getType()) {
-                    	case "combatItem":
-                    		((CombatItem) player.doesPlayerHaveItem(tempItem)).use(room.getMonster());
-                    		view.printUsedItem(player.doesPlayerHaveItem(tempItem).getName());
-                    		if(!room.getMonster().isDefeated()) {
-                    			view.print("That was not very effective.");
-                    		}
-                    		break;
-                    	case "consumable":
-                    		player.addHp(((Consumable) player.doesPlayerHaveItem(tempItem)).getHealthPoints());
-                    		view.printPlayerHealth(player.getCurrentHp());
-                    		break;
-                    	default:
-                    		view.print("You can't use that right now!");
-                    		view.print("While you were fumbling around, the monster attacks.");
-                    		break;
-                    	}
+                        switch(player.doesPlayerHaveItem(tempItem).getType()) {
+                            case "combatItem":
+                                ((CombatItem) player.doesPlayerHaveItem(tempItem)).use(room.getMonster());
+                                view.printUsedItem(player.doesPlayerHaveItem(tempItem).getName());
+                                if(!room.getMonster().isDefeated()) {
+                                    view.print("That was not very effective.");
+                                }
+                                break;
+                            case "consumable":
+                                player.addHp(((Consumable) player.doesPlayerHaveItem(tempItem)).getHealthPoints());
+                                view.printPlayerHealth(player.getCurrentHp());
+                                break;
+                            default:
+                                view.print("You can't use that right now!");
+                                view.print("While you were fumbling around, the monster attacks.");
+                                break;
+                        }
                     } else {
                         view.print("You do not have" + tempItem);
                     }
@@ -340,11 +370,11 @@ public class Controller {
             if(!room.getMonster().isDefeated()) {
             view.printMonsterAttack(room.getMonster().getName());
             if(room.getMonster().checkHit()) {
-            	view.print("You took " + room.getMonster().getStrength() + " damage");
-            	player.takeHit(room.getMonster().getStrength());
+                view.print("You took " + room.getMonster().getStrength() + " damage");
+                player.takeHit(room.getMonster().getStrength());
             }
             else {
-            	view.print("It missed.");
+                view.print("It missed.");
             }
             }
             if(player.isDefeated()){
