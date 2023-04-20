@@ -77,7 +77,16 @@ public class Room implements Serializable {
 
     //Paul
     public void addItem(Item item) {
-        this.inventory.add(item);
+        if(doesRoomHaveItem(item.getName()) != null) {
+            for(int i = 0; i < this.inventory.size(); i++) {
+                if(this.inventory.get(i).getName().equalsIgnoreCase(item.getName())) {
+                    this.inventory.get(i).incrementQuantity();
+                }
+            }
+        } else {
+            this.inventory.add(item);
+        }
+
 
     }
 

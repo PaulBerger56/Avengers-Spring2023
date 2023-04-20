@@ -348,6 +348,11 @@ public class Controller {
                                 break;
                             case "consumable":
                                 player.addHp(((Consumable) player.doesPlayerHaveItem(tempItem)).getHealthPoints());
+                                if((player.doesPlayerHaveItem(tempItem).getQuantity() == 1)) {
+                                    player.removeItem(player.doesPlayerHaveItem(tempItem).getName());
+                                } else {
+                                    player.doesPlayerHaveItem(tempItem).decrementQuantity();
+                                }
                                 view.printPlayerHealth(player.getCurrentHp());
                                 break;
                             default:
@@ -356,7 +361,7 @@ public class Controller {
                                 break;
                         }
                     } else {
-                        view.print("You do not have" + tempItem);
+                        view.print("You do not have " + tempItem);
                     }
                     break;
             }
