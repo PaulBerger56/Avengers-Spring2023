@@ -1,5 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 // Paul
@@ -16,20 +19,41 @@ public class Player implements Serializable {
     private final Map map;
 
 
+
+
     // Paul
     // needs to take the names of the files since the map class is accessed through player and fills the map through a
     // call in the player constructor
-    public Player(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
-        this.maxHp = 200;
-        this.currentHp = 200;
-        this.attackPower = 20;
+    public Player(String playerFile, String roomFile, String itemFile, String monsterFile, String puzzleFile) {
+        String[] temp = readPlayerFile(playerFile);
+        this.maxHp = Integer.parseInt(temp[0]);
+        this.currentHp = maxHp;
+        this.attackPower = Integer.parseInt(temp[1]);
         this.currentRoom = 1;
         this.previousRoom = 0;
-        this.attackChance = 70;
+        this.attackChance = Integer.parseInt(temp[2]);
         this.defeated = false;
         this.inventory = new ArrayList<>();
         this.map = new Map(roomFile, itemFile, monsterFile, puzzleFile);
+    }
 
+    //Paul and Bao
+    public String[] readPlayerFile(String playerFile) {
+        String[] split = new String[3];
+        try {
+            File playerReadFile = new File(playerFile);
+            Scanner playerScanner = new Scanner(playerReadFile);
+
+            while(playerScanner.hasNext()) {
+                String line = playerScanner.nextLine();
+                split = line.split("~");
+                return split;
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return split;
     }
 
     //Paul && Bao
@@ -40,7 +64,6 @@ public class Player implements Serializable {
         } else {
             this.currentHp += hp;
         }
-
     }
 
     // Paul && Bao

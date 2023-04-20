@@ -25,7 +25,7 @@ public class Controller {
 
         switch(command) {
             case "n":
-                this.player = new Player("RoomFile.txt", "ItemFile.txt", "MonsterFile.txt", "PuzzleFile.txt");
+                this.player = new Player("PlayerFile.txt","RoomFile.txt", "ItemFile.txt", "MonsterFile.txt", "PuzzleFile.txt");
                 play(this.player);
 
             case "l":
