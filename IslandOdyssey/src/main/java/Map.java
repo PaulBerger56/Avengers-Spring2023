@@ -111,42 +111,38 @@ public class Map implements Serializable {
             } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
-
     }
+
     //Joseph
-    public void readPuzzles(String puzzleFile){
-
-
+    public void readPuzzles(String puzzleFile) {
         try{
             File readPuzzleFile = new File(puzzleFile);
-            puzzleReader = new Scanner(readPuzzleFile);
-        }catch(FileNotFoundException ex){
-            ex.printStackTrace();
-            System.out.println("\u001B[31m" +"Puzzle file problem" + "\u001B[0m");
-        }
-        while(puzzleReader.hasNext()){
-            String puzzleData = puzzleReader.nextLine();
-            String[] data = puzzleData.split("~");
-            try{
-                switch (data[0].toLowerCase()){
+            Scanner puzzleReader = new Scanner(readPuzzleFile);
+
+            while (puzzleReader.hasNext()) {
+                String puzzleData = puzzleReader.nextLine();
+                String[] data = puzzleData.split("~");
+
+                switch (data[0].toLowerCase()) {
                     case "0":
-                        rooms.get(Integer.parseInt(data[4])).addPuzzle(new Switches(data[1],data[2],Integer.parseInt(data[3])));
+                        rooms.get(Integer.parseInt(data[4])).addPuzzle(new Switches(data[1], data[2], Integer.parseInt(data[3])));
                         break;
                     case "1":
-                        rooms.get(Integer.parseInt(data[4])).addPuzzle(new Keypad(data[1],data[2],Integer.parseInt(data[3])));
+                        rooms.get(Integer.parseInt(data[4])).addPuzzle(new Keypad(data[1], data[2], Integer.parseInt(data[3])));
                         break;
-
                 }
-            }catch (NumberFormatException ex){
-                System.out.println(ex.getMessage());
-                System.out.println("\u001B[31m" + "Puzzle file problem" + "\u001B[0m");
             }
+            puzzleReader.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-        puzzleReader.close();
     }
-    
+
+
     public ArrayList<Room> getRooms() {
         return rooms;
     }
