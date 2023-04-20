@@ -219,11 +219,11 @@ public class Controller {
             case "Keypad":
                 view.print("You are presented with a string of digits: " + room.getPuzzle().getDescription());
                 view.print("Please enter the word you would get if you entered this number into a keypad.");
-                String[] commands = scanner.nextLine().toLowerCase().split(" ");
                 boolean hasSolved = false;
                 while(!hasSolved) {
+                    String[] commands = scanner.nextLine().toLowerCase().split(" ");
                     if(commands.length == 1){
-                        if(((Keypad)room.getPuzzle()).check(commands[1])) {
+                        if(((Keypad)room.getPuzzle()).check(commands[0])) {
                             hasSolved = true;
                             solvedPuzzle(room);
                         } else if(room.getPuzzle().getAttempts() == 0) {
@@ -242,7 +242,7 @@ public class Controller {
             case "Switches":
                 view.print("You are presented with a row of 5 switches with a 1 inscribed on top and a 0 inscribed on the bottom of each switch.");
                 view.print("The switches are all switched down.");
-                view.print("Please input the decimal number" + room.getPuzzle().getDescription() + " in binary.");
+                view.print("Please input the decimal number " + room.getPuzzle().getDescription() + " in binary.");
                 view.printSwitchPuzzleMenu();
                 boolean hasSolved1 = false;
                 while(!hasSolved1){
@@ -259,8 +259,9 @@ public class Controller {
                         case "flip":
                             if(commands1.length != 2) {
                                 view.print("Please enter flip followed by switch number you would like to flip.");
-                            } else if(commands1[1] != "1" && commands1[1] != "2" && commands1[1] != "3" && commands1[1] != "4" && commands1[1] != "5") {
+                            } else if(!commands1[1].equals("1") && !commands1[1].equals("2") && !commands1[1].equals("3") && !commands1[1].equals("4") && !commands1[1].equals("5")) {
                                 view.print("Please enter flip and a valid number of the switch you would like to flip.");
+                                System.out.print(commands1[1]);
                             } else {
                                 ((Switches) room.getPuzzle()).flip(commands1[1]);
                                 view.print("You have flipped switch #" + commands1[1]);
@@ -271,10 +272,9 @@ public class Controller {
                         case "help":
                         default:
                             view.printSwitchPuzzleMenu();
-                            break;
-                    }
-                    break;
+                            }
                 }
+                break;
         }
 
     }
@@ -412,6 +412,7 @@ public class Controller {
     //Bao
     public void solvedPuzzle(Room room) {
         view.print(room.getPuzzle().puzzleSolvedMessage());
+        view.print("You received " + room.getPuzzle().getItem().getName());
         player.getInventory().add(room.getPuzzle().getItem());
         room.removePuzzle();
     }

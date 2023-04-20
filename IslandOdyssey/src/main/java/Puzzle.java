@@ -46,5 +46,9 @@ public abstract class Puzzle implements Serializable {
 		this.attempts = attempts;
 	}
 	
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	
 	
 }
