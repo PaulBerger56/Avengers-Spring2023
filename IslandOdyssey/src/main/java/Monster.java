@@ -6,14 +6,10 @@ import java.util.SortedMap;
 
 public class Monster implements Serializable {
     //Created by Joseph
-    String name;
-    String monsterDescription;
-    int hitPoints;
-    int strength;
-    int attackChance;
-    String weakness;
-    Item item;
-    boolean isDefeated = false;
+    private String name, monsterDescription, weakness;
+    private int hitPoints, strength, attackChance;
+    private Item item;
+    private boolean isDefeated = false;
 
     public Monster(){
 
@@ -29,11 +25,6 @@ public class Monster implements Serializable {
     }
 
     //Joseph
-    public Item giveItemToPlayer(){
-        item = null;
-        return item;
-    }
-    //Joseph
    public void addItemToMonster(Item monsterItem){
         Monster monster = new Monster();
         monster.addItemToMonster(monsterItem);
@@ -42,7 +33,7 @@ public class Monster implements Serializable {
     //Joseph
     public void takeHit(int hit){
         hitPoints -= hit;
-        if(hitPoints == 0 ){
+        if(hitPoints < 0 ){
             whenDefeated();
         }
     }
@@ -83,12 +74,29 @@ public class Monster implements Serializable {
     }
 
     //Edwin
-    public String getWeakness(){
+    public String getWeakness() {
         return weakness;
+    }
+    
+    //Bao
+    public Item getItem() {
+    	return item;
+    }
+    //Bao
+    public boolean checkHit() {
+    	if(Math.ceil(Math.random() * 100) <= attackChance) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    
+    public boolean isDefeated() {
+    	return isDefeated;
     }
 
     //Joseph
-    public void setDefeated(boolean isDefeated){
+    public void setDefeated(boolean isDefeated) {
         this.isDefeated = isDefeated;
     }
 

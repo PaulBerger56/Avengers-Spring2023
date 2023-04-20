@@ -13,11 +13,11 @@ public class Switches extends Puzzle implements Serializable {
 	public void flip(String flipNum){
 			if(switches[Integer.parseInt(flipNum) - 1] == 0)
 			{
-				switches[Integer.parseInt(flipNum)] = 1;
+				switches[Integer.parseInt(flipNum) - 1] = 1;
 			}
 			else
 			{
-				switches[Integer.parseInt(flipNum)] = 0;
+				switches[Integer.parseInt(flipNum) - 1] = 0;
 			}
 	}
 	
@@ -26,7 +26,7 @@ public class Switches extends Puzzle implements Serializable {
 		
 		for(int i: switches)
 		{
-			temp[i - 1] = switches[i - 1];
+			temp[i] = switches[i];
 		}
 		
 		return temp;
@@ -37,7 +37,7 @@ public class Switches extends Puzzle implements Serializable {
 		
 		for(int i: switches)
 		{
-			temp += switches[i - 1];
+			temp += switches[i];
 		}
 		
 		if(temp.equals(solution))

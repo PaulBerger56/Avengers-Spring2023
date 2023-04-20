@@ -120,10 +120,25 @@ public class View {
     public void printCombatMenu(){
         System.out.println("Would you like to (A)ttack, (U)se an item or (E)xamine the monster?");
     }
+    
+    //Bao
+    public void printMonsterAttack(String monsterName) {
+    	System.out.println(monsterName + " attacks you.");
+    }
 
     //Paul
     public void printPlayerDoesntHaveItem() {
         System.out.println("Sorry, the player does not have that item");
+    }
+    
+    //Bao
+    public void printPlayerHealth(int health) {
+    	System.out.println("You have " + health + "HP.");
+    }
+    
+    //Bao
+    public void printUsedItem(String itemName) {
+    	System.out.println("You used " + itemName + ".");
     }
 
     //Paul

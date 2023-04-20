@@ -15,9 +15,9 @@ public class Map implements Serializable {
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
         this.rooms = new ArrayList<>();
         readRoom(roomFile);
+        readPuzzles(puzzleFile);
         readItems(itemFile);
         readMonster(monsterFile);
-        readPuzzles(puzzleFile);
 
     }
     
@@ -100,7 +100,7 @@ public class Map implements Serializable {
                     rooms.get(roomNumber).addItem(new CombatItem(itemName, itemDesc, roomNumber));
                     break;
                 case "collectible":
-                    rooms.get(roomNumber).addItem(new Collectible(itemName, itemDesc, roomNumber));
+                    rooms.get(roomNumber).getPuzzle().setItem(new Collectible(itemName, itemDesc, roomNumber));
                     break;
                 case "interactable":
                     rooms.get(roomNumber).addItem(new Interactable(itemName, itemDesc, roomNumber));
@@ -129,6 +129,7 @@ public class Map implements Serializable {
                 switch (data[0].toLowerCase()) {
                     case "0":
                         rooms.get(Integer.parseInt(data[4])).addPuzzle(new Switches(data[1], data[2], Integer.parseInt(data[3])));
+                        System.out.println("Puzzle placed in room" + data[4]);
                         break;
                     case "1":
                         rooms.get(Integer.parseInt(data[4])).addPuzzle(new Keypad(data[1], data[2], Integer.parseInt(data[3])));
