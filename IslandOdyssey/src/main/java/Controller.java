@@ -332,8 +332,11 @@ public class Controller {
                     if(room.getMonster().isDefeated()){
                         view.print("Victory!");
                         view.print("You defeated " + room.getMonster().getName());
-                        view.print("You received " + room.getMonster().getItem());
-                        player.addItem(room.getMonster().getItem());
+
+                        if(player.getCurrentRoomObject().getMonster().getItem() != null) {
+                            view.print("You received " + room.getMonster().getItem());
+                            player.addItem(room.getMonster().getItem());
+                        }
                         room.removeMonster();
                     }
                     break;
@@ -372,7 +375,7 @@ public class Controller {
                     }
                     break;
             }
-            if(!room.getMonster().isDefeated()) {
+            if(room.getMonster() != null) {
             view.printMonsterAttack(room.getMonster().getName());
             if(room.getMonster().checkHit()) {
                 view.print("You took " + room.getMonster().getStrength() + " damage");

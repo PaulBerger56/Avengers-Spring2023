@@ -10,7 +10,7 @@ public class Player implements Serializable {
     private final int attackPower;
     private int currentRoom;
     private int previousRoom;
-    private int attackChance;
+    private final int attackChance;
     private boolean defeated;
     private final ArrayList<Item> inventory;
     private final Map map;

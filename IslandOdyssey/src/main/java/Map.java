@@ -5,21 +5,22 @@ import java.io.FileReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Map implements Serializable {
 
     private final ArrayList<Room> rooms;
+    private HashMap<String, Item> monsterDrops;
 
     //Joseph and Bao
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
         this.rooms = new ArrayList<>();
+        this.monsterDrops = new HashMap<>();
         readRoom(roomFile);
         readPuzzles(puzzleFile);
         readMonster(monsterFile);
         readItems(itemFile);
-
-
     }
     
     //Bao and Joseph
@@ -94,6 +95,7 @@ public class Map implements Serializable {
                 case "consumable":
                     int healthPoints = Integer.parseInt(tokens[4]);
                     rooms.get(roomNumber).addItem(new Consumable(itemName, itemDesc, healthPoints));
+                    monsterDrops.put(itemName, new Consumable(itemName, itemDesc, healthPoints));
                     break;
                 case "combat":
                     rooms.get(roomNumber).addItem(new CombatItem(itemName, itemDesc, roomNumber));
@@ -128,7 +130,6 @@ public class Map implements Serializable {
                 switch (data[0].toLowerCase()) {
                     case "0":
                         rooms.get(Integer.parseInt(data[4])).addPuzzle(new Switches(data[1], data[2], Integer.parseInt(data[3])));
-                        System.out.println("Puzzle placed in room" + data[5]);
                         break;
                     case "1":
                         rooms.get(Integer.parseInt(data[4])).addPuzzle(new Keypad(data[1], data[2], Integer.parseInt(data[3])));

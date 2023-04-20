@@ -32,10 +32,12 @@ public class Monster implements Serializable {
 
     //Joseph
     public void takeHit(int hit){
-        hitPoints -= hit;
-        if(hitPoints < 0 ){
-            whenDefeated();
+        if(hitPoints - hit  <= 0) {
+            this.hitPoints = 0;
+            setDefeated();
         }
+        hitPoints -= hit;
+
     }
     
     //Joseph
@@ -49,7 +51,7 @@ public class Monster implements Serializable {
     }
     
     //Joseph
-    public void whenDefeated(){
+    public void setDefeated(){
         isDefeated = true;
     }
     
