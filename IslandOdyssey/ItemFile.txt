@@ -1,5 +1,4 @@
 Consumable~Coconut~It is a coconut. You can extract the refreshing coconut milk from it, which will restore 100 HP.~1~100
-Consumable~Coconut~It is a coconut. You can extract the refreshing coconut milk from it, which will restore 100 HP.~1~100
 Combat~Maracas~This item may be used in combat to pacify a monster. Once a monster has been pacified, you may enter the room that the monster is in without having to defeat it. The monster becomes unpacified when you leave the room, so be cautious when navigating from a room with a pacified monster!~11
 Consumable~Alligator Meat~You become very infuriated with the alligator that you killed that you cook and eat its remains. Delicious. Eating this restores 100 HP.~7~100
 Combat~Flame Thrower~A Molotov cocktail with a description tag on it. The description reads: ‘Very useful weapon against large numbers of targets. Do not ask how we know. Not approved by the FDA.~5

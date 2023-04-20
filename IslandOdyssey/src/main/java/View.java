@@ -50,7 +50,7 @@ public class View {
         }else {
             System.out.println("This room contains: ");
             for (Item i : items) {
-                System.out.println(i.getName() + ": qauntity: " + i.getQuantity());
+                System.out.println(i.getName() + " Qauntity: " + i.getQuantity());
             }
         }
     }
