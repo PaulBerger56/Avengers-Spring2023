@@ -22,12 +22,12 @@ public class Monster implements Serializable {
         this.strength = strength;
         this.attackChance = attackChance;
         this.weakness = weakness;
+        this.item = null;
     }
 
     //Joseph
    public void addItemToMonster(Item monsterItem){
-        Monster monster = new Monster();
-        monster.addItemToMonster(monsterItem);
+        this.item = monsterItem;
    }
 
     //Joseph

@@ -459,7 +459,7 @@ public class Controller {
     	view.print("Victory!");
     	view.print("You defeated " + room.getMonster().getName());
     	if(player.getCurrentRoomObject().getMonster().getItem() != null) {
-    		view.print("You received " + room.getMonster().getItem());
+    		view.print("You received " + room.getMonster().getItem().getName());
     		player.addItem(room.getMonster().getItem());
             }
     	room.removeMonster();
