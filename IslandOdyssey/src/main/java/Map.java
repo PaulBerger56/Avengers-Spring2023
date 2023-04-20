@@ -15,9 +15,9 @@ public class Map implements Serializable {
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {
         this.rooms = new ArrayList<>();
         readRoom(roomFile);
-        readPuzzles("Puzzle.txt");
+        readPuzzles(puzzleFile);
         readMonster(monsterFile);
-        readItems("Item.txt");
+        readItems(itemFile);
 
 
     }
@@ -125,16 +125,13 @@ public class Map implements Serializable {
                 String puzzleData = puzzleReader.nextLine();
                 String[] data = puzzleData.split("~");
 
-
-                // These need to be fixed to reflect the reformatted Puzzle.txt file
-                // I changed them to fit the longer lines, hence the data[5]
                 switch (data[0].toLowerCase()) {
                     case "0":
-                        rooms.get(Integer.parseInt(data[5])).addPuzzle(new Switches(data[1], data[2], Integer.parseInt(data[3])));
+                        rooms.get(Integer.parseInt(data[4])).addPuzzle(new Switches(data[1], data[2], Integer.parseInt(data[3])));
                         System.out.println("Puzzle placed in room" + data[5]);
                         break;
                     case "1":
-                        rooms.get(Integer.parseInt(data[5])).addPuzzle(new Keypad(data[1], data[2], Integer.parseInt(data[3])));
+                        rooms.get(Integer.parseInt(data[4])).addPuzzle(new Keypad(data[1], data[2], Integer.parseInt(data[3])));
                         break;
                 }
             }
