@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Edwin
-public class Consumable extends Item{
+public class Consumable extends Item implements Serializable {
 
     private String name;
     private String description;

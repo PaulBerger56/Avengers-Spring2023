@@ -35,8 +35,7 @@ public class View {
 
     // Paul
     public void printSaveMessage() {
-        System.out.println("What would you like to name your file?\n" +
-                "Please leave off the .bin or other file type");
+        System.out.println("Now saving your game!");
     }
 
     // Paul

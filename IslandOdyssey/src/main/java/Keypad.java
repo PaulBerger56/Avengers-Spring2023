@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Keypad extends Puzzle{
+public class Keypad extends Puzzle implements Serializable {
 
 	Keypad(String description, String solution, int maxAttempts){
 		super(description, solution, maxAttempts);

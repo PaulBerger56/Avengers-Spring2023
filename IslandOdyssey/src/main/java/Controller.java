@@ -83,6 +83,7 @@ public class Controller {
                 String[] splitCommand = command.split(" ");
 
                 switch(splitCommand[0]) {
+                    //Paul
                     case "w" :
                         if(player.getCurrentRoomObject().getWestExit() == 99) {
                             view.printNoRoom();
@@ -92,7 +93,7 @@ public class Controller {
                             player.setCurrentRoom(player.getCurrentRoomObject().getWestExit());
                         }
                         break;
-
+                    // Paul
                     case "n" :
                         if(player.getCurrentRoomObject().getNorthExit() == 99) {
                             view.printNoRoom();
@@ -102,7 +103,7 @@ public class Controller {
                             player.setCurrentRoom(player.getCurrentRoomObject().getNorthExit());
                         }
                         break;
-
+                    // Paul
                     case "e" :
                         if(player.getCurrentRoomObject().getEastExit() == 99) {
                             view.printNoRoom();
@@ -112,7 +113,7 @@ public class Controller {
                             player.setCurrentRoom(player.getCurrentRoomObject().getEastExit());
                         }
                         break;
-
+                    // Paul
                     case "s" :
                         if(player.getCurrentRoomObject().getSouthExit() == 99) {
                             view.printNoRoom();
@@ -122,13 +123,13 @@ public class Controller {
                             player.setCurrentRoom(player.getCurrentRoomObject().getSouthExit());
                         }
                         break;
-
+                    // Paul
                     case "use" :
                         String tempItemName = "";
                         for(int i = 1; i < splitCommand.length;i++){
                             tempItemName += (splitCommand[i] + " ");
                         }
-                        Item tempItem = player.doesPlayerHaveItem(tempItemName);
+                        Item tempItem = player.doesPlayerHaveItem(splitCommand[1]);
                         if(tempItem == null) {
                             view.printPlayerDoesntHaveItem();
                             break;
@@ -147,7 +148,7 @@ public class Controller {
                             view.printCantUseHere();
                             break;
                         }
-
+                    // Paul
                     case "pickup" :
                         String tempRoomItemName = "";
                         for(int i = 1; i < splitCommand.length;i++){
@@ -162,11 +163,11 @@ public class Controller {
                             printPickup(player.getCurrentRoomObject().removeItem(tempRoomItem));
                             break;
                         }
-
+                    //Paul
                     case "explore" :
                         explore();
                         break;
-
+                    //Paul
                     case "examine" :
                         if(player.getCurrentRoomObject().doesRoomHavePuzzle()) {
                             playPuzzle(player.getCurrentRoomObject());
@@ -174,11 +175,26 @@ public class Controller {
                         } else {
                             view.printNoStrangeDevice();
                         }
-
+                    //Paul
                     case "inventory":
                         printPlayerInventory();
                         break;
 
+                    case "inspect":
+                        break;
+
+                    case "drop":
+                        break;
+
+                    case "health":
+                        break;
+
+                    case "save":
+                        view.printSaveMessage();
+                        saveGame("SaveFile");
+                        break;
+
+                    //Paul
                     default:
                         view.printInvalidInput();
                         break;

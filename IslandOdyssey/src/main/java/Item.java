@@ -1,9 +1,10 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class Item {
+public abstract class Item implements Serializable {
 
     private String name;
     private String description;

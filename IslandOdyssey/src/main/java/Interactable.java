@@ -1,7 +1,8 @@
 //Edwin
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Interactable extends Item{
+public class Interactable extends Item implements Serializable {
 
     private String name;
     private String description;

@@ -1,9 +1,10 @@
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.SortedMap;
 
-public class Monster {
+public class Monster implements Serializable {
     //Created by Joseph
     String name;
     String monsterDescription;

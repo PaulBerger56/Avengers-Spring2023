@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public abstract class Puzzle{
+public abstract class Puzzle implements Serializable {
 	
 	protected String description, solution, type;
 	protected int attempts, maxAttempts;

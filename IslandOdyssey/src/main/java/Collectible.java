@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Edwin
-public class Collectible extends Item{
+public class Collectible extends Item implements Serializable {
 
     private String name;
     private String description;

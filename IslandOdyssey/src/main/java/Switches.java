@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Switches extends Puzzle{
+public class Switches extends Puzzle implements Serializable {
 	
 	int[] switches = {0, 0, 0, 0, 0};
 

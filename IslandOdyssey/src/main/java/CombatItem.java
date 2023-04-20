@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Edwin
-public class CombatItem extends Item{
+public class CombatItem extends Item implements Serializable {
 
     private String name;
     private String description;
