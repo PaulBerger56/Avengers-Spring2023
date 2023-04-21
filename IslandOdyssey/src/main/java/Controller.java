@@ -173,6 +173,7 @@ public class Controller {
                             Consumable tempConsumable = (Consumable) tempItem;
                             player.addHp(tempConsumable.getHealthPoints());
                             view.useItem(player.removeItem(tempConsumable.getName()));
+                            view.printPlayerHp(player);
                             break;
                         } else if(tempItem.getType().equals("Collectible")) {
                             view.printCollectible(tempItem);
