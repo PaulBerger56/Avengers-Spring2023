@@ -89,8 +89,8 @@ public class Controller {
     // Paul
     // Holds the actual game loop
     public void play(Player player) {
-    	printRoomDescription();
-    	printMenu();
+        printRoomDescription();
+        printMenu();
         while(true) {
 
             // If the current room contains a monster, combat is initiated.
@@ -113,10 +113,10 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getWestExit());
-                        	printRoomDescription();
-                        	if(player.getCurrentRoomObject().getMonster() == null) {
-                        	printMenu();
-                        	}
+                            printRoomDescription();
+                            if(player.getCurrentRoomObject().getMonster() == null) {
+                                printMenu();
+                            }
                         }
                         break;
                     // Paul
@@ -127,10 +127,10 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getNorthExit());
-                        	printRoomDescription();
-                        	if(player.getCurrentRoomObject().getMonster() == null) {
-                        	printMenu();
-                        	}
+                            printRoomDescription();
+                            if(player.getCurrentRoomObject().getMonster() == null) {
+                                printMenu();
+                            }
                         }
                         break;
                     // Paul
@@ -141,10 +141,10 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getEastExit());
-                        	printRoomDescription();
-                        	if(player.getCurrentRoomObject().getMonster() == null) {
-                        	printMenu();
-                        	}
+                            printRoomDescription();
+                            if(player.getCurrentRoomObject().getMonster() == null) {
+                                printMenu();
+                            }
                         }
                         break;
                     // Paul
@@ -155,14 +155,18 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getSouthExit());
-                        	printRoomDescription();
-                        	if(player.getCurrentRoomObject().getMonster() == null) {
-                        	printMenu();
-                        	}
+                            printRoomDescription();
+                            if(player.getCurrentRoomObject().getMonster() == null) {
+                                printMenu();
+                            }
                         }
                         break;
                     // Paul
                     case "use" :
+                        if(splitCommand.length <= 1) {
+                            view.printUseReminder();
+                            break;
+                        }
                         String tempUseItem = "";
                         for(int i = 1; i < splitCommand.length;i++){
                             tempUseItem += (splitCommand[i] + " ");
@@ -191,6 +195,10 @@ public class Controller {
                         }
                     // Paul
                     case "pickup" :
+                        if(splitCommand.length <= 1) {
+                            view.printPickupReminder();
+                            break;
+                        }
                         String tempPickupItem = "";
                         for(int i = 1; i < splitCommand.length;i++){
                             tempPickupItem += (splitCommand[i] + " ");
@@ -222,25 +230,45 @@ public class Controller {
                     case "inventory":
                         printPlayerInventory();
                         break;
-                    //Joseph
+                    //Joseph && Paul
                     case "inspect":
+                        if(splitCommand.length <= 1) {
+                            view.printInspectReminder();
+                            break;
+                        }
+
                         String inspectItem = "";
                         for(int i = 1; i < splitCommand.length;i++){
                             inspectItem += (splitCommand[i] + " ");
                         }
                         inspectItem = inspectItem.substring(0, inspectItem.length() - 1);
-                        if(player.doesPlayerHaveItem(inspectItem)!= null){
+
+                        Item tempInspectItem = player.doesPlayerHaveItem(inspectItem);
+                        if(tempInspectItem == null) {
+                            view.printRoomNoItem();
+                            break;
+                        }
+                        if(tempInspectItem!= null){
                             printItemDescription(player.doesPlayerHaveItem(inspectItem));
                         }
                         break;
-                        //Joseph
+                    //Joseph && Paul
                     case "drop":
+                        if(splitCommand.length <= 1) {
+                            view.printDropReminder();
+                            break;
+                        }
                         String tmpDropItem = "";
                         for(int i = 1; i < splitCommand.length;i++){
                             tmpDropItem += (splitCommand[i] + " ");
                         }
                         tmpDropItem = tmpDropItem.substring(0, tmpDropItem.length() - 1);
                         Item interimItem = player.doesPlayerHaveItem(tmpDropItem);
+
+                        if(interimItem == null) {
+                            view.printPlayerDoesntHaveItem();
+                            break;
+                        }
 
                         if(interimItem!= null){
                             player.getCurrentRoomObject().addItem(interimItem);
@@ -374,9 +402,9 @@ public class Controller {
                                 solvedPuzzle(room);
                             }
                             else if(room.getPuzzle().getAttempts() == 0){
-                            	view.printPuzzleOutOfAttempts();
-                            	room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
-                            	hasFinished1 = true;
+                                view.printPuzzleOutOfAttempts();
+                                room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
+                                hasFinished1 = true;
                             }
                             else {
                                 room.getPuzzle().setAttempts(room.getPuzzle().getAttempts() - 1);
@@ -438,14 +466,14 @@ public class Controller {
                     break;
                 case "i":
                 case "inventory":
-                	printPlayerInventory();
-                	break;
+                    printPlayerInventory();
+                    break;
                 case "u":
                 case "use":
-                	if(commands.length == 1) {
+                    if(commands.length == 1) {
                         view.printUseFormat();
-                		break;
-                	}
+                        break;
+                    }
                     String tempItem = "";
                     for(int i = 1; i < commands.length;i++){
                         tempItem += (commands[i] + " ");
@@ -458,19 +486,19 @@ public class Controller {
                                 view.printUsedItem(player.doesPlayerHaveItem(tempItem).getName());
                                 if(room.getMonster().isDefeated()) {
                                     view.printSuperEffective();
-                                	combatVictory(room);
-                                	inCombat = false;
-                                	break;
+                                    combatVictory(room);
+                                    inCombat = false;
+                                    break;
                                 }
                                 if(player.doesPlayerHaveItem(tempItem).getName().equalsIgnoreCase("Maracas")) {
                                     view.printFled();
-                                	int tempCurrentRoom = player.getCurrentRoom();
-                                	player.setCurrentRoom(player.getPreviousRoom());
-                                	player.setPreviousRoom(tempCurrentRoom);
-                                	printRoomDescription();
-                                	printMenu();
-                                	inCombat = false;
-                                	break;
+                                    int tempCurrentRoom = player.getCurrentRoom();
+                                    player.setCurrentRoom(player.getPreviousRoom());
+                                    player.setPreviousRoom(tempCurrentRoom);
+                                    printRoomDescription();
+                                    printMenu();
+                                    inCombat = false;
+                                    break;
                                 }
                                 if(!room.getMonster().isDefeated()) {
                                     view.printNotEffective();
@@ -569,14 +597,14 @@ public class Controller {
     // Bao
     public void combatVictory(Room room) {
         view.printCombatVictory(room.getMonster());
-    	if(player.getCurrentRoomObject().getMonster().getItem() != null) {
+        if(player.getCurrentRoomObject().getMonster().getItem() != null) {
             view.printRecievedItem(room.getMonster().getItem().getName());
-    		player.addItem(room.getMonster().getItem());
+            player.addItem(room.getMonster().getItem());
             }
-    	room.removeMonster();
-    	printRoomDescription();
-    	printMenu();
-    	
+        room.removeMonster();
+        printRoomDescription();
+        printMenu();
+
     }
 
     // Bao
