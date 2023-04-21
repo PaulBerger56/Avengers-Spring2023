@@ -335,7 +335,14 @@ public class Controller {
                 view.printSwitchPuzzleMenu();
                 boolean hasSolved1 = false;
                 while(!hasSolved1){
-                    String[] commands1 = scanner.nextLine().toLowerCase().split(" ");
+
+                    String command = scanner.nextLine().toLowerCase();
+                    String[] commands1 = command.split(" ");
+
+                    if(Character.isLetter(command.charAt(0)) && Character.isDigit(command.charAt(1))){
+                        view.printFlipValidNumber();
+                    }
+
                     switch(commands1[0]) {
                         case "s":
                         case "submit":
