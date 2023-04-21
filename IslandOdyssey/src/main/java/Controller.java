@@ -255,6 +255,11 @@ public class Controller {
                         saveGame();
                         break;
 
+                    //Edwin
+                    case "help":
+                        view.printHelpMenu();
+                        break;
+
                     //Paul
                     default:
                         view.printInvalidInput();
@@ -304,7 +309,7 @@ public class Controller {
         }
     }
 
-    //Bao
+    //Bao & Edwin
     public void playPuzzle(Room room) {
         switch(room.getPuzzle().getType()) {
             case "Keypad":
