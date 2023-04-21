@@ -36,7 +36,18 @@ public class View {
         else {
             System.out.println("\u001B[32m" + "You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + "." + "\u001B[0m");
         }
-        System.out.println("\u001B[32m" + room.getDescription() + "\u001B[0m");
+        int maxLength = 140;
+        String [] words = room.getDescription().split("\\s+");
+
+        StringBuilder currentLine = new StringBuilder();
+        for(String word : words) {
+            if(currentLine.length() + word.length() + 1 > maxLength) {
+                System.out.println("\u001B[32m" + currentLine + "\u001B[0m");
+                currentLine = new StringBuilder();
+            }
+            currentLine.append(word).append(" ");
+        }
+        System.out.println("\u001B[32m" + currentLine + "\u001B[0m");
     }
 
     // Paul
@@ -64,7 +75,7 @@ public class View {
 
     // Paul
     public void printFamiliar() {
-        System.out.println("This looks familiar...");
+        System.out.println("\u001B[32m" + "This looks familiar..." + "\u001B[0m");
     }
 
     // Paul
