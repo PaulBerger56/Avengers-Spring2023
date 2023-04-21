@@ -4,7 +4,7 @@ The Values are delimited by a "~", and there can be several descriptions
 
 MonsterFile.txt
 This text file is the basis of important variables that is parse into the map for the monster class.
-In total there are six variables that the monster class will contain, these are name, monsterDescription, hitPoints, strength, attackChance, and weakness.
+In total there are six variables that the monster class will contain, these are name, monsterDescription, hitPoints, strength, attackChance, and weakness. The format is <name>~<description>~<hitPoints>~<strength>~<attackChance>~<weakness>~<roomNumber>.
 
 <name>
 A string variable which will provide the name of a monster.
@@ -23,11 +23,14 @@ This is an int variable where the monsters have a percentage of success in hitti
 
 <weakness>
 The string is meant to call an item where a specific item will have a weakness to. When enacted the monster's health will deplete to zero.
+
+<roomNumber>
+It's an int variable to help place which room the monster will be in the map. It's being read from the MonsterFile then parsed to the room class.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 RoomFile.txt
 
 The room text file helps to detect the navigation of the game, and it's variables are a representation of that.
-In total there are 7 variables that the room class had when being parsed for the game.
+In total there are 7 variables that the room class had when being parsed for the game. The format is <roomNumber>~<name>~<description>~<northExit>~<eastExit>~<southExit>~<westExit>.
 
 <roomNumber>
 An int variable to represent what number it's placed from the map based on the client's request.
@@ -58,10 +61,10 @@ ItemFile.txt
 This text file keeps all information about the different items that are present in the game. There's four different types of items which are interactable, consumable, combatItem, and collectible.
 Interactable, combatItem, and collectible have 4 variables to be parsed, while consumable has 5.
 
-Interactable: An interactable item is one where the player can put input to have a specific command. There's only one item like this it's phone, and it's there to finish the game.
-CombatItem: These are items specifically used when the player is in a battle with a monster. Most of them will be a monster's weakness which will kill it instantly.
-Collectible: Items in which there are multiple of them of the same item which leads for a specific purpose within the game. In the game the collectible items are the phone numbers which will be used once the player encounters the phone.
-Consumable: Consumable items are one's where there is immediate effect once the player uses it. Like the coconut item will increase a player's health by 100 health points.
+Interactable: An interactable item is one where the player can put input to have a specific command. There's only one item like this it's phone, and it's there to finish the game. Format for this item is <type>~<name>~<description>~<roomNumber>.
+CombatItem: These are items specifically used when the player is in a battle with a monster. Most of them will be a monster's weakness which will kill it instantly. Format for this item is <type>~<name>~<description>~<roomNumber>.
+Collectible: Items in which there are multiple of them of the same item which leads for a specific purpose within the game. In the game the collectible items are the phone numbers which will be used once the player encounters the phone. Format for this item is <type>~<name>~<description>~<roomNumber>.
+Consumable: Consumable items are one's where there is immediate effect once the player uses it. Like the coconut item will increase a player's health by 100 health points. Format for this item is <type>~<name>~<description>~<roomNumber>~<healthPoints>.
 
 <type>
 This is an item object variable to help separate which type of item will be implemented in the game.
@@ -90,7 +93,7 @@ Switches: You will be presented with five switches that may be in either an up o
 You will be given a number to input using the switches. To do so, convert the number from decimal into a five-bit binary number.
 Flip the five switches in such a way that the switch in the same position as each digit in the binary number is up if the digit is a 1 or down if the digit is a 0.
 Submitting the correct configuration of switches will solve the puzzle. If an incorrect configuration of switches is submitted you will fail the puzzle.
-
+The file format structure is <puzzleID>~<Problem>~<Answer>~<maxAttempts>~<roomID>.
 Command:
 •	“flip #”: Changes the up or down state of the switch in the position #. The command is registered as invalid if # is not a digit from 1-5.
 •	“submit”: The program will check the current configuration of switches to see if it is correct.
@@ -111,7 +114,8 @@ An int variable which will give the player the attempts needed to complete the p
 A int variable where the puzzle will be placed on the map in the room it's in.
 
 Keypad: You will be presented with a string of digits. When these digits are entered into a phone keypad, a word will be formed.
-Enter this word into the panel to complete the puzzle. If an incorrect word is entered you will fail the puzzle.
+Enter this word into the panel to complete the puzzle. If an incorrect word is entered you will fail the puzzle. The file is formatted from <puzzleID>~<Numerical Answer>~<Alphabetical Answer>~<maxAttempts>~<roomID>.
+
 Commands:
 •	“enter word”: Submits the word “word” to the panel.
 Reference: To input a particular letter into a phone keypad, you must press the number key with that letter on its label a number of times equal to the position of that letter on the label.
@@ -140,6 +144,7 @@ Instead, entering a 1 will separate two instances of letters that must be entere
 PlayerFile.txt
 There standard player stats once the user starts the game is we parsed that data into the project.
 Which will make for a more concise playing experience. There's 8 variables that are important to the function of the player.
+The file format structure is <maxHP>~<currentHP>~<attackPower>~<currentRoom>~<previousRoom>~<attackChance>~<defeated>~<inventory>.
 
 <maxHP>
 This int variable contain the maximum amount of health the player will have in the game. The player starts with the max HP to help the user getting use to the game.
@@ -212,7 +217,7 @@ Upon Starting the game you will be greeted by the main menu which has 4 options:
 
 "n" New Game - This starts a new game which uses the default map and all visited flags are set to false.
 
-"s" Continue a Saved Game (in progress) - This will allow you to load a save file which has visited room
+"save" Continue a Saved Game (in progress) - This will allow you to load a save file which has visited room
             flags set to true.
 
 "l" Load Game - This will allow you to load a save game file and start from where you last save in the game.
