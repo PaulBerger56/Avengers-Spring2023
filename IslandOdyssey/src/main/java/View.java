@@ -203,6 +203,7 @@ public class View {
     }
 
     // Joseph
+
     public void printDropItem(String name) {
         System.out.println("You dropped " + name + ".");
     }
