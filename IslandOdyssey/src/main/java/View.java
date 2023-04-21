@@ -10,6 +10,7 @@ public class View {
 
     // Paul
     public void printPlayerInventory(Player player) {
+        System.out.println();
         System.out.println("The player's inventory contains: ");
         for(Item i: player.getInventory()) {
             System.out.println(i.getName() + ": " + i.getQuantity());
@@ -30,10 +31,12 @@ public class View {
     public void printRoomDescription(Room room, boolean isVisited) {
         
         if(isVisited) {
+            System.out.println();
             System.out.print("\u001B[32m" +"You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ". " + "\u001B[0m");
             printFamiliar();
         }
         else {
+            System.out.println();
             System.out.println("\u001B[32m" + "You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + "." + "\u001B[0m");
         }
         int maxLength = 140;
@@ -80,6 +83,7 @@ public class View {
 
     // Paul
     public void printPickup(String itemName) {
+        System.out.println();
         System.out.println("The player picked up a(n) " + itemName);
     }
 
@@ -194,6 +198,7 @@ public class View {
 
     // Paul
     public void printInventoryIsEmpty() {
+        System.out.println();
         System.out.println("The player's inventory is empty");
     }
 
@@ -253,21 +258,23 @@ public class View {
 
     //Paul
     public void printAttackMissed() {
-        System.out.println("Your attack missed.");
+        System.out.println("\u001B[33m" + "Your attack missed." + "\u001B[0m");
     }
 
     // Paul
     public void printConfirmedHitOnMonster(Monster monster, Player player) {
-        System.out.println("You hit " + monster.getName() + " for " + player.getAttackPower() + " damage!");
+        System.out.println("\u001B[33m" + "You hit " + monster.getName() + " for " + player.getAttackPower() + " damage!" + "\u001B[0m");
     }
 
     // Paul
     public void printPlayerAttacksMonster(Monster monster) {
+        System.out.println();
         System.out.println("You attack " + monster.getName() + ".");
     }
 
     // Paul
     public void printSeeMonster(Monster monster) {
+        System.out.println();
         System.out.println("You see " + monster.getName());
     }
 
@@ -311,7 +318,10 @@ public class View {
 
     // Paul
     public void printCombatVictory(Monster monster) {
-        System.out.println("Victory! You defeated " + monster.getName());
+        System.out.println();
+        System.out.println("\033[1;34m" + "-------------------------------------------------------" + "\u001B[0m");
+        System.out.println("\033[1;34m" + "Victory! You defeated " + monster.getName() + "\u001B[0m");
+        System.out.println("\033[1;34m" + "-------------------------------------------------------" + "\u001B[0m");
     }
 
     // Paul
@@ -322,12 +332,12 @@ public class View {
 
     // Paul
     public void printTakeDamage(int strength) {
-        System.out.println("You took " + strength + " damage");
+        System.out.println("\u001B[33m" + "You took " + strength + " damage" + "\u001B[0m");
     }
 
     // Paul
     public void printMissed() {
-        System.out.println("It missed.");
+        System.out.println("\u001B[33m" + "It missed." + "\u001B[0m");
     }
 
     // Paul
