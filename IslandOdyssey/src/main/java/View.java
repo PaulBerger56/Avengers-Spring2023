@@ -394,4 +394,15 @@ public class View {
     public void printPlayerHp(Player player) {
         System.out.println("The player currently has " + player.getCurrentHp() + " hp");
     }
+
+    //Edwin
+    public void printAttemptsLeft(Interactable interactable) {
+        if (interactable.getAttempts() == 5){
+            System.out.println("You have " + interactable.getAttempts() + " attempts.");
+        }
+        else {
+            System.out.println("You have " + interactable.getAttempts() + " attempts left.");
+        }
+    }
+
 }
