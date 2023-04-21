@@ -395,6 +395,36 @@ public class View {
         System.out.println("The player currently has " + player.getCurrentHp() + " hp");
     }
 
+    //Edwin
+    public void printAttemptsLeft(Interactable interactable) {
+        if (interactable.getAttempts() == 5){
+            System.out.println("You have " + interactable.getAttempts() + " attempts.");
+        }
+        else {
+            System.out.println("You have " + interactable.getAttempts() + " attempts left.");
+        }
+    }
+
+    //Edwin
+    public void printEmptyLine(){
+        System.out.println();
+    }
+
+    //Edwin
+    public void printHelpMenu() {
+        System.out.println("\nCommands:\n");
+        System.out.println("N E S W - Use this to move around between rooms.");
+        System.out.println("Inventory - Use this when you want a list of your items in your inventory.");
+        System.out.println("Pickup [item] - Use this to pick an item up from the room you are in.");
+        System.out.println("Drop [item] - Use this to drop an item in the room you are in.");
+        System.out.println("Use [item] - Use this to use an item in your inventory.");
+        System.out.println("Inspect [item] - Use this to get a description of an item in your inventory.");
+        System.out.println("Explore - Use this to reveal items and puzzles in the room you are in.");
+        System.out.println("Examine - Use this when a room contains a strange device and you would like to initiate a puzzle.");
+        System.out.println("Health - Use this when you would like to know your current health points.");
+        System.out.println("Save - Use this when you would like to save the game.");
+    }
+
     public void printWouldYouLikeToQuit() {
         System.out.println("Would you like to quit for now? (y/n)");
     }

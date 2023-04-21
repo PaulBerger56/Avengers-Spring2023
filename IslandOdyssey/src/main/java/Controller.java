@@ -269,12 +269,17 @@ public class Controller {
                                 view.printInvalidInput();
                             }
                         }
-
                         break;
 
-                    //Paul
+                    //Edwin
+                    case "help":
+                        view.printHelpMenu();
+                        break;
+
+                    //Paul & Edwin
                     default:
                         view.printInvalidInput();
+                        printMenu();
                         break;
                 }
                 break;
@@ -298,10 +303,12 @@ public class Controller {
                 break;
             }
             view.printInteractableInstructions();
-
+            view.printAttemptsLeft(tempInteractable);
             String attempt = scanner.nextLine();
 
             if (attempt.equalsIgnoreCase("0000")){
+                view.printEmptyLine();
+                printMenu();
                 break;
             }
             else if (attempt.equals(tempInteractable.getPin())){
@@ -319,7 +326,7 @@ public class Controller {
         }
     }
 
-    //Bao
+    //Bao & Edwin
     public void playPuzzle(Room room) {
         switch(room.getPuzzle().getType()) {
             case "Keypad":
@@ -344,11 +351,20 @@ public class Controller {
                 }
                 break;
             case "Switches":
+                view.printEmptyLine();
                 view.printSwitchesInstructions(room);
+                view.printSwitchState(((Switches)room.getPuzzle()).printSwitches());
                 view.printSwitchPuzzleMenu();
                 boolean hasSolved1 = false;
                 while(!hasSolved1){
-                    String[] commands1 = scanner.nextLine().toLowerCase().split(" ");
+
+                    String command = scanner.nextLine().toLowerCase();
+                    String[] commands1 = command.split(" ");
+
+                    if(Character.isLetter(command.charAt(0)) && Character.isDigit(command.charAt(1))){
+                        view.printFlipValidNumber();
+                    }
+
                     switch(commands1[0]) {
                         case "s":
                         case "submit":
@@ -469,6 +485,11 @@ public class Controller {
                     } else {
                         view.printDontHaveTempItem(tempItem);
                     }
+                    break;
+                //Edwin
+                default:
+                    view.printInvalidInput();
+                    view.printCombatMenu();
                     break;
             }
             if(player.isDefeated()){
