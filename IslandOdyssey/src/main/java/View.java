@@ -394,4 +394,12 @@ public class View {
     public void printPlayerHp(Player player) {
         System.out.println("The player currently has " + player.getCurrentHp() + " hp");
     }
+
+    public void printWouldYouLikeToQuit() {
+        System.out.println("Would you like to quit for now? (y/n)");
+    }
+
+    public void printGoodLuck() {
+        System.out.println("Good luck on your adventure!");
+    }
 }
