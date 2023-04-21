@@ -180,16 +180,19 @@ public class View {
 
     //Paul
     public void printCollectible(Item tempItem) {
+        System.out.println();
         System.out.println(tempItem.getDescription());
     }
 
     //Paul
     public void printRoomNoItem() {
-        System.out.println("The room does not contain that item");
+        System.out.println();
+        System.out.println("\033[1;31m" + "The room does not contain that item" + "\u001B[0m");
     }
 
     //Paul
     public void useItem(String itemName) {
+        System.out.println();
         System.out.println("The player used the " + itemName);
     }
 
@@ -207,11 +210,12 @@ public class View {
     // Paul
     public void printInventoryIsEmpty() {
         System.out.println();
-        System.out.println("The player's inventory is empty");
+        System.out.println("\033[1;31m" + "The player's inventory is empty" + "\u001B[0m");
     }
 
     // Paul
     public void printMainMenu() {
+        System.out.println();
         System.out.println("Start a (n)ew game, or (l)oad a save file, or (q)?");
     }
 
@@ -223,39 +227,46 @@ public class View {
 
     // Paul
     public void printPlayerDefeated() {
-        System.out.println("You died. Game Over! Please try again.");
+        System.out.println();
+        System.out.println("\033[1;31m" + "You died. Game Over! Please try again." + "\u001B[0m");
     }
 
     // Joseph
 
     public void printDropItem(String name) {
+        System.out.println();
         System.out.println("You dropped " + name + ".");
     }
 
     // Edwin
     public void printFlipValidNumber() {
+        System.out.println();
         System.out.println("Please enter flip followed by a valid number of the switch you would like to flip.");
     }
 
     // Edwin
     public void printFailEnding() {
-        System.out.println("You have used all your attempts!");
-        System.out.println("You will never know the real end to your story!");
+        System.out.println();
+        System.out.println("\033[1;31m" + "You have used all your attempts!" + "\u001B[0m");
+        System.out.println("\033[1;31m" + "You will never know the real end to your story!" + "\u001B[0m");
         System.out.println();
     }
 
     // Paul
     public void printFled() {
+        System.out.println();
         System.out.println("You fled the battle.");
     }
 
     // Paul
     public void printSuperEffective() {
+        System.out.println();
         System.out.println("That was supereffective!");
     }
 
     // Paul
     public void printUseFormat() {
+        System.out.println();
         System.out.println("Please enter use and the item you would like to use.");
     }
 
@@ -294,6 +305,7 @@ public class View {
 
     // Paul
     public void printSwitchesInstructions(Room room) {
+        System.out.println();
         System.out.println("You are presented with a row of 5 switches with a 1 inscribed on top and a 0 inscribed on the bottom of each switch.");
         System.out.println("The switches are all switched down.");
         System.out.println("Please input the decimal number " + room.getPuzzle().getDescription() + " in binary.");
@@ -301,6 +313,7 @@ public class View {
 
     // Paul
     public void printKeypadInstructions(Room room) {
+        System.out.println();
         System.out.println("You are presented with a string of digits: " + room.getPuzzle().getDescription());
         System.out.println("Please enter the word you would get if you entered this number into a keypad.");
     }
@@ -322,7 +335,7 @@ public class View {
 
     // Paul
     public void printWrongPin() {
-        System.out.println("Wrong pin.");
+        System.out.println("\033[1;31m" + "Wrong pin." + "\u001B[0m");
     }
 
     // Paul
@@ -342,6 +355,7 @@ public class View {
     // Paul
     public void printTakeDamage(int strength) {
         System.out.println("\u001B[33m" + "You took " + strength + " damage" + "\u001B[0m");
+        System.out.println();
     }
 
     // Paul
@@ -352,6 +366,7 @@ public class View {
 
     // Paul
     public void printDontHaveTempItem(String tempItem) {
+        System.out.println();
         System.out.println("You do not have " + tempItem);
     }
 
@@ -418,6 +433,7 @@ public class View {
     }
 
     public void printInteractableClosed() {
+        System.out.println();
         System.out.println("The phone is unresponsive...  Hopefully it wasn't too important...");
     }
 
@@ -442,6 +458,7 @@ public class View {
 
     //Edwin
     public void printHelpMenu() {
+        System.out.println();
         System.out.println("\nCommands:\n");
         System.out.println("N E S W - Use this to move around between rooms.");
         System.out.println("Inventory - Use this when you want a list of your items in your inventory.");
@@ -457,10 +474,12 @@ public class View {
 
     //Paul
     public void printWouldYouLikeToQuit() {
+        System.out.println();
         System.out.println("Would you like to quit for now? (y/n)");
     }
 
     public void printGoodLuck() {
+        System.out.println();
         System.out.println("Good luck on your adventure!");
     }
 }
