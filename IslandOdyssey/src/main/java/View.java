@@ -12,7 +12,7 @@ public class View {
     public void printPlayerInventory(Player player) {
         System.out.println("The player's inventory contains: ");
         for(Item i: player.getInventory()) {
-            System.out.println(i.getName() + " Quantity: " + i.getQuantity());
+            System.out.println(i.getName() + ": " + i.getQuantity());
         }
     }
 
@@ -27,8 +27,15 @@ public class View {
 
     }
     // Paul
-    public void printRoomDescription(Room room) {
-        System.out.println("You are currently in room " + room.getRoomNumber() + ", The " + room.getName());
+    public void printRoomDescription(Room room, boolean isVisited) {
+        
+        if(isVisited) {
+        	System.out.print("You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ". ");
+        	printFamiliar();
+        }
+        else {
+        	System.out.println("You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ".");
+        }
         System.out.println(room.getDescription());
     }
 
@@ -50,7 +57,7 @@ public class View {
         }else {
             System.out.println("This room contains: ");
             for (Item i : items) {
-                System.out.println(i.getName() + " Qauntity: " + i.getQuantity());
+                System.out.println(i.getName() + ": " + i.getQuantity());
             }
         }
     }
