@@ -294,13 +294,13 @@ public class View {
         System.out.println("Please enter a one word answer.");
     }
 
-    public void printKeypadWrongAnswer(Room room) {
+    public void printPuzzleWrongAnswer(Room room) {
         System.out.println("Your answer was wrong. Try again.");
-        System.out.println("You have " + room.getPuzzle().getAttempts() + "attempts left.");
+        System.out.println("You have " + room.getPuzzle().getAttempts() + " attempts left.");
     }
 
     // Paul
-    public void printKeypadOutOfAttempts() {
+    public void printPuzzleOutOfAttempts() {
         System.out.println("You have run out of attempts. Please try again later.");
     }
 

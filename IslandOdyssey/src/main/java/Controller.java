@@ -331,19 +331,20 @@ public class Controller {
         switch(room.getPuzzle().getType()) {
             case "Keypad":
                 view.printKeypadInstructions(room);
-                boolean hasSolved = false;
-                while(!hasSolved) {
+                boolean hasFinished = false;
+                while(!hasFinished) {
                     String[] commands = scanner.nextLine().toLowerCase().split(" ");
                     if(commands.length == 1){
                         if(((Keypad)room.getPuzzle()).check(commands[0])) {
-                            hasSolved = true;
+                            hasFinished = true;
                             solvedPuzzle(room);
                         } else if(room.getPuzzle().getAttempts() == 0) {
-                            view.printKeypadOutOfAttempts();
+                            view.printPuzzleOutOfAttempts();
                             room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
+                            hasFinished = true;
                         } else {
                             room.getPuzzle().setAttempts(room.getPuzzle().getAttempts() - 1);
-                            view.printKeypadWrongAnswer(room);
+                            view.printPuzzleWrongAnswer(room);
                         }
                     } else{
                         view.printOneWordAnswer();
@@ -353,24 +354,29 @@ public class Controller {
             case "Switches":
                 view.printEmptyLine();
                 view.printSwitchesInstructions(room);
-                view.printSwitchState(((Switches)room.getPuzzle()).printSwitches());
+                view.printSwitchState(((Switches)room.getPuzzle()).getSwitches());
                 view.printSwitchPuzzleMenu();
-                boolean hasSolved1 = false;
-                while(!hasSolved1){
+                boolean hasFinished1 = false;
+                while(!hasFinished1){
 
                     String command = scanner.nextLine().toLowerCase();
                     String[] commands1 = command.split(" ");
-
-                    if(Character.isLetter(command.charAt(0)) && Character.isDigit(command.charAt(1))){
-                        view.printFlipValidNumber();
-                    }
 
                     switch(commands1[0]) {
                         case "s":
                         case "submit":
                             if(((Switches)room.getPuzzle()).check()){
-                                hasSolved1 = true;
+                                hasFinished1 = true;
                                 solvedPuzzle(room);
+                            }
+                            else if(room.getPuzzle().getAttempts() == 0){
+                            	view.printPuzzleOutOfAttempts();
+                            	room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
+                            	hasFinished1 = true;
+                            }
+                            else {
+                                room.getPuzzle().setAttempts(room.getPuzzle().getAttempts() - 1);
+                                view.printPuzzleWrongAnswer(room);
                             }
                             break;
                         case "f":
@@ -382,7 +388,7 @@ public class Controller {
                             } else {
                                 ((Switches) room.getPuzzle()).flip(commands1[1]);
                                 view.printFlippedSwitch(commands1[1]);
-                                view.printSwitchState(((Switches)room.getPuzzle()).printSwitches());
+                                view.printSwitchState(((Switches)room.getPuzzle()).getSwitches());
                             }
                             break;
                         case "h":
