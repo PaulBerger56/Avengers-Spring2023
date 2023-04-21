@@ -96,24 +96,29 @@ public class View {
     
     //Bao
     public void printSwitchState(int[] switchState){
-        String temp1 = "", temp2 = "", temp3 = "", temp4 = "", temp5 = "", temp6 = "";
+        String temp0 = "",temp1 = "", temp2 = "", temp3 = "", temp4 = "", temp5 = "", temp6 = "";
+    	int count = 0;
         for(int s: switchState) {
+        	count++;
             if(s == 0){
-                temp1 += "1    ";
-                temp2 += "|    ";
-                temp3 += "|    ";
-                temp4 += "|\\   ";
-                temp5 += "| \\  ";
-                temp6 += "0    ";
+            	temp0 += "(" + count + ")   ";
+                temp1 += " 1    ";
+                temp2 += " |    ";
+                temp3 += " |    ";
+                temp4 += " |\\   ";
+                temp5 += " | \\  ";
+                temp6 += " 0    ";
             } else {
-                temp1 += "1    ";
-                temp2 += "| /  ";
-                temp3 += "|/   ";
-                temp4 += "|    ";
-                temp5 += "|    ";
-                temp6 += "0    ";
+            	temp0 += "(" + count + ")   ";
+                temp1 += " 1    ";
+                temp2 += " | /  ";
+                temp3 += " |/   ";
+                temp4 += " |    ";
+                temp5 += " |    ";
+                temp6 += " 0    ";
             }
         }
+        System.out.println(temp0);
         System.out.println(temp1);
         System.out.println(temp2);
         System.out.println(temp3);
