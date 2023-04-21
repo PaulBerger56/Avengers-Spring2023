@@ -253,6 +253,23 @@ public class Controller {
                     case "save":
                         view.printSaveMessage();
                         saveGame();
+
+                        while(true) {
+                            view.printWouldYouLikeToQuit();
+                            String yOrn = scanner.nextLine();
+                            if(yOrn.equalsIgnoreCase("y")) {
+                                view.printQuitting();
+                                System.exit(0);
+                                break;
+                            } else if (yOrn.equalsIgnoreCase("n")){
+                                view.printGoodLuck();
+                                view.printMenu();
+                                break;
+                            } else {
+                                view.printInvalidInput();
+                            }
+                        }
+
                         break;
 
                     //Edwin
