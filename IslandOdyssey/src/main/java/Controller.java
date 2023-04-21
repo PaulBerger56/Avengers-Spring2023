@@ -281,6 +281,7 @@ public class Controller {
                 break;
             }
             view.printInteractableInstructions();
+            view.printAttemptsLeft(tempInteractable);
             String attempt = scanner.nextLine();
 
             if (attempt.equalsIgnoreCase("0000")){
