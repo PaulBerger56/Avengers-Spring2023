@@ -20,26 +20,30 @@ public class Controller {
     //Paul
     // Main menu in the controller
     public void mainMenu() {
-        view.printMainMenu();
-        String command = scanner.nextLine();
+        while(true) {
+            view.printMainMenu();
+            String command = scanner.nextLine();
+            switch(command) {
+                case "n":
+                    this.player = new Player("PlayerFile.txt","RoomFile.txt", "ItemFile.txt", "MonsterFile.txt", "PuzzleFile.txt");
+                    play(this.player);
+                    break;
 
-        switch(command) {
-            case "n":
-                this.player = new Player("PlayerFile.txt","RoomFile.txt", "ItemFile.txt", "MonsterFile.txt", "PuzzleFile.txt");
-                play(this.player);
+                case "l":
+                    this.player = readInPlayer("SaveFile.bin");
+                    play(this.player);
+                    break;
 
-            case "l":
-                this.player = readInPlayer("SaveFile.bin");
-                play(this.player);
+                case "q":
+                    view.printQuitting();
+                    System.exit(0);
+                    break;
 
-            case "q":
-                view.printQuitting();
-                System.exit(0);
-                break;
+                default:
+                    view.printInvalidInput();
+                    break;
 
-            default:
-                view.printInvalidInput();
-                break;
+            }
         }
     }
 

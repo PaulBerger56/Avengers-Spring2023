@@ -21,7 +21,8 @@ public class View {
     public void printItemDescription(Player player, String itemName) {
         Item tempItem = player.doesPlayerHaveItem(itemName);
         if(tempItem == null) {
-            System.out.println("Sorry, you do not have that item in your inventory");
+            System.out.println();
+            System.out.println("\033[1;31m" + "Sorry, you do not have that item in your inventory" + "\u001B[0m");
         } else {
             System.out.println(tempItem.getDescription());
         }
@@ -67,8 +68,10 @@ public class View {
     // prints the current room's inventory
     public void printExplore(ArrayList<Item> items) {
         if(items.isEmpty()) {
+            System.out.println();
             System.out.println("The room is empty!");
         }else {
+            System.out.println();
             System.out.println("This room contains: ");
             for (Item i : items) {
                 System.out.println(i.getName() + ": " + i.getQuantity());
@@ -94,12 +97,14 @@ public class View {
 
     //Paul
     public void printInvalidInput() {
-        System.out.println("Sorry, that was an invalid input");
+        System.out.println();
+        System.out.println("\033[1;31m" + "Sorry, that was an invalid input" + "\u001B[0m");
     }
 
     //Paul
     public void printNoRoom() {
-        System.out.println("Sorry, there is no room in that direction");
+        System.out.println();
+        System.out.println("\033[1;31m" + "Sorry, there is no room in that direction" + "\u001B[0m");
     }
     
     //Puzzle Prints
@@ -153,7 +158,8 @@ public class View {
 
     //Paul
     public void printPlayerDoesntHaveItem() {
-        System.out.println("Sorry, the player does not have that item");
+        System.out.println();
+        System.out.println("\033[1;31m" + "Sorry, the player does not have that item" + "\u001B[0m");
     }
     
     //Bao
@@ -168,7 +174,8 @@ public class View {
 
     //Paul
     public void printCantUseHere() {
-        System.out.println("Sorry, you can't use that Item here");
+        System.out.println();
+        System.out.println("\033[1;31m" + "Sorry, you can't use that Item here" + "\u001B[0m");
     }
 
     //Paul
@@ -193,7 +200,8 @@ public class View {
 
     //Paul
     public void printNoStrangeDevice() {
-        System.out.println("Sorry, there is no strange device in this room");
+        System.out.println();
+        System.out.println("\033[1;31m" + "Sorry, there is no strange device in this room" + "\u001B[0m");
     }
 
     // Paul
@@ -209,6 +217,7 @@ public class View {
 
     // Paul
     public void printQuitting() {
+        System.out.println();
         System.out.println("Now quitting.  Thank you for playing!");
     }
 
@@ -338,6 +347,7 @@ public class View {
     // Paul
     public void printMissed() {
         System.out.println("\u001B[33m" + "It missed." + "\u001B[0m");
+        System.out.println();
     }
 
     // Paul
