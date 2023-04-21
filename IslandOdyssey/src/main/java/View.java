@@ -196,4 +196,14 @@ public class View {
     public void printDropItem(String name) {
         System.out.println("You dropped " + name + ".");
     }
+
+    public void printFlipValidNumber() {
+        System.out.println("Please enter flip followed by a valid number of the switch you would like to flip.");
+    }
+
+    public void printFailEnding() {
+        System.out.println("You have used all your attempts!");
+        System.out.println("You will never know the real end to your story!");
+        System.out.println();
+    }
 }
