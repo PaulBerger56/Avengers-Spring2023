@@ -329,7 +329,9 @@ public class Controller {
                 }
                 break;
             case "Switches":
+                view.printEmptyLine();
                 view.printSwitchesInstructions(room);
+                view.printSwitchState(((Switches)room.getPuzzle()).printSwitches());
                 view.printSwitchPuzzleMenu();
                 boolean hasSolved1 = false;
                 while(!hasSolved1){
