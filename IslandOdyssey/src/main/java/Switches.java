@@ -21,15 +21,8 @@ public class Switches extends Puzzle implements Serializable {
 			}
 	}
 	
-	public int[] printSwitches(){
-		int[] temp = new int[5];
-		
-		for(int i: switches)
-		{
-			temp[i] = switches[i];
-		}
-		
-		return temp;
+	public int[] getSwitches(){
+		return switches;
 	}
 	
 	public boolean check(){
