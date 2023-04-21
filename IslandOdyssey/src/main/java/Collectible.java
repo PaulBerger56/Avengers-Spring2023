@@ -3,11 +3,11 @@ import java.io.Serializable;
 //Edwin
 public class Collectible extends Item implements Serializable {
 
-    private String name;
-    private String description;
-    private int quantity;
-    private int roomNumber;
-    private String type;
+    private final String name;
+    private final String description;
+    private final int quantity;
+    private final int roomNumber;
+    private final String type;
 
     public Collectible(String name, String description, int roomNumber){
         this.name = name;

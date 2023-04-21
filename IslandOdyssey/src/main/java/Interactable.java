@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Interactable extends Item implements Serializable {
 
-    private String name;
-    private String description;
-    private int quantity;
-    private int roomNumber;
+    private final String name;
+    private final String description;
+    private final int quantity;
+    private final int roomNumber;
 
-    private String type;
+    private final String type;
 
-    private String pin;
+    private final String pin;
     private int attempts;
     private boolean hasUsedMaxAttempts = false;
 

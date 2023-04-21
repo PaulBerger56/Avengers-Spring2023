@@ -3,11 +3,11 @@ import java.io.Serializable;
 //Edwin
 public class Consumable extends Item implements Serializable {
 
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
     private int quantity;
-    private int healthPoints;
-    private String type;
+    private final int healthPoints;
+    private final String type;
 
     public Consumable(String name, String description, int healthPoints){
         this.name = name;

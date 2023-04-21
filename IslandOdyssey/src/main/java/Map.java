@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class Map implements Serializable {
 
     private final ArrayList<Room> rooms;
-    private ArrayList<Consumable> monsterDrops;
-    private ArrayList<Integer> monsterLocations;
+    private final ArrayList<Consumable> monsterDrops;
+    private final ArrayList<Integer> monsterLocations;
 
     //Joseph and Bao
     public Map(String roomFile, String itemFile, String monsterFile, String puzzleFile) {

@@ -173,6 +173,7 @@ public class Controller {
                             Consumable tempConsumable = (Consumable) tempItem;
                             player.addHp(tempConsumable.getHealthPoints());
                             view.useItem(player.removeItem(tempConsumable.getName()));
+                            view.printPlayerHp(player);
                             break;
                         } else if(tempItem.getType().equals("Collectible")) {
                             view.printCollectible(tempItem);
@@ -243,10 +244,12 @@ public class Controller {
                             view.printDropItem(interimItem.getName());
                         }
                         break;
-
+                    // Paul
                     case "health":
+                        view.printPlayerHp(player);
                         break;
 
+                    // Paul
                     case "save":
                         view.printSaveMessage();
                         saveGame();
@@ -266,7 +269,7 @@ public class Controller {
     private void useInteractable(Item tempItem) {
         Interactable tempInteractable = (Interactable) tempItem;
         if (tempInteractable.getHasUsedMaxAttempts() == true){
-            System.out.println("You can't use the phone again scrub!");
+            view.printInteractableClosed();
             printMenu();
         }
         while (tempInteractable.getHasUsedMaxAttempts() == false){
@@ -277,60 +280,23 @@ public class Controller {
                 printMenu();
                 break;
             }
-            Scanner input = new Scanner(System.in);
-            System.out.println("An old satellite phone. You try dialing some numbers, but the call doesn’t go through." +
-                    " It is asking for the pin number. Enter 0000 to put the phone away");
-            String attempt = input.nextLine();
+            view.printInteractableInstructions();
+
+            String attempt = scanner.nextLine();
 
             if (attempt.equalsIgnoreCase("0000")){
                 break;
             }
             else if (attempt.equals(tempInteractable.getPin())){
                 //Trigger ending
-                System.out.println("’Pin accepted.’\n" +
-                        "\n" +
-                        "Those words brighten up your entire life. The phone is waiting for you to dial the number of the party you wish to reach.\n" +
-                        "\n" +
-                        "You decide that calling 9-1-1 would be your best shot of reaching someone that could help you in this situation.\n" +
-                        "\n" +
-                        "It rings. It rings again. It rings again.\n" +
-                        "\n" +
-                        "‘9-1-1 what is your emergency?’\n" +
-                        "\n" +
-                        "Oh, thank heavens.\n" +
-                        "\n" +
-                        "‘H-hi, my name is [redacted], and I’ve been stranded on a deserted island with no knowledge of how I ended up here. The\n" +
-                        "\n" +
-                        "last thing I remember was working my shift at [redacted] and losing consciousness.’\n" +
-                        "\n" +
-                        "‘Okay, do you have any idea of where you are located right now?’\n" +
-                        "\n" +
-                        "‘I’m not entirely sure. This island looks deserted, but it’s got so much wildlife on it. There’s a mountain with a great view, a volcano, a lighthouse, a sky garden... It’s a bit of a shame nobody else is here, honestly. There’s also been a shipwreck on the edge of the island. I’m calling from a satellite phone I found in the sick bay.’\n" +
-                        "\n" +
-                        "The officer pauses for a moment. ‘...okay sir, we’re aware of a ship that’s been missing for a few weeks now. We’ll send helicopters out to look for an island with a ship and all these landmarks you’ve described. Please hang tight for as long as possible.’\n" +
-                        "\n" +
-                        "You detected a hint of distrust in the officer’s voice, but you’re not going to accuse the person who’s about to save your life of anything.\n" +
-                        "\n" +
-                        "‘Alright, thank you so much. I don’t know what I would’ve done without you.’\n" +
-                        "\n" +
-                        "What feels like a couple of hours has passed. You’ve made yourself as comfortable as possible on the ship while keeping tabs on the outside to check if any helicopters have flown by. You’ve also carved a large SOS in the sand just outside of the ship to hopefully indicate to anyone flying by of your location.\n" +
-                        "\n" +
-                        "A slight buzzing of helicopter rotors fills your ear. You rush out of the sickbay and out of the ship and scream at the top of your lungs. The helicopter pauses for a second in the air, then heads right for your location.\n" +
-                        "\n" +
-                        "The chopper lands near your location. You run up to the pilot and give them your most sincere thanks. They’re not too keen on conversating right now. You’re instructed to head into the back seat and answer questions that they have for you on the ride home. You are, of course, given some food and water before you set for the skies.\n" +
-                        "\n" +
-                        "It feels like an interrogation. What could you have possibly done wrong? You're asked various questions about names you’ve never heard in your life and what you were doing last month. You answer as honestly as possible, but you never shake the feeling of disco\n" +
-                        "\n" +
-                        "It’s been a year since the incident, and you feel more endangered at home than you felt on the island. The police suspect you’re the one responsible for the murder of the entire crew of the ship Mordor. It’s folklore at this point that you’re the one who caused the death of an entire crew. You’re not allowed to go 100 miles past the city limits. Your family understands your situation and knows the truth, but the long arm of the law may never know.\n" +
-                        "\n" +
-                        "The end.");
+                view.printEnding();
                 mainMenu();
             }
             else if (attempt.length() != 4 || !attempt.matches("[0-9]+")){
-                System.out.println("Pin must be 4 digits!");
+                view.printFourDigits();
             }
             else {
-                System.out.println("Wrong pin.");
+                view.printWrongPin();
                 tempInteractable.decrementAttempts();
             }
         }
@@ -340,8 +306,7 @@ public class Controller {
     public void playPuzzle(Room room) {
         switch(room.getPuzzle().getType()) {
             case "Keypad":
-                view.print("You are presented with a string of digits: " + room.getPuzzle().getDescription());
-                view.print("Please enter the word you would get if you entered this number into a keypad.");
+                view.printKeypadInstructions(room);
                 boolean hasSolved = false;
                 while(!hasSolved) {
                     String[] commands = scanner.nextLine().toLowerCase().split(" ");
@@ -350,22 +315,19 @@ public class Controller {
                             hasSolved = true;
                             solvedPuzzle(room);
                         } else if(room.getPuzzle().getAttempts() == 0) {
-                            view.print("You have run out of attempts. Please try again later.");
+                            view.printKeypadOutOfAttempts();
                             room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
                         } else {
                             room.getPuzzle().setAttempts(room.getPuzzle().getAttempts() - 1);
-                            view.print("Your answer was wrong. Try again.");
-                            view.print("You have " + room.getPuzzle().getAttempts() + "attempts left.");
+                            view.printKeypadWrongAnswer(room);
                         }
                     } else{
-                        view.print("Please enter a one word answer.");
+                        view.printOneWordAnswer();
                     }
                 }
                 break;
             case "Switches":
-                view.print("You are presented with a row of 5 switches with a 1 inscribed on top and a 0 inscribed on the bottom of each switch.");
-                view.print("The switches are all switched down.");
-                view.print("Please input the decimal number " + room.getPuzzle().getDescription() + " in binary.");
+                view.printSwitchesInstructions(room);
                 view.printSwitchPuzzleMenu();
                 boolean hasSolved1 = false;
                 while(!hasSolved1){
@@ -386,7 +348,7 @@ public class Controller {
                                 view.printFlipValidNumber();
                             } else {
                                 ((Switches) room.getPuzzle()).flip(commands1[1]);
-                                view.print("You have flipped switch #" + commands1[1]);
+                                view.printFlippedSwitch(commands1[1]);
                                 view.printSwitchState(((Switches)room.getPuzzle()).printSwitches());
                             }
                             break;
@@ -403,7 +365,7 @@ public class Controller {
 
     //Bao
     public void combat(Room room) {
-        view.print("You see " + room.getMonster().getName());
+        view.printSeeMonster(room.getMonster());
         view.printCombatMenu();
         boolean inCombat = true;
         while(inCombat) {
@@ -411,13 +373,13 @@ public class Controller {
             switch(commands[0]){
                 case "a":
                 case "attack":
-                    view.print("You attack " + room.getMonster().getName() + ".");
+                    view.printPlayerAttacksMonster(room.getMonster());
                     if(player.checkHit()) {
-                        view.print("You hit " + room.getMonster().getName() + " for " + player.getAttackPower() + " damage!");
+                        view.printConfirmedHitOnMonster(room.getMonster(), player);
                         room.getMonster().takeHit(player.getAttackPower());
                     }
                     else {
-                        view.print("Your attack missed.");
+                        view.printAttackMissed();
                     }
                     if(room.getMonster().isDefeated()){
                     combatVictory(room);
@@ -428,8 +390,7 @@ public class Controller {
                     break;
                 case "e":
                 case "examine":
-                    view.print(room.getMonster().getMonsterDescription());
-                    view.print("While you were looking at the monster it attacked.");
+                    view.printExamineMonster(room.getMonster());
                     monsterAttack(room);
                     break;
                 case "i":
@@ -439,7 +400,7 @@ public class Controller {
                 case "u":
                 case "use":
                 	if(commands.length == 1) {
-                		view.print("Please enter use and the item you would like to use.");
+                        view.printUseFormat();
                 		break;
                 	}
                     String tempItem = "";
@@ -453,13 +414,13 @@ public class Controller {
                                 ((CombatItem) player.doesPlayerHaveItem(tempItem)).use(room.getMonster());
                                 view.printUsedItem(player.doesPlayerHaveItem(tempItem).getName());
                                 if(room.getMonster().isDefeated()) {
-                                	view.print("That was supereffective!");
+                                    view.printSuperEffective();
                                 	combatVictory(room);
                                 	inCombat = false;
                                 	break;
                                 }
                                 if(player.doesPlayerHaveItem(tempItem).getName().equalsIgnoreCase("Maracas")) {
-                                	view.print("You fled the battle.");
+                                    view.printFled();
                                 	int tempCurrentRoom = player.getCurrentRoom();
                                 	player.setCurrentRoom(player.getPreviousRoom());
                                 	player.setPreviousRoom(tempCurrentRoom);
@@ -469,7 +430,7 @@ public class Controller {
                                 	break;
                                 }
                                 if(!room.getMonster().isDefeated()) {
-                                    view.print("That was not very effective.");
+                                    view.printNotEffective();
                                     monsterAttack(room);
                                 }
                                 break;
@@ -484,13 +445,12 @@ public class Controller {
                                 monsterAttack(room);
                                 break;
                             default:
-                                view.print("You can't use that right now!");
-                                view.print("While you were fumbling around, the monster attacks.");
+                                view.printFumbling();
                                 monsterAttack(room);
                                 break;
                         }
                     } else {
-                        view.print("You do not have " + tempItem);
+                        view.printDontHaveTempItem(tempItem);
                     }
                     break;
             }
@@ -553,15 +513,16 @@ public class Controller {
     //Bao
     public void solvedPuzzle(Room room) {
         view.print(room.getPuzzle().puzzleSolvedMessage());
-        view.print("You received " + room.getPuzzle().getItem().getName());
+        view.printRecievedItem(room.getPuzzle().getItem().getName());
         player.getInventory().add(room.getPuzzle().getItem());
         room.removePuzzle();
     }
-    
+
+    // Bao
     public void combatVictory(Room room) {
-    	view.print("Victory! You defeated " + room.getMonster().getName());
+        view.printCombatVictory(room.getMonster());
     	if(player.getCurrentRoomObject().getMonster().getItem() != null) {
-    		view.print("You received " + room.getMonster().getItem().getName());
+            view.printRecievedItem(room.getMonster().getItem().getName());
     		player.addItem(room.getMonster().getItem());
             }
     	room.removeMonster();
@@ -569,16 +530,17 @@ public class Controller {
     	printMenu();
     	
     }
-    
+
+    // Bao
     public void monsterAttack(Room room) {
         if(room.getMonster() != null) {
         view.printMonsterAttack(room.getMonster().getName());
         if(room.getMonster().checkHit()) {
-            view.print("You took " + room.getMonster().getStrength() + " damage");
+            view.printTakeDamage(room.getMonster().getStrength());
             player.takeHit(room.getMonster().getStrength());
         }
         else {
-            view.print("It missed.");
+            view.printMissed();
             }
         }
     }
