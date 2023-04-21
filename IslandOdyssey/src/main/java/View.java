@@ -30,13 +30,13 @@ public class View {
     public void printRoomDescription(Room room, boolean isVisited) {
         
         if(isVisited) {
-            System.out.print("You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ". ");
+            System.out.print("\u001B[32m" +"You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ". " + "\u001B[0m");
             printFamiliar();
         }
         else {
-            System.out.println("You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ".");
+            System.out.println("\u001B[32m" + "You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + "." + "\u001B[0m");
         }
-        System.out.println(room.getDescription());
+        System.out.println("\u001B[32m" + room.getDescription() + "\u001B[0m");
     }
 
     // Paul
@@ -74,8 +74,7 @@ public class View {
 
     //Paul
     public void printMenu() {
-        System.out.println("Which direction would you like to go? (N,E,S,W)");
-        System.out.println("type help for extra commands");
+        System.out.println("\u001B[35m" + "Which direction would you like to go? (N,E,S,W)\ntype help for extra commands" + "\u001B[0m");
     }
 
     //Paul
