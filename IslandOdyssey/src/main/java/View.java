@@ -80,12 +80,12 @@ public class View {
 
     //Paul
     public void printInvalidInput() {
-        System.out.println("Sorry, that was an invalid input");
+        System.out.println("\nSorry, that was an invalid input!");
     }
 
     //Paul
     public void printNoRoom() {
-        System.out.println("Sorry, there is no room in that direction");
+        System.out.println("Sorry, there is no room in that direction!");
     }
     
     //Puzzle Prints

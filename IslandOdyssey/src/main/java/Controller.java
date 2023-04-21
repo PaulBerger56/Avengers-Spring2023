@@ -469,6 +469,11 @@ public class Controller {
                         view.printDontHaveTempItem(tempItem);
                     }
                     break;
+                //Edwin
+                default:
+                    view.printInvalidInput();
+                    view.printCombatMenu();
+                    break;
             }
             if(player.isDefeated()){
                 view.printPlayerDefeated();
