@@ -3,13 +3,14 @@ The Values are delimited by a "~", and there can be several descriptions
 
 MonsterFile.txt
 This text file is the basis of important variables that is parse into the map for the monster class.
-In total there are six variables that the monster class will contain, these are name, monsterDescription, hitPoints, strength, attackChance, and weakness. The format is <name>~<description>~<hitPoints>~<strength>~<attackChance>~<weakness>~<roomNumber>.
+In total there are six variables that the monster class will contain, these are name, monsterDescription, hitPoints, strength, attackChance, and weakness.
+The format is <name>~<description>~<hitPoints>~<strength>~<attackChance>~<weakness>~<roomNumber>
 
 <name>
 A string variable which will provide the name of a monster.
 
 <monsterDescription>
-It's a string which parse a description of a monster when player examines interaction with the monster
+A string that contains a description of the monster.
 
 <hitPoints>
 This int variable in the amount of health the monster.
@@ -29,7 +30,8 @@ It's an int variable to help place which room the monster will be in the map. It
 RoomFile.txt
 
 The room text file helps to detect the navigation of the game, and it's variables are a representation of that.
-In total there are 7 variables that the room class had when being parsed for the game. The format is <roomNumber>~<name>~<description>~<northExit>~<eastExit>~<southExit>~<westExit>.
+In total there are 7 variables that the room class had when being parsed for the game.
+The format is <roomNumber>~<name>~<description>~<northExit>~<eastExit>~<southExit>~<westExit>.
 
 <roomNumber>
 An int variable to represent what number it's placed from the map based on the client's request.
@@ -42,34 +44,43 @@ This variable is a string which contains the information of the room in its illu
 
 <northExit>
 A int variable where it detects in which ever room where the next room will be when the player moves north.
-If the value of the exit is 0 it means that exit is a dead end and will keep the player in the same room.
+If the value of the exit is 99 it means that exit is a dead end and will keep the player in the same room.
 
 <eastExit>
 A int variable where it detects in which ever room where the next room will be when the player moves east.
-If the value of the exit is 0 it means that exit is a dead end and will keep the player in the same room.
+If the value of the exit is 99 it means that exit is a dead end and will keep the player in the same room.
 
 <southExit>
 A int variable where it detects in which ever room where the next room will be when the player moves south.
-If the value of the exit is 0 it means that exit is a dead end and will keep the player in the same room.
+If the value of the exit is 99 it means that exit is a dead end and will keep the player in the same room.
 
 <westExit>
 A int variable where it detects in which ever room where the next room will be when the player moves south.
-If the value of the exit is 0 it means that exit is a dead end and will keep the player in the same room.
+If the value of the exit is 99 it means that exit is a dead end and will keep the player in the same room.
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ItemFile.txt
 This text file keeps all information about the different items that are present in the game. There's four different types of items which are interactable, consumable, combatItem, and collectible.
 Interactable, combatItem, and collectible have 4 variables to be parsed, while consumable has 5.
 
-Interactable: An interactable item is one where the player can put input to have a specific command. There's only one item like this it's phone, and it's there to finish the game. Format for this item is <type>~<name>~<description>~<roomNumber>.
-CombatItem: These are items specifically used when the player is in a battle with a monster. Most of them will be a monster's weakness which will kill it instantly. Format for this item is <type>~<name>~<description>~<roomNumber>.
-Collectible: Items in which there are multiple of them of the same item which leads for a specific purpose within the game. In the game the collectible items are the phone numbers which will be used once the player encounters the phone. Format for this item is <type>~<name>~<description>~<roomNumber>.
-Consumable: Consumable items are one's where there is immediate effect once the player uses it. Like the coconut item will increase a player's health by 100 health points. Format for this item is <type>~<name>~<description>~<roomNumber>~<healthPoints>.
+Interactable: An interactable item is one where the player can put input to have a specific command. There's only one item like this it's phone, and it is used to beat the game.
+Interactable Format: <type>~<name>~<description>~<roomNumber>
+
+CombatItem: These items are specifically used when the player is in a battle with a monster. If the monster currently in combat is weak to this item, it will be defeated immediately upon use. Combat
+            Items can be used infinite times and will not be deleted upon use.
+CombatItem Format: <type>~<name>~<description>~<roomNumber>
+
+Collectible: There will be multiple instances of this item inside the game.  They will each contain one number which when combined create the pin that will need to be used on the phone to beat the game.
+Collectible Format: <type>~<name>~<description>~<roomNumber>
+
+Consumable: Consumable items can be used to add health points to the player's current health.  Will be destroyed after a single use.
+<type>~<name>~<description>~<roomNumber>~<healthPoints>
 
 <type>
-This is an item object variable to help separate which type of item will be implemented in the game.
+A string that is used to let the filereader know which Item type to create.  The data will be passed to the appropriate constructor based on the type.
 
 <name>
-A string variable of the name of the item. Will be printed out when player enter explore in any room.
+A string variable of the name of the item.
 
 <description>
 A string variable that contains the description of item only if in inventory and player hits "inspect" said item.
@@ -79,6 +90,7 @@ A int variable to help place which items will be placed in the room best suited 
 
 <healthPoints>
 A variable exclusive to only consumable as there are items that increase the player's health when used.
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PuzzleFile.txt
 Puzzles are read in from a .txt file. The puzzles are set in their place at the beginning of the game and cannot be moved
