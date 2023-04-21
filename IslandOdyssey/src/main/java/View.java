@@ -382,23 +382,28 @@ public class View {
                 "The end.");
     }
 
+    //Paul
     public void printInteractableInstructions() {
         System.out.println("An old satellite phone. You try dialing some numbers, but the call doesn’t go through." +
                 " It is asking for the pin number. Enter 0000 to put the phone away");
     }
 
+    //Paul
     public void printInteractableClosed() {
         System.out.println("The phone is unresponsive...  Hopefully it wasn't too important...");
     }
 
+    //Paul
     public void printPlayerHp(Player player) {
         System.out.println("The player currently has " + player.getCurrentHp() + " hp");
     }
 
+    //Paul
     public void printWouldYouLikeToQuit() {
         System.out.println("Would you like to quit for now? (y/n)");
     }
 
+    //Paul
     public void printGoodLuck() {
         System.out.println("Good luck on your adventure!");
     }
