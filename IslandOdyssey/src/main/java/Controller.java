@@ -260,9 +260,10 @@ public class Controller {
                         view.printHelpMenu();
                         break;
 
-                    //Paul
+                    //Paul & Edwin
                     default:
                         view.printInvalidInput();
+                        printMenu();
                         break;
                 }
                 break;

@@ -30,11 +30,11 @@ public class View {
     public void printRoomDescription(Room room, boolean isVisited) {
         
         if(isVisited) {
-            System.out.print("You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ". ");
+            System.out.print("\nYou are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ". ");
             printFamiliar();
         }
         else {
-            System.out.println("You are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ".");
+            System.out.println("\nYou are currently in room " + room.getRoomNumber() + ", The " + room.getName() + ".");
         }
         System.out.println(room.getDescription());
     }
@@ -75,7 +75,7 @@ public class View {
     //Paul
     public void printMenu() {
         System.out.println("Which direction would you like to go? (N,E,S,W)");
-        System.out.println("type help for extra commands");
+        System.out.println("Type help for set of commands.");
     }
 
     //Paul
@@ -232,11 +232,12 @@ public class View {
 
     // Paul
     public void printUseFormat() {
-        System.out.println("Please enter use and the item you would like to use.");
+        System.out.println("\nPlease enter use and the item you would like to use.");
     }
 
     // Paul
     public void printExamineMonster(Monster monster) {
+        System.out.println();
         System.out.println(monster.getMonsterDescription());
         System.out.println("While you were looking at the monster it attacked.");
     }
@@ -253,7 +254,7 @@ public class View {
 
     // Paul
     public void printPlayerAttacksMonster(Monster monster) {
-        System.out.println("You attack " + monster.getName() + ".");
+        System.out.println("\nYou attack " + monster.getName() + ".");
     }
 
     // Paul
