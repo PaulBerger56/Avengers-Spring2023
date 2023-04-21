@@ -24,6 +24,7 @@ public class View {
             System.out.println();
             System.out.println("\033[1;31m" + "Sorry, you do not have that item in your inventory" + "\u001B[0m");
         } else {
+            System.out.println();
             System.out.println(tempItem.getDescription());
         }
 

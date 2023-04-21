@@ -245,7 +245,7 @@ public class Controller {
 
                         Item tempInspectItem = player.doesPlayerHaveItem(inspectItem);
                         if(tempInspectItem == null) {
-                            view.printRoomNoItem();
+                            view.printPlayerDoesntHaveItem();
                             break;
                         }
                         if(tempInspectItem!= null){
