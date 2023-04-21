@@ -405,4 +405,8 @@ public class View {
         }
     }
 
+    public void printEmptyLine(){
+        System.out.println();
+    }
+
 }

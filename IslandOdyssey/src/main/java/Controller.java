@@ -285,6 +285,8 @@ public class Controller {
             String attempt = scanner.nextLine();
 
             if (attempt.equalsIgnoreCase("0000")){
+                view.printEmptyLine();
+                printMenu();
                 break;
             }
             else if (attempt.equals(tempInteractable.getPin())){
