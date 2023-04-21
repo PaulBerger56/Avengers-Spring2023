@@ -85,6 +85,8 @@ public class Controller {
     // Paul
     // Holds the actual game loop
     public void play(Player player) {
+    	printRoomDescription();
+    	printMenu();
         while(true) {
 
             // If the current room contains a monster, combat is initiated.
@@ -92,10 +94,7 @@ public class Controller {
                 combat(player.getCurrentRoomObject());
             }
 
-            printRoomDescription();
-
             while(true) {
-                printMenu();
 
                 // takes the user's input and splits it to allow either case to be entered.
                 String command = scanner.nextLine().toLowerCase();
@@ -110,6 +109,10 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getWestExit());
+                        	printRoomDescription();
+                        	if(player.getCurrentRoomObject().getMonster() == null) {
+                        	printMenu();
+                        	}
                         }
                         break;
                     // Paul
@@ -120,6 +123,10 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getNorthExit());
+                        	printRoomDescription();
+                        	if(player.getCurrentRoomObject().getMonster() == null) {
+                        	printMenu();
+                        	}
                         }
                         break;
                     // Paul
@@ -130,6 +137,10 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getEastExit());
+                        	printRoomDescription();
+                        	if(player.getCurrentRoomObject().getMonster() == null) {
+                        	printMenu();
+                        	}
                         }
                         break;
                     // Paul
@@ -140,6 +151,10 @@ public class Controller {
                             player.getCurrentRoomObject().setVisited();
                             player.setPreviousRoom(player.getCurrentRoom());
                             player.setCurrentRoom(player.getCurrentRoomObject().getSouthExit());
+                        	printRoomDescription();
+                        	if(player.getCurrentRoomObject().getMonster() == null) {
+                        	printMenu();
+                        	}
                         }
                         break;
                     // Paul
@@ -378,6 +393,8 @@ public class Controller {
                                 	int tempCurrentRoom = player.getCurrentRoom();
                                 	player.setCurrentRoom(player.getPreviousRoom());
                                 	player.setPreviousRoom(tempCurrentRoom);
+                                	printRoomDescription();
+                                	printMenu();
                                 	inCombat = false;
                                 	break;
                                 }
@@ -450,11 +467,7 @@ public class Controller {
     // Paul
     // prints the current room's description
     public void printRoomDescription() {
-        // prints the familiar message if room has been visited
-        if(this.player.getCurrentRoomObject().isVisited()) {
-            view.printFamiliar();
-        }
-        view.printRoomDescription(this.player.getCurrentRoomObject());
+        view.printRoomDescription(this.player.getCurrentRoomObject(), this.player.getCurrentRoomObject().isVisited());
     }
 
     //Paul
@@ -476,13 +489,15 @@ public class Controller {
     }
     
     public void combatVictory(Room room) {
-    	view.print("Victory!");
-    	view.print("You defeated " + room.getMonster().getName());
+    	view.print("Victory! You defeated " + room.getMonster().getName());
     	if(player.getCurrentRoomObject().getMonster().getItem() != null) {
     		view.print("You received " + room.getMonster().getItem().getName());
     		player.addItem(room.getMonster().getItem());
             }
     	room.removeMonster();
+    	printRoomDescription();
+    	printMenu();
+    	
     }
     
     public void monsterAttack(Room room) {
