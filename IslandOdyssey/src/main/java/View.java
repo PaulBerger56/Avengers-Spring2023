@@ -382,20 +382,47 @@ public class View {
                 "The end.");
     }
 
-    //Paul
     public void printInteractableInstructions() {
         System.out.println("An old satellite phone. You try dialing some numbers, but the call doesn’t go through." +
                 " It is asking for the pin number. Enter 0000 to put the phone away");
     }
 
-    //Paul
     public void printInteractableClosed() {
         System.out.println("The phone is unresponsive...  Hopefully it wasn't too important...");
     }
 
-    //Paul
     public void printPlayerHp(Player player) {
         System.out.println("The player currently has " + player.getCurrentHp() + " hp");
+    }
+
+    //Edwin
+    public void printAttemptsLeft(Interactable interactable) {
+        if (interactable.getAttempts() == 5){
+            System.out.println("You have " + interactable.getAttempts() + " attempts.");
+        }
+        else {
+            System.out.println("You have " + interactable.getAttempts() + " attempts left.");
+        }
+    }
+
+    //Edwin
+    public void printEmptyLine(){
+        System.out.println();
+    }
+
+    //Edwin
+    public void printHelpMenu() {
+        System.out.println("\nCommands:\n");
+        System.out.println("N E S W - Use this to move around between rooms.");
+        System.out.println("Inventory - Use this when you want a list of your items in your inventory.");
+        System.out.println("Pickup [item] - Use this to pick an item up from the room you are in.");
+        System.out.println("Drop [item] - Use this to drop an item in the room you are in.");
+        System.out.println("Use [item] - Use this to use an item in your inventory.");
+        System.out.println("Inspect [item] - Use this to get a description of an item in your inventory.");
+        System.out.println("Explore - Use this to reveal items and puzzles in the room you are in.");
+        System.out.println("Examine - Use this when a room contains a strange device and you would like to initiate a puzzle.");
+        System.out.println("Health - Use this when you would like to know your current health points.");
+        System.out.println("Save - Use this when you would like to save the game.");
     }
 
     //Paul
@@ -403,7 +430,6 @@ public class View {
         System.out.println("Would you like to quit for now? (y/n)");
     }
 
-    //Paul
     public void printGoodLuck() {
         System.out.println("Good luck on your adventure!");
     }
