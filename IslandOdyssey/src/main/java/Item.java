@@ -12,6 +12,8 @@ public abstract class Item implements Serializable {
     private String type;
 
 
+
+
     public void incrementQuantity() {
         quantity++;
     }
@@ -37,5 +39,8 @@ public abstract class Item implements Serializable {
         return quantity;
     }
 
+    public void setQuantityToOne() {
+        this.quantity = 1;
+    }
 }
 

@@ -56,6 +56,7 @@ public class View {
 
     // Paul
     public void printSaveMessage() {
+        System.out.println();
         System.out.println("Now saving your game!");
     }
 
@@ -87,7 +88,7 @@ public class View {
     // Paul
     public void printPickup(String itemName) {
         System.out.println();
-        System.out.println("The player picked up a(n) " + itemName);
+        System.out.println("The player picked up " + itemName);
     }
 
     //Paul
@@ -367,7 +368,7 @@ public class View {
     // Paul
     public void printDontHaveTempItem(String tempItem) {
         System.out.println();
-        System.out.println("You do not have " + tempItem);
+        System.out.println("\033[1;31m" + "You do not have " + tempItem + "\u001B[0m");
     }
 
     // Paul
@@ -379,6 +380,7 @@ public class View {
     // Paul
     public void printNotEffective() {
         System.out.println("That was not very effective.");
+        System.out.println();
     }
 
     // Paul

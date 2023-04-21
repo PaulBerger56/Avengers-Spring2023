@@ -17,6 +17,10 @@ public class Consumable extends Item implements Serializable {
         this.type = "Consumable";
     }
 
+    public void setQuantityToOne() {
+        this.quantity = 1;
+    }
+
     public void incrementQuantity() {
         quantity++;
     }

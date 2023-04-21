@@ -5,7 +5,7 @@ public class Collectible extends Item implements Serializable {
 
     private final String name;
     private final String description;
-    private final int quantity;
+    private int quantity;
     private final int roomNumber;
     private final String type;
 
@@ -15,6 +15,10 @@ public class Collectible extends Item implements Serializable {
         this.quantity = 1;
         this.roomNumber = roomNumber;
         this.type = "Collectible";
+    }
+
+    public void setQuantityToOne() {
+        this.quantity = 1;
     }
 
 

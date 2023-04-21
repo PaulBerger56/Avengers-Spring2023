@@ -5,7 +5,7 @@ public class CombatItem extends Item implements Serializable {
 
     private final String name;
     private final String description;
-    private final int quantity;
+    private int quantity;
     private final int roomNumber;
     private final String type;
 
@@ -22,6 +22,10 @@ public class CombatItem extends Item implements Serializable {
         if (monster.isWeakTo(name)){
             monster.setDefeated(true);
         }
+    }
+
+    public void setQuantityToOne() {
+        this.quantity = 1;
     }
 
     @Override
