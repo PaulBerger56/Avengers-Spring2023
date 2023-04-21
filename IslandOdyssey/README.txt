@@ -1,4 +1,3 @@
-//Written by Joseph Grados
 The entire map and descriptions are in a single line in the txt file.
 The Values are delimited by a "~", and there can be several descriptions
 
@@ -217,12 +216,9 @@ Upon Starting the game you will be greeted by the main menu which has 4 options:
 
 "n" New Game - This starts a new game which uses the default map and all visited flags are set to false.
 
-"save" Continue a Saved Game (in progress) - This will allow you to load a save file which has visited room
-            flags set to true.
-
 "l" Load Game - This will allow you to load a save game file and start from where you last save in the game.
 
-"x" Quit the Game - This will exit out of the program completely.
+"q" Quit the Game - This will exit out of the program completely.
 
 
 During the Game you have 10 options, all of which are case-insensitive:
@@ -253,6 +249,9 @@ During the Game you have 10 options, all of which are case-insensitive:
 "help" - Prints out instruction to playing the game.
 
 "health" - Prints the player's current health.
+
+"s" Continue a Saved Game (in progress) - This will allow you to load a save file which has visited room
+            flags set to true.
 
 
 
