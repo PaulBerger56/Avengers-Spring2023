@@ -438,11 +438,13 @@ public class View {
                 "The chopper lands near your location. You run up to the pilot and give them your most sincere thanks. They’re not too keen on conversating right now. You’re instructed to head into the back \n" +
                 "seat and answer questions that they have for you on the ride home. You are, of course, given some food and water before you set for the skies.\n" +
                 "\n" +
-                "It feels like an interrogation. What could you have possibly done wrong? You're asked various questions about names you’ve never heard in your life and what you were doing last month. You answer \n" +
-                "as honestly as possible, but you never shake the feeling of disco\n" +
+                "It feels like an interrogation. What could you have possibly done wrong? You're asked various questions about names you’ve never heard in your life and what you were doing last month. \n" +
+                " You answer as honestly as possible, but you never shake the feeling of disco\n" +
                 "\n" +
-                "It’s been a year since the incident, and you feel more endangered at home than you felt on the island. The police suspect you’re the one responsible for the murder of the entire crew of the ship Mordor. \n" +
-                "It’s folklore at this point that you’re the one who caused the death of an entire crew. You’re not allowed to go 100 miles past the city limits. Your family understands your situation and knows the truth, \n" +
+                "It’s been a year since the incident, and you feel more endangered at home than you felt on the island. The police suspect you’re the one responsible for the murder of the entire crew of \n " +
+                "the ship Mordor. It’s folklore at this point that you’re the one who caused the death of an entire crew. You’re not allowed to go 100 miles past the city limits. Your family understands \n" +
+                "your situation and knows the truth,\n" +
+                " \n" +
                 "but the long arm of the law may never know.\n" +
                 "\n" +
                 "The end.");

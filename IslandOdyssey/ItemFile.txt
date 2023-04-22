@@ -10,4 +10,4 @@ Collectible~Phone Number Digit 1~A piece of scrap paper with the Number 6 in lar
 Collectible~Phone Number Digit 2~A piece of scrap paper with the Number 0 in large print. In fine print towards the bottom, there is a 2. This might be useful for something.~6
 Collectible~Phone Number Digit 3~A piece of crap paper with the Number 5 in large print. In fine print towards the bottom, there is a 3. This might be useful for something.~9
 Collectible~Phone Number Digit 4~A piece of scrap paper with the Number 7 in large print. In fine print towards the bottom, there is a 4. This might be useful for something.~13
-Interactable~Phone~An old satellite phone. You try dialing some numbers, but the call doesn’t go through. It is asking for the pin number.~17
+Interactable~Phone~An old satellite phone. You try dialing some numbers, but the call doesn’t go through. It is asking for the pin number.~1
