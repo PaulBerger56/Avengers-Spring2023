@@ -109,7 +109,6 @@ public class View {
         System.out.println("\033[1;31m" + "Sorry, there is no room in that direction" + "\u001B[0m");
     }
     
-    //Puzzle Prints
     //Bao
     public void printSwitchPuzzleMenu() {
         System.out.println("Would you like to (F)lip or (S)ubmit?");
@@ -218,7 +217,7 @@ public class View {
     // Paul
     public void printMainMenu() {
         System.out.println();
-        System.out.println("Start a (n)ew game, or (l)oad a save file, or (q)?");
+        System.out.println("Start a (n)ew game, or (l)oad a save file, or (q)uit?");
     }
 
     // Paul
@@ -463,16 +462,16 @@ public class View {
     public void printHelpMenu() {
         System.out.println();
         System.out.println("\nCommands:\n");
-        System.out.println("N E S W - Use this to move around between rooms.");
-        System.out.println("Inventory - Use this when you want a list of your items in your inventory.");
-        System.out.println("Pickup [item] - Use this to pick an item up from the room you are in.");
-        System.out.println("Drop [item] - Use this to drop an item in the room you are in.");
-        System.out.println("Use [item] - Use this to use an item in your inventory.");
-        System.out.println("Inspect [item] - Use this to get a description of an item in your inventory.");
-        System.out.println("Explore - Use this to reveal items and puzzles in the room you are in.");
-        System.out.println("Examine - Use this when a room contains a strange device and you would like to initiate a puzzle.");
-        System.out.println("Health - Use this when you would like to know your current health points.");
-        System.out.println("Save - Use this when you would like to save the game.");
+        System.out.println("(N) (E) (S) (W) - Use this to move around between rooms.");
+        System.out.println("(Inv)entory - Use this when you want a list of your items in your inventory.");
+        System.out.println("(P)ickup [item] - Use this to pick an item up from the room you are in.");
+        System.out.println("(D)rop [item] - Use this to drop an item in the room you are in.");
+        System.out.println("(U)se [item] - Use this to use an item in your inventory.");
+        System.out.println("(I)nspect [item] - Use this to get a description of an item in your inventory.");
+        System.out.println("(Exp)lore - Use this to reveal items and puzzles in the room you are in.");
+        System.out.println("(Ex)amine - Use this when a room contains a strange device and you would like to initiate a puzzle.");
+        System.out.println("(He)alth - Use this when you would like to know your current health points.");
+        System.out.println("(Sa)ve - Use this when you would like to save the game.");
     }
 
     //Paul
