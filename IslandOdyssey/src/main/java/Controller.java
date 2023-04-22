@@ -607,6 +607,9 @@ public class Controller {
         	view.printRecievedItem(room.getPuzzle().getItem().getName());
         	player.getInventory().add(room.getPuzzle().getItem());
         	}
+        else {
+        	view.printPuzzleNoReward();
+        }
     	printRoomDescription();
     	printMenu();
         room.removePuzzle();
