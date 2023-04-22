@@ -402,12 +402,14 @@ public class Controller {
                                 solvedPuzzle(room);
                             }
                             else if(room.getPuzzle().getAttempts() == 0){
-                                view.printPuzzleOutOfAttempts();
-                                room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
-                                hasFinished1 = true;
+
+                            	view.printPuzzleOutOfAttempts();
+                            	room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
+                            	printRoomDescription();
+                            	printMenu();
+                            	hasFinished1 = true;                               
                             }
                             else {
-                                room.getPuzzle().setAttempts(room.getPuzzle().getAttempts() - 1);
                                 view.printPuzzleWrongAnswer(room);
                             }
                             break;
@@ -426,6 +428,7 @@ public class Controller {
                         case "h":
                         case "help":
                         default:
+                        	view.printInvalidInput();
                             view.printSwitchPuzzleMenu();
                             }
                 }
