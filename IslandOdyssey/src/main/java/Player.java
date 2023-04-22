@@ -29,7 +29,7 @@ public class Player implements Serializable {
         this.maxHp = Integer.parseInt(temp[0]);
         this.currentHp = maxHp;
         this.attackPower = Integer.parseInt(temp[1]);
-        this.currentRoom = 1;
+        this.currentRoom = 0;
         this.previousRoom = 0;
         this.attackChance = Integer.parseInt(temp[2]);
         this.defeated = false;

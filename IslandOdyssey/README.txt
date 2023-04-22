@@ -22,7 +22,7 @@ It's an int variable about the amount of damage the monster can put to the playe
 This is an int variable where the monsters have a percentage of success in hitting the player. When it's the monsters turn.
 
 <weakness>
-The string is meant to call an item where a specific item will have a weakness to. When enacted the monster's health will deplete to zero.
+String value that represents the name of a combat Item that the monster is weak to.  If the player uses the corresponding item, the monster will be defeated immediately
 
 <roomNumber>
 It's an int variable to help place which room the monster will be in the map. It's being read from the MonsterFile then parsed to the room class.
@@ -31,7 +31,7 @@ RoomFile.txt
 
 The room text file helps to detect the navigation of the game, and it's variables are a representation of that.
 In total there are 7 variables that the room class had when being parsed for the game.
-The format is <roomNumber>~<name>~<description>~<northExit>~<eastExit>~<southExit>~<westExit>.
+The format is <roomNumber>~<name>~<description>~<northExit>~<eastExit>~<southExit>~<westExit>
 
 <roomNumber>
 An int variable to represent what number it's placed from the map based on the client's request.
