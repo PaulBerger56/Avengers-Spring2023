@@ -340,7 +340,7 @@ public class View {
     // Paul
     public void printWrongPin() {
         System.out.println();
-        System.out.println("\033[1;31m" + "Wrong pin." + "\u001B[0m");
+        System.out.println("\033[1;31m" + "Wrong PIN." + "\u001B[0m");
     }
     
     //Bao
@@ -401,13 +401,13 @@ public class View {
     // Paul
     public void printFourDigits() {
         System.out.println();
-        System.out.println("Pin must be "+"\u001B[33m"+"4"+"\u001B[0m"+" digits!");
+        System.out.println("PIN must be "+"\u001B[33m"+"4"+"\u001B[0m"+" digits!");
     }
 
     // Paul
     public void printEnding() {
         System.out.println();
-        System.out.println("’Pin accepted.’\n" +
+        System.out.println("’PIN accepted.’\n" +
                 "\n" +
                 "Those words brighten up your entire life. The phone is waiting for you to dial the number of the party you wish to reach.\n" +
                 "\n" +
@@ -453,12 +453,12 @@ public class View {
                 " \n" +
                 "but the long arm of the law may never know.\n" +
                 "\n" +
-                "The end.");
+                "THE END.");
     }
 
     public void printInteractableInstructions() {
         System.out.println("An old satellite phone. You try dialing some numbers, but the call doesn’t go through." +
-                " It is asking for the pin number. Enter 0000 to put the phone away");
+                " It is asking for the PIN number. Enter 0000 to put the phone away");
     }
 
     public void printInteractableClosed() {
