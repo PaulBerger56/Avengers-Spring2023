@@ -388,6 +388,8 @@ public class Controller {
                         } else if(room.getPuzzle().getAttempts() == 0) {
                             view.printPuzzleOutOfAttempts();
                             room.getPuzzle().setAttempts(room.getPuzzle().getMaxAttempts());
+                        	printRoomDescription();
+                        	printMenu();
                             hasFinished = true;
                         } else {
                             room.getPuzzle().setAttempts(room.getPuzzle().getAttempts() - 1);
@@ -601,8 +603,12 @@ public class Controller {
     //Bao
     public void solvedPuzzle(Room room) {
         view.printPuzzleSolvedMessage();
-        view.printRecievedItem(room.getPuzzle().getItem().getName());
-        player.getInventory().add(room.getPuzzle().getItem());
+        if(room.getPuzzle().getItem() != null) {
+        	view.printRecievedItem(room.getPuzzle().getItem().getName());
+        	player.getInventory().add(room.getPuzzle().getItem());
+        	}
+    	printRoomDescription();
+    	printMenu();
         room.removePuzzle();
     }
 
