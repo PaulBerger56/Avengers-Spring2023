@@ -24,6 +24,7 @@ public class View {
             System.out.println();
             System.out.println("\033[1;31m" + "Sorry, you do not have that item in your inventory" + "\u001B[0m");
         } else {
+            System.out.println();
             System.out.println(tempItem.getDescription());
         }
 
@@ -483,5 +484,25 @@ public class View {
     public void printGoodLuck() {
         System.out.println();
         System.out.println("Good luck on your adventure!");
+    }
+
+    public void printPickupReminder() {
+        System.out.println();
+        System.out.println("\033[1;31m" + "Please enter the item you would like to pick up after the command" + "\u001B[0m");
+    }
+
+    public void printDropReminder() {
+        System.out.println();
+        System.out.println("\033[1;31m" + "Please enter the item you would like to drop after the command" + "\u001B[0m");
+    }
+
+    public void printUseReminder() {
+        System.out.println();
+        System.out.println("\033[1;31m" + "Please enter the item you would like to use after the command" + "\u001B[0m");
+    }
+
+    public void printInspectReminder() {
+        System.out.println();
+        System.out.println("\033[1;31m" + "Please enter the item you would like to inspect after the command" + "\u001B[0m");
     }
 }
