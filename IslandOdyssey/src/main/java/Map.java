@@ -150,7 +150,7 @@ public class Map implements Serializable {
     
     public void distributeDrops() {
     	for(int room: this.monsterLocations) {
-    		int temp = (int)Math.random() * 3;
+    		int temp = (int)(Math.random() * 3);
     		rooms.get(room).getMonster().addItemToMonster(new Consumable(monsterDrops.get(temp).getName(), monsterDrops.get(temp).getDescription(), monsterDrops.get(temp).getHealthPoints()));
     	}
     }
