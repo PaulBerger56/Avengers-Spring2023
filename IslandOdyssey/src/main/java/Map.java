@@ -108,7 +108,8 @@ public class Map implements Serializable {
                     rooms.get(roomNumber).getPuzzle().setItem(new Collectible(itemName, itemDesc, roomNumber));
                     break;
                 case "interactable":
-                    rooms.get(roomNumber).addItem(new Interactable(itemName, itemDesc, roomNumber));
+                    String pin = tokens[4];
+                    rooms.get(roomNumber).addItem(new Interactable(itemName, itemDesc, roomNumber, pin));
                     break;
                 }
             }
