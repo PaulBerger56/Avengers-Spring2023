@@ -423,7 +423,7 @@ public class View {
                 "It’s a bit of a shame nobody else is here, honestly. There’s also been a shipwreck on the edge of the island. I’m calling from a satellite phone I found in the sick bay.’\n" +
                 "\n" +
                 "The officer pauses for a moment. ‘...okay sir, we’re aware of a ship that’s been missing for a few weeks now. We’ll send helicopters out to look for an island with a ship and\n" +
-                " all these landmarks you’ve described. Please hang tight for as long as possible.’\n" +
+                "all these landmarks you’ve described. Please hang tight for as long as possible.’\n" +
                 "\n" +
                 "You detected a hint of distrust in the officer’s voice, but you’re not going to accuse the person who’s about to save your life of anything.\n" +
                 "\n" +
@@ -439,9 +439,9 @@ public class View {
                 "seat and answer questions that they have for you on the ride home. You are, of course, given some food and water before you set for the skies.\n" +
                 "\n" +
                 "It feels like an interrogation. What could you have possibly done wrong? You're asked various questions about names you’ve never heard in your life and what you were doing last month. \n" +
-                " You answer as honestly as possible, but you never shake the feeling of disco\n" +
+                "You answer as honestly as possible, but you never shake the feeling of disco\n" +
                 "\n" +
-                "It’s been a year since the incident, and you feel more endangered at home than you felt on the island. The police suspect you’re the one responsible for the murder of the entire crew of \n " +
+                "It’s been a year since the incident, and you feel more endangered at home than you felt on the island. The police suspect you’re the one responsible for the murder of the entire crew of \n" +
                 "the ship Mordor. It’s folklore at this point that you’re the one who caused the death of an entire crew. You’re not allowed to go 100 miles past the city limits. Your family understands \n" +
                 "your situation and knows the truth,\n" +
                 " \n" +
@@ -467,10 +467,10 @@ public class View {
     //Edwin
     public void printAttemptsLeft(Interactable interactable) {
         if (interactable.getAttempts() == 5){
-            System.out.println("You have " + interactable.getAttempts() + " attempts.");
+            System.out.println("You have " + "\u001B[33m" + interactable.getAttempts() + "\u001B[0m" + " attempts.");
         }
         else {
-            System.out.println("You have " + interactable.getAttempts() + " attempts left.");
+            System.out.println("You have " + "\u001B[33m" + interactable.getAttempts() + "\u001B[0m" + " attempts left.");
         }
     }
 
