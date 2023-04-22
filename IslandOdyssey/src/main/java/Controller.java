@@ -600,7 +600,7 @@ public class Controller {
     
     //Bao
     public void solvedPuzzle(Room room) {
-        view.print(room.getPuzzle().puzzleSolvedMessage());
+        view.printPuzzleSolvedMessage();
         view.printRecievedItem(room.getPuzzle().getItem().getName());
         player.getInventory().add(room.getPuzzle().getItem());
         room.removePuzzle();

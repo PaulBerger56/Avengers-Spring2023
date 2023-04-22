@@ -138,13 +138,13 @@ public class View {
                 temp6 += " 0    ";
             }
         }
-        System.out.println(temp0);
-        System.out.println(temp1);
-        System.out.println(temp2);
-        System.out.println(temp3);
-        System.out.println(temp4);
-        System.out.println(temp5);
-        System.out.println(temp6);
+        System.out.println("\u001B[33m" + temp0 + "\u001B[0m");
+        System.out.println("\u001B[33m" + temp1 + "\u001B[0m");
+        System.out.println("\u001B[33m" + temp2 + "\u001B[0m");
+        System.out.println("\u001B[33m" + temp3 + "\u001B[0m");
+        System.out.println("\u001B[33m" + temp4 + "\u001B[0m");
+        System.out.println("\u001B[33m" + temp5 + "\u001B[0m");
+        System.out.println("\u001B[33m" + temp6 + "\u001B[0m");
     }
     
     //Bao
@@ -301,7 +301,8 @@ public class View {
 
     // Paul
     public void printFlippedSwitch(String s) {
-        System.out.println("You have flipped switch #" + s);
+        System.out.println();
+        System.out.println("\u001B[33m" + "You have flipped switch #" + s + "\u001B[0m");
     }
 
     // Paul
@@ -309,13 +310,14 @@ public class View {
         System.out.println();
         System.out.println("You are presented with a row of 5 switches with a 1 inscribed on top and a 0 inscribed on the bottom of each switch.");
         System.out.println("The switches are all switched down.");
-        System.out.println("Please input the decimal number " + room.getPuzzle().getDescription() + " in binary.");
+        System.out.println();
+        System.out.println("\u001B[33m" + "Please input the decimal number " + room.getPuzzle().getDescription() + " in binary." + "\u001B[0m");
     }
 
     // Paul
     public void printKeypadInstructions(Room room) {
         System.out.println();
-        System.out.println("You are presented with a string of digits: " + room.getPuzzle().getDescription());
+        System.out.println("You are presented with a string of digits: " + "\u001B[33m"  + room.getPuzzle().getDescription() + "\u001B[0m");
         System.out.println("Please enter the word you would get if you entered this number into a keypad.");
     }
 
@@ -325,8 +327,9 @@ public class View {
     }
 
     public void printPuzzleWrongAnswer(Room room) {
+        System.out.println();
         System.out.println("Your answer was wrong. Try again.");
-        System.out.println("You have " + room.getPuzzle().getAttempts() + " attempts left.");
+        System.out.println("You have " + "\u001B[33m" +  room.getPuzzle().getAttempts() + "\u001B[0m" +" attempts left.");
     }
 
     // Paul
@@ -337,6 +340,11 @@ public class View {
     // Paul
     public void printWrongPin() {
         System.out.println("\033[1;31m" + "Wrong pin." + "\u001B[0m");
+    }
+
+    public void printPuzzleSolvedMessage() {
+        System.out.println();
+        System.out.println("You solved the puzzle!");
     }
 
     // Paul

@@ -14,9 +14,7 @@ public abstract class Puzzle implements Serializable {
 		this.attempts = maxAttempts;
 	}
 	
-	public String puzzleSolvedMessage() {
-		return "You solved the puzzle!";
-	}
+
 
 	public String getDescription() {
 		return description;
