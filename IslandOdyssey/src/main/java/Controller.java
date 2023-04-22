@@ -24,16 +24,17 @@ public class Controller {
             view.printMainMenu();
             String command = scanner.nextLine();
             switch(command) {
+            	case "new":
                 case "n":
                     this.player = new Player("PlayerFile.txt","RoomFile.txt", "ItemFile.txt", "MonsterFile.txt", "PuzzleFile.txt");
                     play(this.player);
                     break;
-
+                case "load":
                 case "l":
                     this.player = readInPlayer("SaveFile.bin");
                     play(this.player);
                     break;
-
+                case "quit":
                 case "q":
                     view.printQuitting();
                     System.exit(0);
@@ -106,7 +107,8 @@ public class Controller {
 
                 switch(splitCommand[0]) {
                     //Paul
-                    case "w" :
+                	case "west":
+                    case "w":
                         if(player.getCurrentRoomObject().getWestExit() == 99) {
                             view.printNoRoom();
                         } else {
@@ -120,7 +122,8 @@ public class Controller {
                         }
                         break;
                     // Paul
-                    case "n" :
+                    case "north":
+                    case "n":
                         if(player.getCurrentRoomObject().getNorthExit() == 99) {
                             view.printNoRoom();
                         } else {
@@ -134,7 +137,8 @@ public class Controller {
                         }
                         break;
                     // Paul
-                    case "e" :
+                    case "east":
+                    case "e":
                         if(player.getCurrentRoomObject().getEastExit() == 99) {
                             view.printNoRoom();
                         } else {
@@ -148,7 +152,8 @@ public class Controller {
                         }
                         break;
                     // Paul
-                    case "s" :
+                    case "south":
+                    case "s":
                         if(player.getCurrentRoomObject().getSouthExit() == 99) {
                             view.printNoRoom();
                         } else {
@@ -162,7 +167,8 @@ public class Controller {
                         }
                         break;
                     // Paul
-                    case "use" :
+                    case "u":
+                    case "use":
                         if(splitCommand.length <= 1) {
                             view.printUseReminder();
                             break;
@@ -194,7 +200,8 @@ public class Controller {
                             break;
                         }
                     // Paul
-                    case "pickup" :
+                    case "p":
+                    case "pickup":
                         if(splitCommand.length <= 1) {
                             view.printPickupReminder();
                             break;
@@ -214,11 +221,13 @@ public class Controller {
                             break;
                         }
                     //Paul
-                    case "explore" :
+                    case "exp":
+                    case "explore":
                         explore();
                         break;
                     //Paul
-                    case "examine" :
+                    case "ex":
+                    case "examine":
                         if(player.getCurrentRoomObject().doesRoomHavePuzzle()) {
                             playPuzzle(player.getCurrentRoomObject());
                             break;
@@ -227,10 +236,12 @@ public class Controller {
                             break;
                         }
                     //Paul
+                    case "inv":
                     case "inventory":
                         printPlayerInventory();
                         break;
                     //Joseph && Paul
+                    case "i":
                     case "inspect":
                         if(splitCommand.length <= 1) {
                             view.printInspectReminder();
@@ -253,6 +264,7 @@ public class Controller {
                         }
                         break;
                     //Joseph && Paul
+                    case "d":
                     case "drop":
                         if(splitCommand.length <= 1) {
                             view.printDropReminder();
@@ -277,11 +289,13 @@ public class Controller {
                         }
                         break;
                     // Paul
+                    case "he":
                     case "health":
                         view.printPlayerHp(player);
                         break;
 
                     // Paul
+                    case "sa":
                     case "save":
                         view.printSaveMessage();
                         saveGame();
@@ -304,6 +318,7 @@ public class Controller {
                         break;
 
                     //Edwin
+                    case "h":
                     case "help":
                         view.printHelpMenu();
                         break;
@@ -623,5 +638,4 @@ public class Controller {
             }
         }
     }
-
 }

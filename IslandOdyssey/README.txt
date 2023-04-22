@@ -123,9 +123,9 @@ Submitting the correct configuration of switches will solve the puzzle. If an in
 The file format is: <puzzleID>~<Problem>~<Answer>~<maxAttempts>~<roomID>.
 
 Commands:
-•	“flip #”: Changes the up or down state of the switch in the position #. The command is registered as invalid if # is not a digit from 1-5.
+•	(F)lip [#]: Changes the up or down state of the switch in the position #. The command is registered as invalid if # is not a digit from 1-5.
               The user will need to enter the command flip with a space and the number of the switch they would like to flip. "flip <switch number>".
-•	“submit”: The program will check the current configuration of switches to see if it is correct.  If the switch configuration is correct, the
+•	(S)ubmit: The program will check the current configuration of switches to see if it is correct.  If the switch configuration is correct, the
               puzzle will be set as completed and if it contains a collectible that collectible will be put in the player inventory.
 
 <puzzleID>
@@ -150,7 +150,8 @@ Enter this word into the panel to complete the puzzle. If an incorrect word is e
 The file is format is <puzzleID>~<Problem>~<Answer>~<maxAttempts>~<roomID>.
 
 Commands:
-•	“enter word”: Submits the word “word” to the panel.
+Attempt the puzzle by entering a word.
+
 Reference: To input a particular letter into a phone keypad, you must press the number key with that letter on its label a number of times equal to the position of that letter on the label.
 For example, entering 999 will enter a Y. The 1 key, however, will not enter a digit.
 Instead, entering a 1 will separate two instances of letters that must be entered with the same key.
@@ -240,40 +241,42 @@ Map layout                                                             _________
 _____________________________________________________________________________________________________________________________________________________________________________-
 
 User Manual:
+Commands maybe entered with the full command or the shortcut shown in ().
+
 Upon Starting the game you will be greeted by the main menu which has 3 options:
 
-"n" New Game - This starts a new game which uses the default map and all visited flags are set to false.
+(N)ew Game - This starts a new game which uses the default map and all visited flags are set to false.
 
-"l" Load Game - This will allow you to load a save game file and start from where you last saved in the game.
+(L)oad Game- This will allow you to load a save game file and start from where you last saved in the game.
 
-"q" Quit the Game - This will exit out of the program completely.
+(Q)uit Game- This will exit out of the program completely.
 
 
 During the Game you have 10 options, all of which are case-insensitive:
 
-"n" - will move you to the room North of your current position if there is one available.
+(H)elp - prints a menu of all the possible commands.
 
-"s" - will move you to the room South of your current position if there is one available.
+(N) - will move you to the room North of your current position if there is one available.
 
-"e" - will move you to the room East of your current position if there is one available.
+(S) - will move you to the room South of your current position if there is one available.
 
-"w" - will move you to the room West of your current position if there is one available.
+(E) - will move you to the room East of your current position if there is one available.
 
-"explore" - prints a list of all the Items contained in the current room.
+(W) - will move you to the room West of your current position if there is one available.
 
-"pickup <item-name>" - removes the item from the current room's inventory and adds it to the player's inventory.
+(Exp)lore - prints a list of all the Items contained in the current room.
 
-"drop <item-name>" - removes the item from the player's inventory and adds it to the current room's inventory.
+(P)ickup <item-name> - removes the item from the current room's inventory and adds it to the player's inventory.
 
-"inspect <item-name>" - if the specific item is inside the player's inventory, that item's description will be printed.
+(D)rop <item-name> - removes the item from the player's inventory and adds it to the current room's inventory.
 
-"inventory" - prints the names of all the items in the player's inventory.
+(I)nspect <item-name> - if the specific item is inside the player's inventory, that item's description will be printed.
 
-"help" - prints a menu of all the possible commands.
+(Inv)entory - prints the names of all the items in the player's inventory.
 
-"Attack or a" - Only available during combat.  Attempts a chance at the player hitting the monster they are in combat with.
+(A)ttack - Only available during combat.  Attempts a chance at the player hitting the monster they are in combat with.
 
-"use <item-name>" - If using a consumable inside or outside of combat the players health will be increased by the amount
+(U)se <item-name> - If using a consumable inside or outside of combat the players health will be increased by the amount
                     that the consumable contains.  If that amount is more than max health, the player's current health
                     is set to max health.
 
@@ -286,12 +289,12 @@ During the Game you have 10 options, all of which are case-insensitive:
 
                     If using a collectible outside of combat, the number contained in the collectible is printed.
 
-"examine" - If there is a puzzle in the room that the player is currently in, the puzzle will be started. If there is no
+(Ex)amine - If there is a puzzle in the room that the player is currently in, the puzzle will be started. If there is no
             puzzle in the room a message will be printed and nothing will happen.
 
-"health" - Prints the player's current health.
+(He)alth - Prints the player's current health.
 
-"save" - Will allow the player to create a save file of the current playthrough.  Only one save file can exist at a time.
+(Sa)ve - Will allow the player to create a save file of the current playthrough.  Only one save file can exist at a time.
          The player will then be asked if the want to quit or not?  If they answer yes, the game will end.  If the answer
          no, the game will continue.
 
