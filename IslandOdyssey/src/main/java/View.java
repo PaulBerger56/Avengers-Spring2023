@@ -94,7 +94,7 @@ public class View {
 
     //Paul
     public void printMenu() {
-        System.out.println("\u001B[35m" + "Which direction would you like to go? (N,E,S,W)\ntype help for extra commands" + "\u001B[0m");
+        System.out.println("\u001B[35m" + "Which direction would you like to go? "+"\u001B[36m"+"(N,E,S,W)"+"\u001B[0m"+"\ntype "+"\u001B[36m"+"(h)"+"\u001B[0m"+"elp for extra commands" + "\u001B[0m");
     }
 
     //Paul
@@ -111,7 +111,7 @@ public class View {
     
     //Bao
     public void printSwitchPuzzleMenu() {
-        System.out.println("Would you like to (F)lip or (S)ubmit?");
+        System.out.println("Would you like to "+"\u001B[36m"+"(F)"+"\u001B[0m"+"lip or "+"\u001B[36m"+"(S)"+"\u001B[0m"+"ubmit?");
     }
     
     //Bao
@@ -149,7 +149,7 @@ public class View {
     
     //Bao
     public void printCombatMenu(){
-        System.out.println("Would you like to (A)ttack, (U)se an item or (E)xamine the monster?");
+        System.out.println("Would you like to "+"\u001B[36m"+"(A)"+"\u001B[0m"+"ttack, "+"\u001B[36m"+"(U)"+"\u001B[0m"+"se an item or "+"\u001B[36m"+"(E)"+"\u001B[0m"+"xamine the monster?");
     }
     
     //Bao
@@ -217,13 +217,13 @@ public class View {
     // Paul
     public void printMainMenu() {
         System.out.println();
-        System.out.println("Start a (n)ew game, or (l)oad a save file, or (q)uit?");
+        System.out.println("Start a "+ "\u001B[36m"+ "(n)"+"\u001B[0m"+"ew game, "+"\u001B[36m"+"(l)"+"\u001B[0m"+"oad a save file, or "+"\u001B[36m"+"(q)"+"\u001B[0m"+"uit?");
     }
 
     // Paul
     public void printQuitting() {
         System.out.println();
-        System.out.println("Now quitting.  Thank you for playing!");
+        System.out.println("Now quitting. Thank you for playing!");
     }
 
     // Paul
@@ -268,7 +268,7 @@ public class View {
     // Paul
     public void printUseFormat() {
         System.out.println();
-        System.out.println("Please enter use and the item you would like to use.");
+        System.out.println("Please enter "+"\u001B[36m"+"(u)"+"\u001B[0m"+"se and the item you would like to use.");
     }
 
     // Paul
@@ -460,46 +460,51 @@ public class View {
 
     //Edwin
     public void printHelpMenu() {
-        System.out.println();
-        System.out.println("\nCommands:\n");
-        System.out.println("(N) (E) (S) (W) - Use this to move around between rooms.");
-        System.out.println("(Inv)entory - Use this when you want a list of your items in your inventory.");
-        System.out.println("(P)ickup [item] - Use this to pick an item up from the room you are in.");
-        System.out.println("(D)rop [item] - Use this to drop an item in the room you are in.");
-        System.out.println("(U)se [item] - Use this to use an item in your inventory.");
-        System.out.println("(I)nspect [item] - Use this to get a description of an item in your inventory.");
-        System.out.println("(Exp)lore - Use this to reveal items and puzzles in the room you are in.");
-        System.out.println("(Ex)amine - Use this when a room contains a strange device and you would like to initiate a puzzle.");
-        System.out.println("(He)alth - Use this when you would like to know your current health points.");
-        System.out.println("(Sa)ve - Use this when you would like to save the game.");
+
+        System.out.println("\u001B[36m" + "\nCommands:\n" + "\u001B[0m");
+        System.out.println("\u001B[36m" + "(N) (E) (S) (W)" + "\u001B[0m" +" - Use this to move around between rooms.");
+        System.out.println("\u001B[36m" + "(Inv)" + "\u001B[0m"+ "entory - Use this when you want a list of your items in your inventory.");
+        System.out.println("\u001B[36m" +"(P)" + "\u001B[0m"+"ickup [item] - Use this to pick an item up from the room you are in.");
+        System.out.println("\u001B[36m" +"(D)"+"\u001B[0m"+"rop [item] - Use this to drop an item in the room you are in.");
+        System.out.println("\u001B[36m" +"(U)"+"\u001B[0m"+"se [item] - Use this to use an item in your inventory.");
+        System.out.println("\u001B[36m" +"(I)"+"\u001B[0m"+"nspect [item] - Use this to get a description of an item in your inventory.");
+        System.out.println("\u001B[36m" +"(Exp)"+"\u001B[0m"+"lore - Use this to reveal items and puzzles in the room you are in.");
+        System.out.println("\u001B[36m" +"(Ex)"+"\u001B[0m"+"amine - Use this when a room contains a strange device and you would like to initiate a puzzle.");
+        System.out.println("\u001B[36m" +"(He)"+"\u001B[0m"+"alth - Use this when you would like to know your current health points.");
+        System.out.println("\u001B[36m" +"(Sa)"+"\u001B[0m"+"ve - Use this when you would like to save the game.");
     }
 
     //Paul
     public void printWouldYouLikeToQuit() {
         System.out.println();
-        System.out.println("Would you like to quit for now? (y/n)");
+        System.out.println("Would you like to quit for now? "+"\u001B[36m"+"(y/n)"+ "\u001B[0m");
     }
 
+    // Paul
     public void printGoodLuck() {
         System.out.println();
         System.out.println("Good luck on your adventure!");
     }
 
+    // Paul
     public void printPickupReminder() {
         System.out.println();
         System.out.println("\033[1;31m" + "Please enter the item you would like to pick up after the command" + "\u001B[0m");
     }
 
+    // Paul
     public void printDropReminder() {
         System.out.println();
         System.out.println("\033[1;31m" + "Please enter the item you would like to drop after the command" + "\u001B[0m");
     }
 
+    // Paul
     public void printUseReminder() {
         System.out.println();
         System.out.println("\033[1;31m" + "Please enter the item you would like to use after the command" + "\u001B[0m");
     }
 
+    // Paul
     public void printInspectReminder() {
         System.out.println();
         System.out.println("\033[1;31m" + "Please enter the item you would like to inspect after the command" + "\u001B[0m");

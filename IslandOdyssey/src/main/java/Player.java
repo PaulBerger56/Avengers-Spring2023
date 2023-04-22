@@ -38,6 +38,7 @@ public class Player implements Serializable {
     }
 
     //Paul and Bao
+    // reads in the player file and adds the appropriate values to the current player
     public String[] readPlayerFile(String playerFile) {
         String[] split = new String[3];
         try {
@@ -91,21 +92,6 @@ public class Player implements Serializable {
             this.inventory.add(item);
         }
         return item.getName();
-    }
-
-
-    //Paul
-    // removes the specific item from the player's inventory and adds it to the current room's inventory
-    public String drop(String itemName) {
-        for(int i = 0; i < this.inventory.size(); i++) {
-            if(this.inventory.get(i).getName().equals(itemName)) {
-                Item tempItem = this.inventory.get(i);
-                this.map.getRooms().get(currentRoom).addItem(tempItem);
-                this.inventory.remove(i);
-                return tempItem.getName();
-            }
-        }
-        return "Player doesn't have that item";
     }
     
     //Bao
@@ -168,11 +154,6 @@ public class Player implements Serializable {
     }
 
     // Paul
-    public int getMaxHp() {
-        return maxHp;
-    }
-
-    // Paul
     public int getCurrentHp() {
         return currentHp;
     }
@@ -219,9 +200,9 @@ public class Player implements Serializable {
     public Map getMap() {
         return map;
     }
-    //Joseph
 
-    public void setDefeated(boolean defeated) {
-        this.defeated = defeated;
+    //Joseph
+    public void setDefeated() {
+        this.defeated = true;
     }
 }

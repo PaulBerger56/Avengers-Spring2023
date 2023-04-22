@@ -489,7 +489,7 @@ public class Controller {
                 case "u":
                 case "use":
                     if(commands.length == 1) {
-                        view.printUseFormat();
+                        view.printUseReminder();
                         break;
                     }
                     String tempItem = "";
@@ -567,12 +567,6 @@ public class Controller {
     }
 
     // Paul
-    // Drops the specific item and has the view print the message
-    public void dropItem(String itemName) {
-        view.dropItem(this.player.drop(itemName));
-    }
-
-    // Paul
     // Sends the player inventory to the view to print
     public void printPlayerInventory() {
         if (this.player.getInventory().isEmpty()) {
@@ -613,6 +607,7 @@ public class Controller {
     }
 
     // Bao
+    // prints the victory combat text, gives the player the item from the monster, and removes the monster from the room.
     public void combatVictory(Room room) {
         view.printCombatVictory(room.getMonster());
         if(player.getCurrentRoomObject().getMonster().getItem() != null) {
@@ -626,6 +621,7 @@ public class Controller {
     }
 
     // Bao
+    // Prints the monster's hit lines and subtracts the proper health from the player.
     public void monsterAttack(Room room) {
         if(room.getMonster() != null) {
         view.printMonsterAttack(room.getMonster().getName());
