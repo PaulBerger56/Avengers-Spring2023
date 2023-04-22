@@ -342,10 +342,16 @@ public class View {
         System.out.println();
         System.out.println("\033[1;31m" + "Wrong pin." + "\u001B[0m");
     }
-
+    
+    //Bao
     public void printPuzzleSolvedMessage() {
         System.out.println();
         System.out.println("You solved the puzzle!");
+    }
+    
+    //Bao
+    public void printPuzzleNoReward() {
+        System.out.println("Unfortunately, the puzzle contained no reward.");
     }
 
     // Paul
