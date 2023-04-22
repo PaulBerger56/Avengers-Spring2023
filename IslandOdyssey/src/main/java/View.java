@@ -339,6 +339,7 @@ public class View {
 
     // Paul
     public void printWrongPin() {
+        System.out.println();
         System.out.println("\033[1;31m" + "Wrong pin." + "\u001B[0m");
     }
 
@@ -393,11 +394,13 @@ public class View {
 
     // Paul
     public void printFourDigits() {
-        System.out.println("Pin must be 4 digits!");
+        System.out.println();
+        System.out.println("Pin must be "+"\u001B[33m"+"4"+"\u001B[0m"+" digits!");
     }
 
     // Paul
     public void printEnding() {
+        System.out.println();
         System.out.println("’Pin accepted.’\n" +
                 "\n" +
                 "Those words brighten up your entire life. The phone is waiting for you to dial the number of the party you wish to reach.\n" +
@@ -416,23 +419,31 @@ public class View {
                 "\n" +
                 "‘Okay, do you have any idea of where you are located right now?’\n" +
                 "\n" +
-                "‘I’m not entirely sure. This island looks deserted, but it’s got so much wildlife on it. There’s a mountain with a great view, a volcano, a lighthouse, a sky garden... It’s a bit of a shame nobody else is here, honestly. There’s also been a shipwreck on the edge of the island. I’m calling from a satellite phone I found in the sick bay.’\n" +
+                "‘I’m not entirely sure. This island looks deserted, but it’s got so much wildlife on it. There’s a mountain with a great view, a volcano, a lighthouse, a sky garden... \n" +
+                "It’s a bit of a shame nobody else is here, honestly. There’s also been a shipwreck on the edge of the island. I’m calling from a satellite phone I found in the sick bay.’\n" +
                 "\n" +
-                "The officer pauses for a moment. ‘...okay sir, we’re aware of a ship that’s been missing for a few weeks now. We’ll send helicopters out to look for an island with a ship and all these landmarks you’ve described. Please hang tight for as long as possible.’\n" +
+                "The officer pauses for a moment. ‘...okay sir, we’re aware of a ship that’s been missing for a few weeks now. We’ll send helicopters out to look for an island with a ship and\n" +
+                " all these landmarks you’ve described. Please hang tight for as long as possible.’\n" +
                 "\n" +
                 "You detected a hint of distrust in the officer’s voice, but you’re not going to accuse the person who’s about to save your life of anything.\n" +
                 "\n" +
                 "‘Alright, thank you so much. I don’t know what I would’ve done without you.’\n" +
                 "\n" +
-                "What feels like a couple of hours has passed. You’ve made yourself as comfortable as possible on the ship while keeping tabs on the outside to check if any helicopters have flown by. You’ve also carved a large SOS in the sand just outside of the ship to hopefully indicate to anyone flying by of your location.\n" +
+                "What feels like a couple of hours has passed. You’ve made yourself as comfortable as possible on the ship while keeping tabs on the outside to check if any helicopters have flown by. \n" +
+                "You’ve also carved a large SOS in the sand just outside of the ship to hopefully indicate to anyone flying by of your location.\n" +
                 "\n" +
-                "A slight buzzing of helicopter rotors fills your ear. You rush out of the sickbay and out of the ship and scream at the top of your lungs. The helicopter pauses for a second in the air, then heads right for your location.\n" +
+                "A slight buzzing of helicopter rotors fills your ear. You rush out of the sickbay and out of the ship and scream at the top of your lungs. The helicopter pauses for a second in the air, \n" +
+                "then heads right for your location.\n" +
                 "\n" +
-                "The chopper lands near your location. You run up to the pilot and give them your most sincere thanks. They’re not too keen on conversating right now. You’re instructed to head into the back seat and answer questions that they have for you on the ride home. You are, of course, given some food and water before you set for the skies.\n" +
+                "The chopper lands near your location. You run up to the pilot and give them your most sincere thanks. They’re not too keen on conversating right now. You’re instructed to head into the back \n" +
+                "seat and answer questions that they have for you on the ride home. You are, of course, given some food and water before you set for the skies.\n" +
                 "\n" +
-                "It feels like an interrogation. What could you have possibly done wrong? You're asked various questions about names you’ve never heard in your life and what you were doing last month. You answer as honestly as possible, but you never shake the feeling of disco\n" +
+                "It feels like an interrogation. What could you have possibly done wrong? You're asked various questions about names you’ve never heard in your life and what you were doing last month. You answer \n" +
+                "as honestly as possible, but you never shake the feeling of disco\n" +
                 "\n" +
-                "It’s been a year since the incident, and you feel more endangered at home than you felt on the island. The police suspect you’re the one responsible for the murder of the entire crew of the ship Mordor. It’s folklore at this point that you’re the one who caused the death of an entire crew. You’re not allowed to go 100 miles past the city limits. Your family understands your situation and knows the truth, but the long arm of the law may never know.\n" +
+                "It’s been a year since the incident, and you feel more endangered at home than you felt on the island. The police suspect you’re the one responsible for the murder of the entire crew of the ship Mordor. \n" +
+                "It’s folklore at this point that you’re the one who caused the death of an entire crew. You’re not allowed to go 100 miles past the city limits. Your family understands your situation and knows the truth, \n" +
+                "but the long arm of the law may never know.\n" +
                 "\n" +
                 "The end.");
     }
