@@ -28,7 +28,7 @@ public class Switches extends Puzzle implements Serializable {
 	public boolean check(){
 		String temp = "";
 		
-		for(int i: switches)
+		for(int i= 0; i < switches.length; i++)
 		{
 			temp += switches[i];
 		}
